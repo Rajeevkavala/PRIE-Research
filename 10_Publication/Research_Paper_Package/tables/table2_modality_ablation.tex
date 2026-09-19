@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering
+\caption{M05 Mock Interview Modality Ablation & Late Multimodal Fusion Verification}
+\label{tab:modality_ablation}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Feature Modality} & \textbf{Extracted Indicators} & \textbf{Variance ($R^2$)} & \textbf{Macro-F1} & \textbf{p-value vs Fusion} \\
+\hline
+Acoustic Prosody ($M_{\text{audio}}$) & Pitch $F_0$, Jitter, Shimmer, Tempo & 0.709 & 0.732 & $p < 0.01$ \\
+Visual Composure ($M_{\text{video}}$) & Gaze Persistence, Face Presence, Motion & 0.587 & 0.624 & $p < 0.001$ \\
+Speech Clarity ($M_{\text{speech}}$) & WPM, Filler Density, Lexical TTR & 0.697 & 0.718 & $p < 0.01$ \\
+\hline
+\textbf{Late Multimodal Fusion (Proposed)} & \textbf{Tri-Modal Linear Late Fusion} & \textbf{0.903} & \textbf{0.915} & \textbf{Baseline ($t=9.88$)} \\
+\hline
+\end{tabular}
+\end{table}

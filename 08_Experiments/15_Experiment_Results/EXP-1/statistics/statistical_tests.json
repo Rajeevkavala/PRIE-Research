@@ -1,0 +1,33 @@
+{
+  "mcnemar_vs_rf": {
+    "test_name": "McNemar Test (Continuity Corrected)",
+    "contingency_discordant": {
+      "model_a_correct_only": 5,
+      "model_b_correct_only": 5
+    },
+    "test_statistic": 0.1,
+    "p_value": 0.7518296340458492,
+    "alpha": 0.05,
+    "is_significant": false
+  },
+  "mcnemar_vs_lr": {
+    "test_name": "McNemar Test (Continuity Corrected)",
+    "contingency_discordant": {
+      "model_a_correct_only": 4,
+      "model_b_correct_only": 8
+    },
+    "test_statistic": 0.75,
+    "p_value": 0.3864762307712325,
+    "alpha": 0.05,
+    "is_significant": false
+  },
+  "wilcoxon_vs_rf": {
+    "test_name": "Wilcoxon Signed-Rank Test",
+    "sample_size": 250,
+    "test_statistic": 27.5,
+    "p_value": 1.0,
+    "rank_biserial_r": 0.9982,
+    "alpha": 0.05,
+    "is_significant": false
+  }
+}

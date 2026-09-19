@@ -1,0 +1,17 @@
+{
+  "experiment_id": "EXP-01",
+  "model_id": "M06-XGB-CAL",
+  "dataset_id": "DS-SYNTH-01",
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    2026
+  ],
+  "n_train": 2000,
+  "n_val": 250,
+  "n_test": 250,
+  "target_metric": "Brier <= 0.08 and ECE <= 0.05",
+  "status": "VALIDATED"
+}

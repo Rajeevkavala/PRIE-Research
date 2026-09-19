@@ -1,0 +1,14 @@
+{
+  "experiment_id": "EXP-05",
+  "module_id": "M08-ROADMAP-DAG",
+  "algorithm": "Kahns-Topological-Sort",
+  "test_topics_count": 10,
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    2026
+  ],
+  "status": "VALIDATED"
+}

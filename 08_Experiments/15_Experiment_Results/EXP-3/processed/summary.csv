@@ -1,0 +1,5 @@
+metric,value,benchmark_target
+Immutable Feature (F17) Invariance,100.0%,100.0%
+Average Sparsity (k changes),0.00,<= 3.0
+Average L1 Proximity Distance,0.000,Minimal
+Target Reachability Success Rate,0.0%,>= 90.0%

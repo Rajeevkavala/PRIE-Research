@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "project": "PRIE (Placement Readiness Intelligence Engine)",
+  "feature_count": 22,
+  "feature_names": [
+    "cgpa",
+    "backlogs",
+    "internship_months",
+    "skill_count",
+    "certification_count",
+    "project_count",
+    "aptitude_score",
+    "dsa_score",
+    "dbms_score",
+    "cn_score",
+    "programming_score",
+    "resume_ats_score",
+    "cosine_similarity",
+    "gap_score",
+    "consistency_score",
+    "has_internship",
+    "branch_encoded",
+    "target_role_encoded",
+    "assessment_attempts",
+    "behavior_score",
+    "engagement_score",
+    "roadmap_completion_rate"
+  ],
+  "prs_weights": {
+    "w_pred": 0.3,
+    "w_skill": 0.18,
+    "w_resume": 0.15,
+    "w_behavior": 0.12,
+    "w_norm": 0.1,
+    "w_company": 0.08,
+    "w_assessment": 0.07
+  },
+  "model": {
+    "type": "XGBClassifier",
+    "n_estimators": 165,
+    "max_depth": 5,
+    "learning_rate": 0.048,
+    "subsample": 0.85,
+    "colsample_bytree": 0.8,
+    "random_state": 42
+  },
+  "nlp": {
+    "embedding_model": "all-MiniLM-L6-v2",
+    "dimension": 384
+  }
+}

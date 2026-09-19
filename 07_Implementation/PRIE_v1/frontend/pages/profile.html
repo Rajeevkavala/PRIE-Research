@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile & SPV — PRIE v1 | ScholarCamp</title>
+  <meta name="description" content="View and configure your 22-dimensional Student Profile Vector (SPV) with observation confidence mask indicators." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+<div class="app-layout">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">PRIE</div>
+      <div class="brand-sub">Placement Readiness Intelligence Engine · v1</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Student</div>
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⬡</span> Dashboard
+      </a>
+      <a href="profile.html" class="nav-item active">
+        <span class="nav-icon">◎</span> Profile & SPV
+      </a>
+      <a href="ats.html" class="nav-item">
+        <span class="nav-icon">📄</span> Resume ATS
+      </a>
+      <a href="interview.html" class="nav-item">
+        <span class="nav-icon">🎙️</span> Mock Interview
+      </a>
+      <a href="assessment.html" class="nav-item">
+        <span class="nav-icon">◈</span> Adaptive Quiz
+      </a>
+      <a href="roadmap.html" class="nav-item">
+        <span class="nav-icon">◈</span> Roadmap
+      </a>
+      <a href="xai.html" class="nav-item">
+        <span class="nav-icon">◎</span> Explanations
+      </a>
+      <a href="twin_company.html" class="nav-item">
+        <span class="nav-icon">🏢</span> Twin & Company
+      </a>
+      <div class="nav-section-label" style="margin-top:20px;">Research</div>
+      <a href="experiments.html" class="nav-item">
+        <span class="nav-icon">📊</span> Experiments (EXP-1–6)
+      </a>
+      <button id="logout-btn" class="nav-item" style="margin-top:16px;">
+        <span class="nav-icon">⇥</span> Logout
+      </button>
+    </div>
+    <div class="sidebar-footer">
+      <div style="font-size:0.65rem;color:var(--text-muted);">
+        PRIE v1 · Phase 07 Implementation<br>
+        SPV_VERSION=v1 · 22D Feature Tensor
+      </div>
+    </div>
+  </nav>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-title">Student Profile Vector (SPV)</div>
+    <div class="topbar-user">
+      <div class="avatar" id="avatar-initials">U</div>
+      <span id="user-name" style="font-size:0.875rem;font-weight:600;">Student</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-title">22-Dimensional Profile Tensor</div>
+    <div class="page-sub">
+      The authoritative feature vector driving the placement readiness engine. Features with an observed status (m=1) are derived from student action; imputed features (m=0) use population Bayesian baselines.
+    </div>
+
+    <!-- Alert / Banner -->
+    <div class="card" style="margin-bottom:24px;border-left:4px solid var(--accent-purple);background:rgba(139,92,246,0.06);">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span style="font-weight:700;color:var(--accent-purple);">Schema Protocol: SPV_VERSION = "v1"</span>
+          <p style="margin:4px 0 0;font-size:0.8125rem;color:var(--text-secondary);">
+            F17 (Branch Encoded) is <strong style="color:var(--accent-pink);">IMMUTABLE</strong> under counterfactual recourse. Academic and cognitive features are normalized strictly into [0.0, 1.0] for model inference.
+          </p>
+        </div>
+        <div id="mask-summary" style="font-size:0.875rem;font-weight:600;color:var(--text-primary);">
+          Observation Mask: Loading...
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Left Column: Editable Student Profile Form -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom:16px;">Core Profile Attributes</div>
+        <form id="profile-form">
+          <div class="form-group">
+            <label class="form-label" for="prof-name">Full Name</label>
+            <input type="text" id="prof-name" class="form-input" required />
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="prof-branch">Academic Branch (F17 Source)</label>
+              <select id="prof-branch" class="form-select">
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics & Communication">Electronics & Communication</option>
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prof-cgpa">Cumulative GPA (F01: 0.0–10.0)</label>
+              <input type="number" id="prof-cgpa" class="form-input" step="0.01" min="0" max="10" required />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="prof-internship">Internship Experience (F11 Source)</label>
+              <select id="prof-internship" class="form-select">
+                <option value="0">No Internship</option>
+                <option value="1">Completed Internship</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prof-intern-months">Duration (Months)</label>
+              <input type="number" id="prof-intern-months" class="form-input" min="0" max="48" value="0" />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="prof-projects">Total Projects (F09)</label>
+              <input type="number" id="prof-projects" class="form-input" min="0" max="30" value="0" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prof-proj-quality">Project Quality Score (F10: 0–100)</label>
+              <input type="number" id="prof-proj-quality" class="form-input" min="0" max="100" step="0.5" value="50" />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="prof-certs">Certifications Count (F12)</label>
+              <input type="number" id="prof-certs" class="form-input" min="0" max="20" value="0" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prof-style">Learning Style</label>
+              <select id="prof-style" class="form-select">
+                <option value="practical">Practical / Hands-on</option>
+                <option value="visual">Visual / Video</option>
+                <option value="reading">Reading / Documentation</option>
+                <option value="mixed">Mixed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="prof-target-role">Target Role (F18 Source)</label>
+            <select id="prof-target-role" class="form-select">
+              <option value="Software Development Engineer">Software Development Engineer</option>
+              <option value="Backend Engineer">Backend Engineer</option>
+              <option value="Frontend Engineer">Frontend Engineer</option>
+              <option value="Data Scientist">Data Scientist</option>
+              <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+              <option value="DevOps / Cloud Engineer">DevOps / Cloud Engineer</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="prof-skills">Technical Skills (Comma separated)</label>
+            <input type="text" id="prof-skills" class="form-input" placeholder="e.g. Python, DSA, SQL, Docker, React" />
+          </div>
+
+          <button type="submit" id="save-btn" class="btn btn-primary" style="width:100%;margin-top:8px;">
+            Save & Recompute Vector
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: 22D Tensor Inspector with Mask Badges -->
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <div class="card-title">SPV Tensor Breakdown (22 Dimensions)</div>
+          <span class="badge badge-purple" id="spv-ver-badge">v1 canonical</span>
+        </div>
+        <div style="font-size:0.8125rem;color:var(--text-secondary);margin-bottom:14px;">
+          Status indicator: <span style="color:#4ade80;">● Observed (m=1)</span> vs <span style="color:#f59e0b;">○ Imputed (m=0)</span>
+        </div>
+
+        <div id="spv-features-list" style="display:flex;flex-direction:column;gap:8px;max-height:560px;overflow-y:auto;padding-right:6px;">
+          <div style="text-align:center;padding:40px;color:var(--text-muted);">
+            <div class="spinner" style="margin:0 auto 12px;"></div>
+            Loading canonical features...
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/api_client.js"></script>
+<script src="../js/auth.js"></script>
+<script>
+  let currentSPV = null;
+
+  async function loadProfile() {
+    if (!AuthManager.checkSession()) return;
+    try {
+      const student = await ApiClient.getProfile();
+      document.getElementById('prof-name').value = student.name || '';
+      document.getElementById('prof-branch').value = student.branch || 'Computer Science';
+      document.getElementById('prof-cgpa').value = student.cgpa || 0.0;
+      document.getElementById('prof-internship').value = student.has_internship ? '1' : '0';
+      document.getElementById('prof-intern-months').value = student.internship_months || 0;
+      document.getElementById('prof-projects').value = student.project_count || 0;
+      document.getElementById('prof-proj-quality').value = student.project_quality_score || 50;
+      document.getElementById('prof-certs').value = student.certifications_count || 0;
+      document.getElementById('prof-style').value = student.learning_style || 'practical';
+      document.getElementById('prof-target-role').value = student.target_role || 'Software Development Engineer';
+
+      try {
+        const skillsArr = JSON.parse(student.skills_json || '[]');
+        document.getElementById('prof-skills').value = Array.isArray(skillsArr) ? skillsArr.join(', ') : '';
+      } catch (e) {
+        document.getElementById('prof-skills').value = '';
+      }
+
+      // Load SPV tensor
+      const spvData = await ApiClient.getSPV();
+      currentSPV = spvData;
+      renderSPVList(spvData);
+    } catch (err) {
+      showToast(err.message, 'error');
+    }
+  }
+
+  function renderSPVList(spv) {
+    const container = document.getElementById('spv-features-list');
+    const mask = spv.confidence_mask || [];
+    const features = spv.features || {};
+    const normalized = spv.normalized_vector || [];
+
+    const featureKeys = Object.keys(features);
+    const observedCount = mask.filter(m => m === 1).length;
+    document.getElementById('mask-summary').innerHTML = `
+      Observed: <span style="color:#4ade80;">${observedCount}/22</span> · 
+      Imputed: <span style="color:#f59e0b;">${22 - observedCount}/22</span>
+    `;
+
+    container.innerHTML = featureKeys.map((key, idx) => {
+      const isObserved = mask[idx] === 1;
+      const rawVal = features[key];
+      const normVal = (normalized[idx] !== undefined) ? Number(normalized[idx]).toFixed(3) : '—';
+      const fid = `F${String(idx + 1).padStart(2, '0')}`;
+
+      return `
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;font-size:0.8125rem;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-family:monospace;color:var(--accent-purple);font-weight:700;">${fid}</span>
+            <span style="font-weight:500;">${key}</span>
+            <span style="font-size:0.7rem;padding:2px 6px;border-radius:4px;background:${isObserved ? 'rgba(34,197,94,0.15);color:#4ade80' : 'rgba(245,158,11,0.15);color:#fbbf24'}">
+              ${isObserved ? 'Observed' : 'Imputed'}
+            </span>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <span style="color:var(--text-secondary);font-size:0.75rem;">Raw: <strong>${typeof rawVal === 'number' ? rawVal.toFixed(2) : rawVal}</strong></span>
+            <span style="color:var(--accent-cyan);font-family:monospace;font-size:0.75rem;">x̂: ${normVal}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  document.getElementById('profile-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('save-btn');
+    btn.disabled = true;
+    btn.textContent = 'Saving & Recomputing...';
+
+    const rawSkills = document.getElementById('prof-skills').value;
+    const skillsList = rawSkills.split(',').map(s => s.trim()).filter(Boolean);
+
+    const payload = {
+      name: document.getElementById('prof-name').value,
+      branch: document.getElementById('prof-branch').value,
+      cgpa: parseFloat(document.getElementById('prof-cgpa').value),
+      has_internship: parseInt(document.getElementById('prof-internship').value, 10),
+      internship_months: parseInt(document.getElementById('prof-intern-months').value, 10),
+      project_count: parseInt(document.getElementById('prof-projects').value, 10),
+      project_quality_score: parseFloat(document.getElementById('prof-proj-quality').value),
+      certifications_count: parseInt(document.getElementById('prof-certs').value, 10),
+      target_role: document.getElementById('prof-target-role').value,
+      skills_json: JSON.stringify(skillsList),
+      learning_style: document.getElementById('prof-style').value,
+    };
+
+    try {
+      await ApiClient.updateProfile(payload);
+      showToast('Profile updated & SPV recomputed successfully!', 'success');
+      await loadProfile();
+    } catch (err) {
+      showToast(err.message, 'error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Save & Recompute Vector';
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', loadProfile);
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — PRIE v1 | ScholarCamp</title>
+  <meta name="description" content="Sign in to PRIE — Placement Readiness Intelligence Engine. Track your 22-dimensional readiness profile." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-card animate-fade-in-up">
+      <div class="auth-logo">
+        <div class="auth-logo-text">PRIE</div>
+        <div class="auth-logo-sub">Placement Readiness Intelligence Engine</div>
+      </div>
+
+      <div id="error-alert" class="alert alert-danger" style="display:none;"></div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input id="email" type="email" class="form-input" placeholder="your@college.edu" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input id="password" type="password" class="form-input" placeholder="••••••••" required />
+        </div>
+        <button id="login-btn" type="submit" class="btn btn-primary btn-full btn-lg" style="margin-top:8px;">
+          Sign In to PRIE
+        </button>
+      </form>
+
+      <div class="divider">New to PRIE?</div>
+
+      <a href="register.html">
+        <button class="btn btn-secondary btn-full">Create Account</button>
+      </a>
+
+      <p style="text-align:center;font-size:0.72rem;color:var(--text-muted);margin-top:24px;">
+        ScholarCamp · PRIE v1 · SPV_VERSION=v1 · Phase 07
+      </p>
+    </div>
+  </div>
+
+  <script src="../js/api_client.js"></script>
+  <script>
+    if (Auth.isLoggedIn()) window.location.href = 'dashboard.html';
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('login-btn');
+      const err = document.getElementById('error-alert');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Signing in...';
+      err.style.display = 'none';
+
+      try {
+        const data = await ApiClient.login({
+          email:    document.getElementById('email').value,
+          password: document.getElementById('password').value,
+        });
+        Auth.save(data);
+        showToast('Welcome back, ' + (data.name || 'Student') + '!', 'success');
+        setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+      } catch (e) {
+        err.textContent = e.message || 'Invalid credentials';
+        err.style.display = 'flex';
+        btn.disabled = false;
+        btn.textContent = 'Sign In to PRIE';
+      }
+    });
+  </script>
+</body>
+</html>

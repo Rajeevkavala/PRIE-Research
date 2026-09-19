@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering
+\caption{Comprehensive ScholarCamp / PRIE Empirical Research Validation Suite (EXP-1 through EXP-6)}
+\label{tab:experimental_summary}
+\begin{tabular}{cllccc}
+\hline
+\textbf{Exp ID} & \textbf{Core Experimental Focus} & \textbf{Dataset / Artifact} & \textbf{Primary Metric} & \textbf{Observed Performance} & \textbf{Stat. Significance} \\
+\hline
+EXP-1 & Predictive Calibration & DS-SYNTH-01 (N=2,500) & ECE / Brier / ROC-AUC & 0.0350 / 0.0339 / 0.9922 & $p = 0.0153$ (McNemar) \\
+EXP-2 & Actionable Recourse & N=30 at-risk profiles & $F_{17}$ Lock / Sparsity $k$ & 100.0\% / 2.47 features & $p < 0.0001$ ($t=-5.84$) \\
+EXP-3 & Multimodal Late Fusion & DS-INTERVIEW-SIM (N=50) & Variance Reduction & $77.98\% \pm 3.99\%$ & $p = 0.0022$ ($t=9.88$) \\
+EXP-4 & Spatial ATS Extraction & DS-RESUME-BENCH & Macro-F1 / Scramble & 0.8421 / 4.2\% & $+0.1564$ vs 1D Regex \\
+EXP-5 & Pedagogical DAG Scheduling & cs\_concept\_dag.json (38 nodes) & Prerequisite Violations & 0 violations (0.0\%) & $p = 0.0416$ (Wilcoxon) \\
+EXP-6 & Curriculum RAG Gating & 1,420 chunks, cosine $\tau=0.70$ & Out-of-Domain Rejection & 100.0\% Rejection & $p = 0.0286$ (Exact) \\
+\hline
+\end{tabular}
+\end{table}

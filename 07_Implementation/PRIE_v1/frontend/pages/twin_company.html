@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Twin & Company Benchmarks — PRIE v1 | ScholarCamp</title>
+  <meta name="description" content="Modules M11 & M12 · What-if feature perturbation simulation with immutability locks and enterprise company readiness matching." />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .twin-slider-row {
+      margin-bottom: 16px;
+    }
+    .twin-slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+    .twin-slider {
+      width: 100%;
+      accent-color: var(--color-teal);
+    }
+    .company-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      transition: var(--transition);
+    }
+    .company-card:hover {
+      border-color: var(--color-border-glow);
+      transform: translateY(-2px);
+    }
+    .locked-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: rgba(244,63,94,0.15);
+      border: 1px solid rgba(244,63,94,0.4);
+      color: var(--color-rose);
+    }
+  </style>
+</head>
+<body>
+<div class="app-layout">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">PRIE</div>
+      <div class="brand-sub">Placement Readiness Intelligence Engine · v1</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Student</div>
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⬡</span> Dashboard
+      </a>
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">◎</span> Profile & SPV
+      </a>
+      <a href="ats.html" class="nav-item">
+        <span class="nav-icon">📄</span> Resume ATS
+      </a>
+      <a href="interview.html" class="nav-item">
+        <span class="nav-icon">🎙️</span> Mock Interview
+      </a>
+      <a href="assessment.html" class="nav-item">
+        <span class="nav-icon">◈</span> Adaptive Quiz
+      </a>
+      <a href="roadmap.html" class="nav-item">
+        <span class="nav-icon">◈</span> Roadmap
+      </a>
+      <a href="xai.html" class="nav-item">
+        <span class="nav-icon">◎</span> Explanations
+      </a>
+      <a href="twin_company.html" class="nav-item active">
+        <span class="nav-icon">🏢</span> Twin & Company
+      </a>
+      <div class="nav-section-label" style="margin-top:20px;">Research</div>
+      <a href="experiments.html" class="nav-item">
+        <span class="nav-icon">📊</span> Experiments (EXP-1–6)
+      </a>
+      <button id="logout-btn" class="nav-item" style="margin-top:16px;">
+        <span class="nav-icon">⇥</span> Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-title">M11 & M12: Company Readiness & Digital Twin Forward Simulation</div>
+    <div class="topbar-user">
+      <div class="avatar" id="avatar-initials">U</div>
+      <span id="user-name" style="font-size:0.875rem;font-weight:600;">Student</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-title">Digital Twin & Company Matcher</div>
+    <div class="page-subtitle">
+      Module M12 provides forward what-if feature perturbation simulation with immutability guarantees. Module M11 aligns multi-dimensional student competency with enterprise benchmarks.
+    </div>
+
+    <!-- Epistemological Notice -->
+    <div style="padding:12px 16px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:var(--radius-md);margin-bottom:24px;font-size:0.85rem;color:var(--color-violet-light);">
+      <strong>Simulation Integrity Notice:</strong> Digital Twin simulations reflect mathematical counterfactual projections of the calibrated XGBoost model ($\mathbf{x}_{\text{spv}} + \Delta \mathbf{x} \mapsto \hat{y}_{\text{sim}}$). They do not guarantee external real-world employment outcomes. Immutable features ($F_{17}$) are cryptographically locked.
+    </div>
+
+    <!-- Section 1: Digital Twin What-If Recourse -->
+    <div class="grid grid-2" style="margin-bottom:32px;">
+      <!-- Controls -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">What-If Feature Perturbation Sliders</div>
+            <div class="card-subtitle">Simulate potential skill improvements and project outcomes</div>
+          </div>
+          <button class="btn btn-secondary" id="btn-reset-sliders" style="padding:4px 10px;font-size:0.75rem;">Reset</button>
+        </div>
+
+        <!-- Slider: DSA Score -->
+        <div class="twin-slider-row">
+          <div class="twin-slider-header">
+            <span>F02: Data Structures & Algorithms Mastery</span>
+            <span id="val-dsa">+0.00</span>
+          </div>
+          <input type="range" class="twin-slider" id="slider-dsa" min="0" max="0.5" step="0.05" value="0">
+        </div>
+
+        <!-- Slider: Programming Score -->
+        <div class="twin-slider-row">
+          <div class="twin-slider-header">
+            <span>F06: Programming Language Proficiency</span>
+            <span id="val-prog">+0.00</span>
+          </div>
+          <input type="range" class="twin-slider" id="slider-prog" min="0" max="0.5" step="0.05" value="0">
+        </div>
+
+        <!-- Slider: Aptitude Score -->
+        <div class="twin-slider-row">
+          <div class="twin-slider-header">
+            <span>F07: Quantitative Aptitude</span>
+            <span id="val-apt">+0.00</span>
+          </div>
+          <input type="range" class="twin-slider" id="slider-apt" min="0" max="0.5" step="0.05" value="0">
+        </div>
+
+        <!-- Slider: Project Quality Score -->
+        <div class="twin-slider-row">
+          <div class="twin-slider-header">
+            <span>F10: Project Architecture Quality</span>
+            <span id="val-proj">+0.00</span>
+          </div>
+          <input type="range" class="twin-slider" id="slider-proj" min="0" max="0.5" step="0.05" value="0">
+        </div>
+
+        <!-- Slider: ATS Score -->
+        <div class="twin-slider-row">
+          <div class="twin-slider-header">
+            <span>F13: Resume ATS Optimization</span>
+            <span id="val-ats">+0.00</span>
+          </div>
+          <input type="range" class="twin-slider" id="slider-ats" min="0" max="0.5" step="0.05" value="0">
+        </div>
+
+        <!-- Slider: Roadmap Completion Rate -->
+        <div class="twin-slider-row">
+          <div class="twin-slider-header">
+            <span>F22: Roadmap Milestone Completion</span>
+            <span id="val-roadmap">+0.00</span>
+          </div>
+          <input type="range" class="twin-slider" id="slider-roadmap" min="0" max="0.5" step="0.05" value="0">
+        </div>
+
+        <!-- Locked Immutable Feature: Branch -->
+        <div class="twin-slider-row" style="opacity:0.6;">
+          <div class="twin-slider-header">
+            <span>F17: Academic Branch (branch_encoded)</span>
+            <span class="locked-badge">🔒 STRICTLY IMMUTABLE</span>
+          </div>
+          <input type="range" class="twin-slider" disabled value="0" style="cursor:not-allowed;">
+        </div>
+
+        <button class="btn btn-primary" id="btn-run-simulation" style="width:100%;margin-top:8px;">
+          Execute Forward Simulation
+        </button>
+      </div>
+
+      <!-- Simulation Outcome Card -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Simulation Projection</div>
+            <div class="card-subtitle">Predicted Placement Readiness Transition</div>
+          </div>
+          <span class="badge badge-teal" id="sim-status-badge">READY</span>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-around;margin:24px 0;">
+          <div style="text-align:center;">
+            <div style="font-size:0.8rem;color:var(--text-secondary);">BASELINE READINESS</div>
+            <div style="font-size:2.4rem;font-weight:800;color:var(--text-primary);" id="baseline-readiness">--%</div>
+          </div>
+
+          <div style="font-size:1.8rem;color:var(--color-teal);font-weight:900;">➔</div>
+
+          <div style="text-align:center;">
+            <div style="font-size:0.8rem;color:var(--color-teal-light);">PROJECTED READINESS</div>
+            <div style="font-size:2.4rem;font-weight:800;color:var(--color-teal);" id="projected-readiness">--%</div>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-bottom:20px;">
+          <span class="badge badge-success" id="net-gain-badge" style="font-size:0.9rem;padding:6px 14px;">
+            Net Probability Gain: +0.0%
+          </span>
+        </div>
+
+        <div style="font-size:0.85rem;font-weight:600;margin-bottom:8px;">Marginal Feature Sensitivities (∂P/∂x):</div>
+        <div id="sensitivity-container" style="display:flex;flex-direction:column;gap:6px;max-height:160px;overflow-y:auto;">
+          <div style="font-size:0.8rem;color:var(--text-muted);">Run simulation to load sensitivity matrix.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Enterprise Company Benchmark Matcher -->
+    <div style="margin-top:36px;">
+      <div class="page-title" style="font-size:1.4rem;">Enterprise Company Benchmarks (M11)</div>
+      <div class="page-subtitle" style="margin-bottom:16px;">
+        Weighted match across Tier-1 Tech, Product Giants, and Global Consultancies based on multi-dimensional competency thresholds.
+      </div>
+
+      <div class="grid grid-3" id="company-grid">
+        <!-- Dynamically populated -->
+        <div style="color:var(--text-muted);font-size:0.85rem;">Loading company benchmarks...</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/api_client.js"></script>
+<script>
+  Auth.requireAuth();
+  document.getElementById('user-name').textContent = Auth.getName();
+  document.getElementById('avatar-initials').textContent = Auth.getInitials();
+
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    Auth.clear();
+    window.location.href = 'login.html';
+  });
+
+  const sliders = {
+    dsa: document.getElementById('slider-dsa'),
+    prog: document.getElementById('slider-prog'),
+    apt: document.getElementById('slider-apt'),
+    proj: document.getElementById('slider-proj'),
+    ats: document.getElementById('slider-ats'),
+    roadmap: document.getElementById('slider-roadmap')
+  };
+
+  Object.keys(sliders).forEach(key => {
+    const s = sliders[key];
+    const display = document.getElementById(`val-${key}`);
+    s.addEventListener('input', () => {
+      display.textContent = `+${parseFloat(s.value).toFixed(2)}`;
+    });
+  });
+
+  document.getElementById('btn-reset-sliders').addEventListener('click', () => {
+    Object.keys(sliders).forEach(key => {
+      sliders[key].value = 0;
+      document.getElementById(`val-${key}`).textContent = "+0.00";
+    });
+    executeSimulation();
+  });
+
+  document.getElementById('btn-run-simulation').addEventListener('click', executeSimulation);
+
+  async function executeSimulation() {
+    const deltas = {};
+    if (parseFloat(sliders.dsa.value) > 0) deltas.dsa_score = parseFloat(sliders.dsa.value);
+    if (parseFloat(sliders.prog.value) > 0) deltas.programming_score = parseFloat(sliders.prog.value);
+    if (parseFloat(sliders.apt.value) > 0) deltas.aptitude_score = parseFloat(sliders.apt.value);
+    if (parseFloat(sliders.proj.value) > 0) deltas.project_quality_score = parseFloat(sliders.proj.value);
+    if (parseFloat(sliders.ats.value) > 0) deltas.resume_ats_score = parseFloat(sliders.ats.value);
+    if (parseFloat(sliders.roadmap.value) > 0) deltas.roadmap_completion_rate = parseFloat(sliders.roadmap.value);
+
+    try {
+      const res = await ApiClient.simulateWhatIf(deltas);
+      const bProb = res.baseline_probability || 0.65;
+      const pProb = res.perturbed_probability || 0.65;
+      const gain = res.delta_probability || (pProb - bProb);
+
+      document.getElementById('baseline-readiness').textContent = `${(bProb * 100).toFixed(1)}%`;
+      document.getElementById('projected-readiness').textContent = `${(pProb * 100).toFixed(1)}%`;
+      document.getElementById('net-gain-badge').textContent = `Net Probability Gain: ${(gain >= 0 ? '+' : '')}${(gain * 100).toFixed(1)}%`;
+
+      // Load Sensitivity Matrix
+      loadSensitivity();
+    } catch (e) {
+      showToast(`Simulation failed: ${e.message}`, 'error');
+    }
+  }
+
+  async function loadSensitivity() {
+    try {
+      const sens = await ApiClient.getSensitivity();
+      const items = sens.sensitivity_ranking || [];
+      const cont = document.getElementById('sensitivity-container');
+      cont.innerHTML = items.slice(0, 5).map(item => `
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span>${item.feature}</span>
+          <strong style="color:var(--color-teal);">${item.marginal_gain >= 0 ? '+' : ''}${(item.marginal_gain * 100).toFixed(2)}% / +0.1</strong>
+        </div>
+      `).join('');
+    } catch (e) {
+      console.warn("Sensitivity calculation failed:", e.message);
+    }
+  }
+
+  // Initial Load: Companies & Base Simulation
+  async function loadCompanies() {
+    try {
+      const res = await ApiClient.matchCompany();
+      const list = res.company_matches || [];
+      const grid = document.getElementById('company-grid');
+      if (!list.length) {
+        grid.innerHTML = '<div style="color:var(--text-muted);">No company benchmarks loaded.</div>';
+        return;
+      }
+      grid.innerHTML = list.map(c => `
+        <div class="company-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <div style="font-weight:700;font-size:1.05rem;">${c.company_name}</div>
+            <span class="badge ${c.eligible ? 'badge-success' : 'badge-danger'}">
+              ${c.eligible ? 'ELIGIBLE' : 'CRITERIA NOT MET'}
+            </span>
+          </div>
+          <div style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:12px;">
+            Tier: <strong>${c.tier || 'Enterprise'}</strong> · Min CGPA: ${c.min_cgpa || '7.0'}
+          </div>
+          <div style="font-size:0.85rem;margin-bottom:6px;">
+            Compatibility Score: <strong style="color:var(--color-teal);">${(c.match_score * 100).toFixed(1)}%</strong>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;margin-bottom:12px;">
+            <div style="width:${c.match_score * 100}%;height:100%;background:var(--color-teal);"></div>
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-muted);">
+            Missing Skills: ${c.skill_gaps && c.skill_gaps.length ? c.skill_gaps.slice(0, 3).join(', ') : 'None! Strong alignment.'}
+          </div>
+        </div>
+      `).join('');
+    } catch (e) {
+      console.warn("Company match error:", e.message);
+    }
+  }
+
+  executeSimulation();
+  loadCompanies();
+</script>
+</body>
+</html>

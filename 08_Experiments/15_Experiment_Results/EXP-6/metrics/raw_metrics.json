@@ -1,0 +1,26 @@
+{
+  "kahn_seq": [
+    "arrays",
+    "sorting_algorithms",
+    "sql_ddl_dml",
+    "database_indexing",
+    "linked_lists",
+    "trees_and_traversals",
+    "dynamic_programming_1d",
+    "graphs_basics",
+    "shortest_path_algorithms",
+    "dynamic_programming_2d"
+  ],
+  "random_seq": [
+    "sorting_algorithms",
+    "linked_lists",
+    "shortest_path_algorithms",
+    "arrays",
+    "database_indexing",
+    "dynamic_programming_2d",
+    "sql_ddl_dml",
+    "dynamic_programming_1d",
+    "graphs_basics",
+    "trees_and_traversals"
+  ]
+}

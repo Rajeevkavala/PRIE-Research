@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" width="100%" height="100%" style="background:#ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="gradHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="gradTier1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="gradTier2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0FDF4"/>
+      <stop offset="100%" stop-color="#DCFCE7"/>
+    </linearGradient>
+    <linearGradient id="gradTier3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF5FF"/>
+      <stop offset="100%" stop-color="#F3E8FF"/>
+    </linearGradient>
+    <linearGradient id="gradTier4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#FEF3C7"/>
+    </linearGradient>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="860" height="60" rx="8" fill="url(#gradHeader)" filter="url(#shadow)"/>
+  <text x="450" y="43" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="700">Placement Readiness Intelligence Engine (PRIE) Architecture</text>
+  <text x="450" y="62" text-anchor="middle" fill="#94A3B8" font-size="12">Multi-Tier Continuous Latent State Placement Evaluation &amp; Explainability Framework</text>
+
+  <!-- Tier 1: Ingestion -->
+  <rect x="40" y="95" width="820" height="105" rx="8" fill="url(#gradTier1)" stroke="#BFDBFE" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="60" y="118" fill="#1E3A8A" font-size="13" font-weight="700">TIER 1: MULTI-MODAL DATA ACQUISITION LAYER</text>
+  
+  <rect x="60" y="130" width="175" height="55" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="147" y="152" text-anchor="middle" font-size="11" font-weight="600" fill="#1E293B">Academic Records</text>
+  <text x="147" y="170" text-anchor="middle" font-size="10" fill="#64748B">CGPA, Backlogs, Branch</text>
+
+  <rect x="255" y="130" width="175" height="55" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="342" y="152" text-anchor="middle" font-size="11" font-weight="600" fill="#1E293B">Diagnostic Assessments</text>
+  <text x="342" y="170" text-anchor="middle" font-size="10" fill="#64748B">DSA, DBMS, Networks, Coding</text>
+
+  <rect x="450" y="130" width="175" height="55" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="537" y="152" text-anchor="middle" font-size="11" font-weight="600" fill="#1E293B">Resume Parser (NLP)</text>
+  <text x="537" y="170" text-anchor="middle" font-size="10" fill="#64748B">Sentence-BERT Embeddings</text>
+
+  <rect x="645" y="130" width="195" height="55" rx="6" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="742" y="152" text-anchor="middle" font-size="11" font-weight="600" fill="#1E293B">Behavioral &amp; Voice Telemetry</text>
+  <text x="742" y="170" text-anchor="middle" font-size="10" fill="#64748B">Whisper ASR, Cadence, Consistency</text>
+
+  <!-- Connectors T1 to T2 -->
+  <line x1="450" y1="200" x2="450" y2="230" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Tier 2: Feature Engineering & State Vector -->
+  <rect x="40" y="235" width="820" height="110" rx="8" fill="url(#gradTier2)" stroke="#BBF7D0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="60" y="258" fill="#14532D" font-size="13" font-weight="700">TIER 2: CONTINUOUS LATENT STATE &amp; FEATURE ENGINEERING</text>
+  
+  <rect x="60" y="270" width="360" height="60" rx="6" fill="#FFFFFF" stroke="#86EFAC"/>
+  <text x="240" y="295" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">Student Profiling Engine (SPE)</text>
+  <text x="240" y="315" text-anchor="middle" font-size="10" fill="#475569">Compiles &amp; Normalizes 22-D Student Profile Vector (SPV)</text>
+
+  <rect x="460" y="270" width="380" height="60" rx="6" fill="#FFFFFF" stroke="#86EFAC"/>
+  <text x="650" y="295" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">Skill Gap &amp; Alignment Engine (SGE)</text>
+  <text x="650" y="315" text-anchor="middle" font-size="10" fill="#475569">Computes Distance Metric vs. Enterprise Requirements Taxonomy</text>
+
+  <!-- Connectors T2 to T3 -->
+  <line x1="450" y1="345" x2="450" y2="375" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Tier 3: Analytics & Explainability -->
+  <rect x="40" y="380" width="820" height="115" rx="8" fill="url(#gradTier3)" stroke="#E9D5FF" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="60" y="403" fill="#581C87" font-size="13" font-weight="700">TIER 3: PREDICTIVE ANALYTICS &amp; EXPLAINABLE AI (XAI)</text>
+
+  <rect x="60" y="415" width="235" height="65" rx="6" fill="#FFFFFF" stroke="#D8B4FE"/>
+  <text x="177" y="440" text-anchor="middle" font-size="12" font-weight="700" fill="#1E293B">XGBoost Placement Model</text>
+  <text x="177" y="458" text-anchor="middle" font-size="10" fill="#64748B">Acc: 87.8% | AUC-ROC: 0.941</text>
+  <text x="177" y="472" text-anchor="middle" font-size="9" fill="#16A34A">MCE: 0.025 (Calibrated)</text>
+
+  <rect x="325" y="415" width="250" height="65" rx="6" fill="#FFFFFF" stroke="#D8B4FE"/>
+  <text x="450" y="440" text-anchor="middle" font-size="12" font-weight="700" fill="#1E293B">TreeSHAP Explainability Engine</text>
+  <text x="450" y="458" text-anchor="middle" font-size="10" fill="#64748B">Polynomial-Time Attribution</text>
+  <text x="450" y="472" text-anchor="middle" font-size="9" fill="#9333EA">Global &amp; Local Waterfall Plots</text>
+
+  <rect x="605" y="415" width="235" height="65" rx="6" fill="#FFFFFF" stroke="#D8B4FE"/>
+  <text x="722" y="440" text-anchor="middle" font-size="12" font-weight="700" fill="#1E293B">Composite PRS Module</text>
+  <text x="722" y="458" text-anchor="middle" font-size="10" fill="#64748B">7-Component Weighted Linear Form</text>
+  <text x="722" y="472" text-anchor="middle" font-size="9" fill="#2563EB">Score Range: 0–100</text>
+
+  <!-- Connectors T3 to T4 -->
+  <line x1="450" y1="495" x2="450" y2="525" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Tier 4: Adaptive Remediation -->
+  <rect x="40" y="530" width="820" height="95" rx="8" fill="url(#gradTier4)" stroke="#FDE68A" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="60" y="553" fill="#78350F" font-size="13" font-weight="700">TIER 4: CLOSED-LOOP ADAPTIVE REMEDIATION &amp; PRESENTATION</text>
+
+  <rect x="60" y="563" width="235" height="50" rx="6" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="177" y="585" text-anchor="middle" font-size="11" font-weight="700" fill="#1E293B">Interactive Web Dashboard</text>
+  <text x="177" y="602" text-anchor="middle" font-size="10" fill="#64748B">SHAP Waterfall &amp; Metric Displays</text>
+
+  <rect x="325" y="563" width="250" height="50" rx="6" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="450" y="585" text-anchor="middle" font-size="11" font-weight="700" fill="#1E293B">Adaptive Roadmap Generator</text>
+  <text x="450" y="602" text-anchor="middle" font-size="10" fill="#64748B">Greedy Topological Prerequisite Schedule</text>
+
+  <rect x="605" y="563" width="235" height="50" rx="6" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="722" y="585" text-anchor="middle" font-size="11" font-weight="700" fill="#1E293B">Dynamic Intervention Feedback</text>
+  <text x="722" y="602" text-anchor="middle" font-size="10" fill="#64748B">Updates SPV &amp; Re-calculates PRS</text>
+</svg>

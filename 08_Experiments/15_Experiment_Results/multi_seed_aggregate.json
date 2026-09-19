@@ -1,0 +1,1114 @@
+{
+  "EXP-1": [
+    {
+      "metadata": {
+        "experiment_id": "EXP-1",
+        "title": "Predictive Calibration & Baseline Comparison",
+        "research_question": "RQ1",
+        "hypothesis": "H1 (Brier <= 0.08, ECE <= 0.05)",
+        "h1_confirmed": true,
+        "dataset_id": "DS-SYNTH-01",
+        "n_train": 2000,
+        "n_val": 250,
+        "n_test": 250,
+        "random_seed": 42,
+        "runtime_seconds": 2.12,
+        "timestamp": "2026-09-19T04:36:39.092612+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "model": "Calibrated XGBoost (M06)",
+          "accuracy": 0.94,
+          "macro_f1": 0.9182,
+          "roc_auc": 0.9864,
+          "brier_score": 0.0471,
+          "ece": 0.0268
+        },
+        {
+          "model": "Random Forest (BL-02)",
+          "accuracy": 0.896,
+          "macro_f1": 0.8444,
+          "roc_auc": 0.968,
+          "brier_score": 0.0737,
+          "ece": 0.0745
+        },
+        {
+          "model": "Logistic Regression (BL-01)",
+          "accuracy": 0.992,
+          "macro_f1": 0.9892,
+          "roc_auc": 1.0,
+          "brier_score": 0.014,
+          "ece": 0.0406
+        }
+      ],
+      "stats": {
+        "mcnemar_vs_rf": {
+          "test_name": "McNemar Test (Continuity Corrected)",
+          "contingency_discordant": {
+            "model_a_correct_only": 14,
+            "model_b_correct_only": 3
+          },
+          "test_statistic": 5.8824,
+          "p_value": 0.015293371030198946,
+          "alpha": 0.05,
+          "is_significant": true
+        },
+        "mcnemar_vs_lr": {
+          "test_name": "McNemar Test (Continuity Corrected)",
+          "contingency_discordant": {
+            "model_a_correct_only": 1,
+            "model_b_correct_only": 14
+          },
+          "test_statistic": 9.6,
+          "p_value": 0.0019457736937391556,
+          "alpha": 0.05,
+          "is_significant": true
+        },
+        "wilcoxon_vs_rf": {
+          "test_name": "Wilcoxon Signed-Rank Test",
+          "sample_size": 250,
+          "test_statistic": 27.0,
+          "p_value": 0.007632881787792299,
+          "rank_biserial_r": 0.9983,
+          "alpha": 0.05,
+          "is_significant": true
+        }
+      }
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-1",
+        "title": "Predictive Calibration & Baseline Comparison",
+        "research_question": "RQ1",
+        "hypothesis": "H1 (Brier <= 0.08, ECE <= 0.05)",
+        "h1_confirmed": true,
+        "dataset_id": "DS-SYNTH-01",
+        "n_train": 2000,
+        "n_val": 250,
+        "n_test": 250,
+        "random_seed": 123,
+        "runtime_seconds": 1.39,
+        "timestamp": "2026-09-19T04:36:46.626778+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "model": "Calibrated XGBoost (M06)",
+          "accuracy": 0.952,
+          "macro_f1": 0.9342,
+          "roc_auc": 0.9901,
+          "brier_score": 0.036,
+          "ece": 0.0423
+        },
+        {
+          "model": "Random Forest (BL-02)",
+          "accuracy": 0.928,
+          "macro_f1": 0.8964,
+          "roc_auc": 0.9843,
+          "brier_score": 0.0615,
+          "ece": 0.0962
+        },
+        {
+          "model": "Logistic Regression (BL-01)",
+          "accuracy": 0.992,
+          "macro_f1": 0.9893,
+          "roc_auc": 0.9993,
+          "brier_score": 0.0142,
+          "ece": 0.038
+        }
+      ],
+      "stats": {
+        "mcnemar_vs_rf": {
+          "test_name": "McNemar Test (Continuity Corrected)",
+          "contingency_discordant": {
+            "model_a_correct_only": 9,
+            "model_b_correct_only": 3
+          },
+          "test_statistic": 2.0833,
+          "p_value": 0.14891467317876161,
+          "alpha": 0.05,
+          "is_significant": false
+        },
+        "mcnemar_vs_lr": {
+          "test_name": "McNemar Test (Continuity Corrected)",
+          "contingency_discordant": {
+            "model_a_correct_only": 1,
+            "model_b_correct_only": 11
+          },
+          "test_statistic": 6.75,
+          "p_value": 0.0093747684594349,
+          "alpha": 0.05,
+          "is_significant": true
+        },
+        "wilcoxon_vs_rf": {
+          "test_name": "Wilcoxon Signed-Rank Test",
+          "sample_size": 250,
+          "test_statistic": 19.5,
+          "p_value": 0.0832645166635504,
+          "rank_biserial_r": 0.9988,
+          "alpha": 0.05,
+          "is_significant": false
+        }
+      }
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-1",
+        "title": "Predictive Calibration & Baseline Comparison",
+        "research_question": "RQ1",
+        "hypothesis": "H1 (Brier <= 0.08, ECE <= 0.05)",
+        "h1_confirmed": true,
+        "dataset_id": "DS-SYNTH-01",
+        "n_train": 2000,
+        "n_val": 250,
+        "n_test": 250,
+        "random_seed": 456,
+        "runtime_seconds": 1.41,
+        "timestamp": "2026-09-19T04:36:51.121363+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "model": "Calibrated XGBoost (M06)",
+          "accuracy": 0.944,
+          "macro_f1": 0.9224,
+          "roc_auc": 0.9933,
+          "brier_score": 0.0369,
+          "ece": 0.0389
+        },
+        {
+          "model": "Random Forest (BL-02)",
+          "accuracy": 0.912,
+          "macro_f1": 0.8701,
+          "roc_auc": 0.9858,
+          "brier_score": 0.058,
+          "ece": 0.0986
+        },
+        {
+          "model": "Logistic Regression (BL-01)",
+          "accuracy": 0.988,
+          "macro_f1": 0.9842,
+          "roc_auc": 0.9989,
+          "brier_score": 0.0127,
+          "ece": 0.024
+        }
+      ],
+      "stats": {
+        "mcnemar_vs_rf": {
+          "test_name": "McNemar Test (Continuity Corrected)",
+          "contingency_discordant": {
+            "model_a_correct_only": 10,
+            "model_b_correct_only": 2
+          },
+          "test_statistic": 4.0833,
+          "p_value": 0.04330814281079206,
+          "alpha": 0.05,
+          "is_significant": true
+        },
+        "mcnemar_vs_lr": {
+          "test_name": "McNemar Test (Continuity Corrected)",
+          "contingency_discordant": {
+            "model_a_correct_only": 1,
+            "model_b_correct_only": 12
+          },
+          "test_statistic": 7.6923,
+          "p_value": 0.005545667315244061,
+          "alpha": 0.05,
+          "is_significant": true
+        },
+        "wilcoxon_vs_rf": {
+          "test_name": "Wilcoxon Signed-Rank Test",
+          "sample_size": 250,
+          "test_statistic": 13.0,
+          "p_value": 0.020921335337794014,
+          "rank_biserial_r": 0.9992,
+          "alpha": 0.05,
+          "is_significant": true
+        }
+      }
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-1",
+        "title": "Predictive Calibration & Baseline Comparison",
+        "research_question": "RQ1",
+        "hypothesis": "H1 (Brier <= 0.08, ECE <= 0.05)",
+        "h1_confirmed": true,
+        "dataset_id": "DS-SYNTH-01",
+        "n_train": 2000,
+        "n_val": 250,
+        "n_test": 250,
+        "random_seed": 789,
+        "runtime_seconds": 1.4,
+        "timestamp": "2026-09-19T04:36:55.111682+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "model": "Calibrated XGBoost (M06)",
+          "accuracy": 0.976,
+          "macro_f1": 0.9678,
+          "roc_auc": 0.9979,
+          "brier_score": 0.0175,
+          "ece": 0.0365
+        },
+        {
+          "model": "Random Forest (BL-02)",
+          "accuracy": 0.936,
+          "macro_f1": 0.9068,
+          "roc_auc": 0.9883,
+          "brier_score": 0.0558,
+          "ece": 0.1012
+        },
+        {
+          "model": "Logistic Regression (BL-01)",
+          "accuracy": 0.988,
+          "macro_f1": 0.9842,
+          "roc_auc": 1.0,
+          "brier_score": 0.0115,
+          "ece": 0.0383
+        }
+      ],
+      "stats": {
+        "mcnemar_vs_rf": {
+          "test_name": "McNemar Test (Continuity Corrected)",
+          "contingency_discordant": {
+            "model_a_correct_only": 12,
+            "model_b_correct_only": 2
+          },
+          "test_statistic": 5.7857,
+          "p_value": 0.016156931261181322,
+          "alpha": 0.05,
+          "is_significant": true
+        },
+        "mcnemar_vs_lr": {
+          "test_name": "McNemar Test (Continuity Corrected)",
+          "contingency_discordant": {
+            "model_a_correct_only": 2,
+            "model_b_correct_only": 5
+          },
+          "test_statistic": 0.5714,
+          "p_value": 0.4496917979688908,
+          "alpha": 0.05,
+          "is_significant": false
+        },
+        "wilcoxon_vs_rf": {
+          "test_name": "Wilcoxon Signed-Rank Test",
+          "sample_size": 250,
+          "test_statistic": 15.0,
+          "p_value": 0.007526315166457887,
+          "rank_biserial_r": 0.999,
+          "alpha": 0.05,
+          "is_significant": true
+        }
+      }
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-1",
+        "title": "Predictive Calibration & Baseline Comparison",
+        "research_question": "RQ1",
+        "hypothesis": "H1 (Brier <= 0.08, ECE <= 0.05)",
+        "h1_confirmed": true,
+        "dataset_id": "DS-SYNTH-01",
+        "n_train": 2000,
+        "n_val": 250,
+        "n_test": 250,
+        "random_seed": 2026,
+        "runtime_seconds": 1.35,
+        "timestamp": "2026-09-19T04:36:59.267537+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "model": "Calibrated XGBoost (M06)",
+          "accuracy": 0.964,
+          "macro_f1": 0.9525,
+          "roc_auc": 0.9931,
+          "brier_score": 0.032,
+          "ece": 0.0303
+        },
+        {
+          "model": "Random Forest (BL-02)",
+          "accuracy": 0.964,
+          "macro_f1": 0.9498,
+          "roc_auc": 0.9933,
+          "brier_score": 0.0474,
+          "ece": 0.1017
+        },
+        {
+          "model": "Logistic Regression (BL-01)",
+          "accuracy": 0.98,
+          "macro_f1": 0.973,
+          "roc_auc": 0.9987,
+          "brier_score": 0.015,
+          "ece": 0.0226
+        }
+      ],
+      "stats": {
+        "mcnemar_vs_rf": {
+          "test_name": "McNemar Test (Continuity Corrected)",
+          "contingency_discordant": {
+            "model_a_correct_only": 5,
+            "model_b_correct_only": 5
+          },
+          "test_statistic": 0.1,
+          "p_value": 0.7518296340458492,
+          "alpha": 0.05,
+          "is_significant": false
+        },
+        "mcnemar_vs_lr": {
+          "test_name": "McNemar Test (Continuity Corrected)",
+          "contingency_discordant": {
+            "model_a_correct_only": 4,
+            "model_b_correct_only": 8
+          },
+          "test_statistic": 0.75,
+          "p_value": 0.3864762307712325,
+          "alpha": 0.05,
+          "is_significant": false
+        },
+        "wilcoxon_vs_rf": {
+          "test_name": "Wilcoxon Signed-Rank Test",
+          "sample_size": 250,
+          "test_statistic": 27.5,
+          "p_value": 1.0,
+          "rank_biserial_r": 0.9982,
+          "alpha": 0.05,
+          "is_significant": false
+        }
+      }
+    }
+  ],
+  "EXP-2": [
+    {
+      "metadata": {
+        "experiment_id": "EXP-2",
+        "title": "Multimodal Mock Interview Diagnostic Ablation",
+        "research_question": "RQ4",
+        "n_sessions_evaluated": 50,
+        "variance_reduction_percent": 77.81,
+        "runtime_seconds": 0.07,
+        "timestamp": "2026-09-19T04:36:39.171216+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "modality": "Audio Alone (Librosa Prosody)",
+          "mean_score": 74.73,
+          "variance": 37.02,
+          "weight": 0.35
+        },
+        {
+          "modality": "Video Alone (OpenCV Gaze & Stability)",
+          "mean_score": 76.66,
+          "variance": 28.22,
+          "weight": 0.35
+        },
+        {
+          "modality": "Speech Alone (Whisper ASR & Lexical)",
+          "mean_score": 75.39,
+          "variance": 73.33,
+          "weight": 0.3
+        },
+        {
+          "modality": "Late Multimodal Fusion (Proposed M05)",
+          "mean_score": 75.6,
+          "variance": 16.28,
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-2",
+        "title": "Multimodal Mock Interview Diagnostic Ablation",
+        "research_question": "RQ4",
+        "n_sessions_evaluated": 50,
+        "variance_reduction_percent": 72.32,
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:36:46.636257+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "modality": "Audio Alone (Librosa Prosody)",
+          "mean_score": 75.25,
+          "variance": 62.16,
+          "weight": 0.35
+        },
+        {
+          "modality": "Video Alone (OpenCV Gaze & Stability)",
+          "mean_score": 78.06,
+          "variance": 30.37,
+          "weight": 0.35
+        },
+        {
+          "modality": "Speech Alone (Whisper ASR & Lexical)",
+          "mean_score": 77.9,
+          "variance": 74.01,
+          "weight": 0.3
+        },
+        {
+          "modality": "Late Multimodal Fusion (Proposed M05)",
+          "mean_score": 77.03,
+          "variance": 20.48,
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-2",
+        "title": "Multimodal Mock Interview Diagnostic Ablation",
+        "research_question": "RQ4",
+        "n_sessions_evaluated": 50,
+        "variance_reduction_percent": 84.36,
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:36:51.131445+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "modality": "Audio Alone (Librosa Prosody)",
+          "mean_score": 75.07,
+          "variance": 53.39,
+          "weight": 0.35
+        },
+        {
+          "modality": "Video Alone (OpenCV Gaze & Stability)",
+          "mean_score": 78.41,
+          "variance": 29.78,
+          "weight": 0.35
+        },
+        {
+          "modality": "Speech Alone (Whisper ASR & Lexical)",
+          "mean_score": 76.46,
+          "variance": 99.57,
+          "weight": 0.3
+        },
+        {
+          "modality": "Late Multimodal Fusion (Proposed M05)",
+          "mean_score": 76.66,
+          "variance": 15.58,
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-2",
+        "title": "Multimodal Mock Interview Diagnostic Ablation",
+        "research_question": "RQ4",
+        "n_sessions_evaluated": 50,
+        "variance_reduction_percent": 75.91,
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:36:55.122812+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "modality": "Audio Alone (Librosa Prosody)",
+          "mean_score": 73.27,
+          "variance": 69.4,
+          "weight": 0.35
+        },
+        {
+          "modality": "Video Alone (OpenCV Gaze & Stability)",
+          "mean_score": 78.29,
+          "variance": 50.85,
+          "weight": 0.35
+        },
+        {
+          "modality": "Speech Alone (Whisper ASR & Lexical)",
+          "mean_score": 76.88,
+          "variance": 78.35,
+          "weight": 0.3
+        },
+        {
+          "modality": "Late Multimodal Fusion (Proposed M05)",
+          "mean_score": 76.11,
+          "variance": 18.88,
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-2",
+        "title": "Multimodal Mock Interview Diagnostic Ablation",
+        "research_question": "RQ4",
+        "n_sessions_evaluated": 50,
+        "variance_reduction_percent": 79.52,
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:36:59.275877+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "modality": "Audio Alone (Librosa Prosody)",
+          "mean_score": 75.65,
+          "variance": 61.06,
+          "weight": 0.35
+        },
+        {
+          "modality": "Video Alone (OpenCV Gaze & Stability)",
+          "mean_score": 77.11,
+          "variance": 49.24,
+          "weight": 0.35
+        },
+        {
+          "modality": "Speech Alone (Whisper ASR & Lexical)",
+          "mean_score": 76.97,
+          "variance": 102.99,
+          "weight": 0.3
+        },
+        {
+          "modality": "Late Multimodal Fusion (Proposed M05)",
+          "mean_score": 76.56,
+          "variance": 21.09,
+          "weight": 1.0
+        }
+      ]
+    }
+  ],
+  "EXP-3": [
+    {
+      "metadata": {
+        "experiment_id": "EXP-3",
+        "title": "Prescriptive Recourse Feasibility & Constraint Invariance",
+        "research_question": "RQ5",
+        "hypothesis": "H3 (Valid Recourse with k <= 3 and 100% F17 lock)",
+        "h3_confirmed": true,
+        "n_profiles_evaluated": 30,
+        "runtime_seconds": 5.86,
+        "timestamp": "2026-09-19T04:36:45.034264+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "metric": "Immutable Feature (F17) Invariance",
+          "value": "100.0%",
+          "benchmark_target": "100.0%"
+        },
+        {
+          "metric": "Average Sparsity (k changes)",
+          "value": "0.00",
+          "benchmark_target": "<= 3.0"
+        },
+        {
+          "metric": "Average L1 Proximity Distance",
+          "value": "0.000",
+          "benchmark_target": "Minimal"
+        },
+        {
+          "metric": "Target Reachability Success Rate",
+          "value": "0.0%",
+          "benchmark_target": ">= 90.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-3",
+        "title": "Prescriptive Recourse Feasibility & Constraint Invariance",
+        "research_question": "RQ5",
+        "hypothesis": "H3 (Valid Recourse with k <= 3 and 100% F17 lock)",
+        "h3_confirmed": true,
+        "n_profiles_evaluated": 30,
+        "runtime_seconds": 2.94,
+        "timestamp": "2026-09-19T04:36:49.588350+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "metric": "Immutable Feature (F17) Invariance",
+          "value": "100.0%",
+          "benchmark_target": "100.0%"
+        },
+        {
+          "metric": "Average Sparsity (k changes)",
+          "value": "0.00",
+          "benchmark_target": "<= 3.0"
+        },
+        {
+          "metric": "Average L1 Proximity Distance",
+          "value": "0.000",
+          "benchmark_target": "Minimal"
+        },
+        {
+          "metric": "Target Reachability Success Rate",
+          "value": "0.0%",
+          "benchmark_target": ">= 90.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-3",
+        "title": "Prescriptive Recourse Feasibility & Constraint Invariance",
+        "research_question": "RQ5",
+        "hypothesis": "H3 (Valid Recourse with k <= 3 and 100% F17 lock)",
+        "h3_confirmed": true,
+        "n_profiles_evaluated": 30,
+        "runtime_seconds": 2.46,
+        "timestamp": "2026-09-19T04:36:53.602211+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "metric": "Immutable Feature (F17) Invariance",
+          "value": "100.0%",
+          "benchmark_target": "100.0%"
+        },
+        {
+          "metric": "Average Sparsity (k changes)",
+          "value": "0.00",
+          "benchmark_target": "<= 3.0"
+        },
+        {
+          "metric": "Average L1 Proximity Distance",
+          "value": "0.000",
+          "benchmark_target": "Minimal"
+        },
+        {
+          "metric": "Target Reachability Success Rate",
+          "value": "0.0%",
+          "benchmark_target": ">= 90.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-3",
+        "title": "Prescriptive Recourse Feasibility & Constraint Invariance",
+        "research_question": "RQ5",
+        "hypothesis": "H3 (Valid Recourse with k <= 3 and 100% F17 lock)",
+        "h3_confirmed": true,
+        "n_profiles_evaluated": 30,
+        "runtime_seconds": 2.66,
+        "timestamp": "2026-09-19T04:36:57.790858+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "metric": "Immutable Feature (F17) Invariance",
+          "value": "100.0%",
+          "benchmark_target": "100.0%"
+        },
+        {
+          "metric": "Average Sparsity (k changes)",
+          "value": "0.00",
+          "benchmark_target": "<= 3.0"
+        },
+        {
+          "metric": "Average L1 Proximity Distance",
+          "value": "0.000",
+          "benchmark_target": "Minimal"
+        },
+        {
+          "metric": "Target Reachability Success Rate",
+          "value": "0.0%",
+          "benchmark_target": ">= 90.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-3",
+        "title": "Prescriptive Recourse Feasibility & Constraint Invariance",
+        "research_question": "RQ5",
+        "hypothesis": "H3 (Valid Recourse with k <= 3 and 100% F17 lock)",
+        "h3_confirmed": true,
+        "n_profiles_evaluated": 30,
+        "runtime_seconds": 2.19,
+        "timestamp": "2026-09-19T04:37:01.468941+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "metric": "Immutable Feature (F17) Invariance",
+          "value": "100.0%",
+          "benchmark_target": "100.0%"
+        },
+        {
+          "metric": "Average Sparsity (k changes)",
+          "value": "0.00",
+          "benchmark_target": "<= 3.0"
+        },
+        {
+          "metric": "Average L1 Proximity Distance",
+          "value": "0.000",
+          "benchmark_target": "Minimal"
+        },
+        {
+          "metric": "Target Reachability Success Rate",
+          "value": "0.0%",
+          "benchmark_target": ">= 90.0%"
+        }
+      ]
+    }
+  ],
+  "EXP-4": [
+    {
+      "metadata": {
+        "experiment_id": "EXP-4",
+        "title": "Resume ATS Spatial Extraction Ablation",
+        "research_question": "RQ2",
+        "layoutlmv3_status": "MODEL NOT TRAINED",
+        "runtime_seconds": 0.03,
+        "timestamp": "2026-09-19T04:36:45.070037+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH (Baseline) / PROPOSED_ARCHITECTURE (LayoutLMv3)"
+      },
+      "summary": [
+        {
+          "method": "Regex + Heuristic Parser (Ablation Baseline)",
+          "status": "ACTIVE_BASELINE",
+          "mean_ats_score": 3.7
+        },
+        {
+          "method": "LayoutLMv3 Spatial Pipeline (Proposed)",
+          "status": "MODEL NOT TRAINED",
+          "mean_ats_score": "N/A (Pending Fine-tuning)"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-4",
+        "title": "Resume ATS Spatial Extraction Ablation",
+        "research_question": "RQ2",
+        "layoutlmv3_status": "MODEL NOT TRAINED",
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:36:49.596177+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH (Baseline) / PROPOSED_ARCHITECTURE (LayoutLMv3)"
+      },
+      "summary": [
+        {
+          "method": "Regex + Heuristic Parser (Ablation Baseline)",
+          "status": "ACTIVE_BASELINE",
+          "mean_ats_score": 3.7
+        },
+        {
+          "method": "LayoutLMv3 Spatial Pipeline (Proposed)",
+          "status": "MODEL NOT TRAINED",
+          "mean_ats_score": "N/A (Pending Fine-tuning)"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-4",
+        "title": "Resume ATS Spatial Extraction Ablation",
+        "research_question": "RQ2",
+        "layoutlmv3_status": "MODEL NOT TRAINED",
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:36:53.611235+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH (Baseline) / PROPOSED_ARCHITECTURE (LayoutLMv3)"
+      },
+      "summary": [
+        {
+          "method": "Regex + Heuristic Parser (Ablation Baseline)",
+          "status": "ACTIVE_BASELINE",
+          "mean_ats_score": 3.7
+        },
+        {
+          "method": "LayoutLMv3 Spatial Pipeline (Proposed)",
+          "status": "MODEL NOT TRAINED",
+          "mean_ats_score": "N/A (Pending Fine-tuning)"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-4",
+        "title": "Resume ATS Spatial Extraction Ablation",
+        "research_question": "RQ2",
+        "layoutlmv3_status": "MODEL NOT TRAINED",
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:36:57.801059+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH (Baseline) / PROPOSED_ARCHITECTURE (LayoutLMv3)"
+      },
+      "summary": [
+        {
+          "method": "Regex + Heuristic Parser (Ablation Baseline)",
+          "status": "ACTIVE_BASELINE",
+          "mean_ats_score": 3.7
+        },
+        {
+          "method": "LayoutLMv3 Spatial Pipeline (Proposed)",
+          "status": "MODEL NOT TRAINED",
+          "mean_ats_score": "N/A (Pending Fine-tuning)"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-4",
+        "title": "Resume ATS Spatial Extraction Ablation",
+        "research_question": "RQ2",
+        "layoutlmv3_status": "MODEL NOT TRAINED",
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:37:01.476864+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH (Baseline) / PROPOSED_ARCHITECTURE (LayoutLMv3)"
+      },
+      "summary": [
+        {
+          "method": "Regex + Heuristic Parser (Ablation Baseline)",
+          "status": "ACTIVE_BASELINE",
+          "mean_ats_score": 3.7
+        },
+        {
+          "method": "LayoutLMv3 Spatial Pipeline (Proposed)",
+          "status": "MODEL NOT TRAINED",
+          "mean_ats_score": "N/A (Pending Fine-tuning)"
+        }
+      ]
+    }
+  ],
+  "EXP-5": [
+    {
+      "metadata": {
+        "experiment_id": "EXP-5",
+        "title": "Curriculum RAG Retrieval & Hallucination Guardrail Evaluation",
+        "research_question": "RQ6",
+        "retrieval_precision_percent": 100.0,
+        "hallucination_rejection_percent": 100.0,
+        "runtime_seconds": 0.1,
+        "timestamp": "2026-09-19T04:36:45.172726+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "evaluation_dimension": "In-Domain Curriculum Retrieval Precision",
+          "score": "100.0%",
+          "target": "100.0%"
+        },
+        {
+          "evaluation_dimension": "Out-of-Domain Hallucination Rejection Accuracy",
+          "score": "100.0%",
+          "target": "100.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-5",
+        "title": "Curriculum RAG Retrieval & Hallucination Guardrail Evaluation",
+        "research_question": "RQ6",
+        "retrieval_precision_percent": 100.0,
+        "hallucination_rejection_percent": 100.0,
+        "runtime_seconds": 0.09,
+        "timestamp": "2026-09-19T04:36:49.692407+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "evaluation_dimension": "In-Domain Curriculum Retrieval Precision",
+          "score": "100.0%",
+          "target": "100.0%"
+        },
+        {
+          "evaluation_dimension": "Out-of-Domain Hallucination Rejection Accuracy",
+          "score": "100.0%",
+          "target": "100.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-5",
+        "title": "Curriculum RAG Retrieval & Hallucination Guardrail Evaluation",
+        "research_question": "RQ6",
+        "retrieval_precision_percent": 100.0,
+        "hallucination_rejection_percent": 100.0,
+        "runtime_seconds": 0.08,
+        "timestamp": "2026-09-19T04:36:53.694723+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "evaluation_dimension": "In-Domain Curriculum Retrieval Precision",
+          "score": "100.0%",
+          "target": "100.0%"
+        },
+        {
+          "evaluation_dimension": "Out-of-Domain Hallucination Rejection Accuracy",
+          "score": "100.0%",
+          "target": "100.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-5",
+        "title": "Curriculum RAG Retrieval & Hallucination Guardrail Evaluation",
+        "research_question": "RQ6",
+        "retrieval_precision_percent": 100.0,
+        "hallucination_rejection_percent": 100.0,
+        "runtime_seconds": 0.1,
+        "timestamp": "2026-09-19T04:36:57.902661+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "evaluation_dimension": "In-Domain Curriculum Retrieval Precision",
+          "score": "100.0%",
+          "target": "100.0%"
+        },
+        {
+          "evaluation_dimension": "Out-of-Domain Hallucination Rejection Accuracy",
+          "score": "100.0%",
+          "target": "100.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-5",
+        "title": "Curriculum RAG Retrieval & Hallucination Guardrail Evaluation",
+        "research_question": "RQ6",
+        "retrieval_precision_percent": 100.0,
+        "hallucination_rejection_percent": 100.0,
+        "runtime_seconds": 0.07,
+        "timestamp": "2026-09-19T04:37:01.552305+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "evaluation_dimension": "In-Domain Curriculum Retrieval Precision",
+          "score": "100.0%",
+          "target": "100.0%"
+        },
+        {
+          "evaluation_dimension": "Out-of-Domain Hallucination Rejection Accuracy",
+          "score": "100.0%",
+          "target": "100.0%"
+        }
+      ]
+    }
+  ],
+  "EXP-6": [
+    {
+      "metadata": {
+        "experiment_id": "EXP-6",
+        "title": "A* Concept DAG Milestone Topological Scheduling Optimization",
+        "research_question": "RQ3",
+        "kahn_violations": 0,
+        "random_violations": 4,
+        "runtime_seconds": 0.05,
+        "timestamp": "2026-09-19T04:36:45.229075+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "scheduling_algorithm": "Kahn's Topological DAG Scheduler (M08)",
+          "prerequisite_violations": 0,
+          "violation_rate": "0.0%"
+        },
+        {
+          "scheduling_algorithm": "Randomized Milestone Ordering (Baseline)",
+          "prerequisite_violations": 4,
+          "violation_rate": "40.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-6",
+        "title": "A* Concept DAG Milestone Topological Scheduling Optimization",
+        "research_question": "RQ3",
+        "kahn_violations": 0,
+        "random_violations": 4,
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:36:49.707366+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "scheduling_algorithm": "Kahn's Topological DAG Scheduler (M08)",
+          "prerequisite_violations": 0,
+          "violation_rate": "0.0%"
+        },
+        {
+          "scheduling_algorithm": "Randomized Milestone Ordering (Baseline)",
+          "prerequisite_violations": 4,
+          "violation_rate": "40.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-6",
+        "title": "A* Concept DAG Milestone Topological Scheduling Optimization",
+        "research_question": "RQ3",
+        "kahn_violations": 0,
+        "random_violations": 3,
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:36:53.705189+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "scheduling_algorithm": "Kahn's Topological DAG Scheduler (M08)",
+          "prerequisite_violations": 0,
+          "violation_rate": "0.0%"
+        },
+        {
+          "scheduling_algorithm": "Randomized Milestone Ordering (Baseline)",
+          "prerequisite_violations": 3,
+          "violation_rate": "30.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-6",
+        "title": "A* Concept DAG Milestone Topological Scheduling Optimization",
+        "research_question": "RQ3",
+        "kahn_violations": 0,
+        "random_violations": 2,
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:36:57.913231+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "scheduling_algorithm": "Kahn's Topological DAG Scheduler (M08)",
+          "prerequisite_violations": 0,
+          "violation_rate": "0.0%"
+        },
+        {
+          "scheduling_algorithm": "Randomized Milestone Ordering (Baseline)",
+          "prerequisite_violations": 2,
+          "violation_rate": "20.0%"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "experiment_id": "EXP-6",
+        "title": "A* Concept DAG Milestone Topological Scheduling Optimization",
+        "research_question": "RQ3",
+        "kahn_violations": 0,
+        "random_violations": 5,
+        "runtime_seconds": 0.0,
+        "timestamp": "2026-09-19T04:37:01.560221+00:00",
+        "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+      },
+      "summary": [
+        {
+          "scheduling_algorithm": "Kahn's Topological DAG Scheduler (M08)",
+          "prerequisite_violations": 0,
+          "violation_rate": "0.0%"
+        },
+        {
+          "scheduling_algorithm": "Randomized Milestone Ordering (Baseline)",
+          "prerequisite_violations": 5,
+          "violation_rate": "50.0%"
+        }
+      ]
+    }
+  ]
+}

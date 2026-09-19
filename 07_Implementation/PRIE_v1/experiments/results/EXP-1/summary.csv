@@ -1,0 +1,4 @@
+model,accuracy,macro_f1,roc_auc,brier_score,ece
+Calibrated XGBoost (M06),0.964,0.9525,0.9931,0.032,0.0303
+Random Forest (BL-02),0.964,0.9498,0.9933,0.0474,0.1017
+Logistic Regression (BL-01),0.98,0.973,0.9987,0.015,0.0226

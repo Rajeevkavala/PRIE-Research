@@ -1,0 +1,95 @@
+# PRIE Architecture: Prediction Pipeline
+
+## 1. Overview and Purpose
+This document presents the detailed architectural diagram for the **PRIE Placement Prediction Pipeline (M03)**. 
+
+The prediction engine implements a **dual-track model architecture** specified in [`Prediction_Engine_Architecture.md`](file:///d:/4-1%20AD/All%20College%20Docs%20and%20ppts/Documentations/PDR/PRIE-Research/05_PRIE_Architecture/Prediction_Engine_Architecture.md):
+1. **Track 1 (Static Snapshot Classifier)**: An optimized **XGBoost** model executed via ONNX Runtime CPU engine for sub-50ms inference, providing calibrated point-in-time placement probabilities and tier classifications.
+2. **Track 2 (Longitudinal Trajectory Forecaster)**: A **Temporal Fusion Transformer (TFT)** processing rolling sequences of historical profile vectors to generate multi-horizon quantile trajectory projections ($q_{0.1}, q_{0.5}, q_{0.9}$) and early-warning drop-off risk scores.
+
+---
+
+## 2. Mermaid Prediction Pipeline Diagram
+
+```mermaid
+flowchart TD
+    %% Styling
+    classDef inputVector fill:#ede7f6,stroke:#7b1fa2,stroke-width:2px,color:#4a148c;
+    classDef staticPath fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20;
+    classDef timePath fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b;
+    classDef calibStage fill:#fff8e1,stroke:#fbc02d,stroke-width:2px,color:#f57f17;
+    classDef outputClass fill:#fce4ec,stroke:#c2185b,stroke-width:3px,color:#880e4f;
+    classDef downstream fill:#eceff1,stroke:#455a64,stroke-width:2px,color:#263238;
+
+    %% Ingress: Profile Vector Sources
+    subgraph INGRESS_DATA ["SPV Data Sources"]
+        SPV_STATIC["Current Snapshot SPV Tensor<br/>$$\mathbf{v}_{s} \in \mathbb{R}^{22}$$ (M01 Ingestion)"]:::inputVector
+        SPV_SERIES["Longitudinal SPV Historical Series<br/>$$\{\mathbf{v}_{s}^{(t-W)}, \dots, \mathbf{v}_{s}^{(t)}\}$$ (TimescaleDB)"]:::inputVector
+    end
+
+    %% Track 1: Static Classifier (XGBoost via ONNX)
+    subgraph TRACK_STATIC ["Track 1: Static Snapshot Classification (ONNX Runtime CPU)"]
+        ENG_ONNX["ONNX Runtime Engine<br/>(Optimized Multi-thread CPU C++ Kernel)"]:::staticPath
+        MODEL_XGB["Exported XGBoost Model (`prie_xgboost_v1.onnx`)<br/>- 300 Gradient Boosted Decision Trees<br/>- Max Depth = 6, Subsample = 0.8"]:::staticPath
+        RAW_LOGITS["Raw Class Margin Logits<br/>$$z_0, z_1, z_2, z_3$$"]:::staticPath
+    end
+
+    %% Track 2: Longitudinal Forecaster (TFT via PyTorch C++ / LibTorch)
+    subgraph TRACK_TEMPORAL ["Track 2: Longitudinal Trajectory Forecasting (PyTorch / LibTorch)"]
+        ENG_TFT["Temporal Fusion Transformer (TFT) Engine<br/>- Variable Selection Networks (VSN)<br/>- Static Covariate Encoders (Dept, Institution)<br/>- Interpretable Multi-Head Self-Attention"]:::timePath
+        QUANTILE_HEAD["Multi-Horizon Quantile Output Head<br/>$$\hat{y}_{t+\tau}^{(0.1)}, \hat{y}_{t+\tau}^{(0.5)}, \hat{y}_{t+\tau}^{(0.9)}$$"]:::timePath
+    end
+
+    %% Probability Calibration & Post-Processing
+    subgraph POST_PROCESS ["Calibration & Risk Stratification Tier"]
+        ISO_CALIB["Isotonic Regression Calibrator<br/>(Calibrated Empirical Probability $$P_{\text{cal}} \in [0, 1]$$)"]:::calibStage
+        TIER_DECIDER["Placement Tier Stratification Engine<br/>- Tier 1: Product / High-Package (P > 0.85)<br/>- Tier 2: Core Engineering / FinTech (0.65 < P <= 0.85)<br/>- Tier 3: IT Services / Systems (0.40 < P <= 0.65)<br/>- At-Risk: Critical Remediation (P <= 0.40)"]:::calibStage
+        DRIFT_CHECK["Early Trajectory Warning Engine<br/>(Slope Detection: Negative Velocity $$\Delta P / \Delta t$$)"]:::calibStage
+    end
+
+    %% Final Model Outputs
+    subgraph OUTPUT_PAYLOAD ["Inference Response Payload (SLA < 50ms)"]
+        OUT_RESULT["<b>Structured Placement Readiness Verdict</b><br/>- Calibrated Placement Probability: 0.78<br/>- Assigned Tier: Tier 2 (Core Engineering)<br/>- Projected 90-Day Trajectory: [0.78, 0.82, 0.86]<br/>- Risk Level: Normal (Positive Trajectory)"]:::outputClass
+    end
+
+    %% Downstream Analytics Hand-off
+    subgraph DOWNSTREAM ["Downstream Consumers"]
+        XAI_DISPATCH["M04: XAI Service Dispatcher<br/>(Invokes TreeSHAP on XGB Trees & DiCE Optimization)"]:::downstream
+        GAP_DISPATCH["M02: Skill Gap Quantification<br/>(Compares Feature Subspaces to Tier Requirements)"]:::downstream
+        TWIN_DISPATCH["M11: Digital Twin State Sync<br/>(Updates Longitudinal Belief & Projected Outcomes)"]:::downstream
+    end
+
+    %% Connections: Track 1
+    SPV_STATIC --> ENG_ONNX
+    ENG_ONNX --> MODEL_XGB
+    MODEL_XGB --> RAW_LOGITS
+    RAW_LOGITS --> ISO_CALIB
+    ISO_CALIB --> TIER_DECIDER
+
+    %% Connections: Track 2
+    SPV_SERIES --> ENG_TFT
+    ENG_TFT --> QUANTILE_HEAD
+    QUANTILE_HEAD --> DRIFT_CHECK
+
+    %% Post-Process to Output
+    TIER_DECIDER --> OUT_RESULT
+    DRIFT_CHECK --> OUT_RESULT
+
+    %% Output to Downstream Hand-off
+    OUT_RESULT --> XAI_DISPATCH
+    OUT_RESULT --> GAP_DISPATCH
+    OUT_RESULT --> TWIN_DISPATCH
+```
+
+---
+
+## 3. Operational Performance and Validation Criteria
+
+| Parameter | Track 1: Static (XGBoost) | Track 2: Longitudinal (TFT) | Enforcement Mechanism |
+| :--- | :--- | :--- | :--- |
+| **Model Runtime** | ONNX Runtime 1.17 (CPU) | LibTorch 2.2 / ONNX TensorRT | Hardware Cgroups (2 Cores, 4GB RAM) |
+| **Inference Latency** | $\le 45\text{ ms}$ (p99) | $\le 250\text{ ms}$ (p99) | Timeout circuit breaker at $100\text{ ms}$ |
+| **Input Format** | Scaled Tensor $\mathbb{R}^{22}$ | Rolling Sequence Tensor $\mathbb{R}^{W \times 22}$ ($W=12$ weeks) | Strict Schema Validator trap |
+| **Calibration Method**| Isotonic Regression | Spline-quantile fitting | Brier score monitoring $< 0.12$ |
+| **Drift Monitoring** | Kolmogorov-Smirnov test on $F01-F22$ | Population Stability Index (PSI) | Daily batch drift evaluator worker |
+| **Research Baseline**| Random Forest / Logistic Reg | LSTM / BiLSTM seq-to-seq | Formally evaluated in `EXP-1` |

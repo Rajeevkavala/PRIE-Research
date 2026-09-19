@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — PRIE v1 | ScholarCamp</title>
+  <meta name="description" content="Create your PRIE account to begin building your 22-dimensional placement readiness profile." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-card animate-fade-in-up" style="max-width:520px;">
+      <div class="auth-logo">
+        <div class="auth-logo-text">PRIE</div>
+        <div class="auth-logo-sub">Create Your Placement Profile</div>
+      </div>
+
+      <div id="error-alert" class="alert alert-danger" style="display:none;"></div>
+
+      <form id="reg-form">
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="name">Full Name</label>
+            <input id="name" type="text" class="form-input" placeholder="Rajesh Kumar" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input id="email" type="email" class="form-input" placeholder="raj@college.edu" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input id="password" type="password" class="form-input" placeholder="Min. 8 characters" required minlength="8" />
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="branch">Academic Branch</label>
+            <select id="branch" class="form-select">
+              <option value="Computer Science">Computer Science & Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Artificial Intelligence">AI & Data Science</option>
+              <option value="Electronics & Communication">Electronics & Communication</option>
+              <option value="Electrical & Electronics">Electrical & Electronics</option>
+              <option value="Mechanical">Mechanical Engineering</option>
+              <option value="Civil">Civil Engineering</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cgpa">CGPA (10-pt scale)</label>
+            <input id="cgpa" type="number" class="form-input" placeholder="7.5" min="0" max="10" step="0.01" />
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="target-role">Target Role</label>
+            <select id="target-role" class="form-select">
+              <option value="Software Development Engineer">Software Development Engineer</option>
+              <option value="Data Scientist">Data Scientist</option>
+              <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+              <option value="Full Stack Developer">Full Stack Developer</option>
+              <option value="DevOps Engineer">DevOps Engineer</option>
+              <option value="Data Analyst">Data Analyst</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="learning-style">Learning Style</label>
+            <select id="learning-style" class="form-select">
+              <option value="practical">Practical (hands-on)</option>
+              <option value="visual">Visual (video-based)</option>
+              <option value="reading">Reading (articles)</option>
+              <option value="mixed">Mixed</option>
+            </select>
+          </div>
+        </div>
+        <button id="reg-btn" type="submit" class="btn btn-primary btn-full btn-lg" style="margin-top:8px;">
+          Create PRIE Profile
+        </button>
+      </form>
+
+      <div class="divider">Already have an account?</div>
+      <a href="login.html"><button class="btn btn-secondary btn-full">Sign In</button></a>
+    </div>
+  </div>
+
+  <script src="../js/api_client.js"></script>
+  <script>
+    if (Auth.isLoggedIn()) window.location.href = 'dashboard.html';
+
+    document.getElementById('reg-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('reg-btn');
+      const err = document.getElementById('error-alert');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Creating profile...';
+      err.style.display = 'none';
+      try {
+        const data = await ApiClient.register({
+          name:           document.getElementById('name').value,
+          email:          document.getElementById('email').value,
+          password:       document.getElementById('password').value,
+          branch:         document.getElementById('branch').value,
+          cgpa:           parseFloat(document.getElementById('cgpa').value) || 0,
+          target_role:    document.getElementById('target-role').value,
+          learning_style: document.getElementById('learning-style').value,
+        });
+        Auth.save(data);
+        showToast('Profile created! Welcome to PRIE.', 'success');
+        setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+      } catch (e) {
+        err.textContent = e.message;
+        err.style.display = 'flex';
+        btn.disabled = false;
+        btn.textContent = 'Create PRIE Profile';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "experiment_id": "EXP-03",
+  "module_id": "M05-MOCK-INTERVIEW",
+  "n_sessions": 50,
+  "fusion_weights": {
+    "audio": 0.35,
+    "video": 0.35,
+    "speech": 0.3
+  },
+  "status": "VALIDATED"
+}

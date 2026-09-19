@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScholarCamp — Placement Readiness Intelligence Engine (PRIE v1)</title>
+  <meta name="description" content="ScholarCamp PRIE v1 — An AI-powered research ecosystem for student placement readiness prediction, explainability, and personalized learning pathways." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .hero-section {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 24px;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--accent-purple);
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      max-width: 900px;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin-bottom: 36px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .spec-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 24px;
+      margin: 40px auto 0;
+      max-width: 860px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      font-size: 0.875rem;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card:hover {
+      border-color: var(--accent-purple);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(139, 92, 246, 0.15);
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--accent-purple);
+    }
+  </style>
+</head>
+<body style="background-color: var(--bg-primary);">
+
+  <!-- Navigation Bar -->
+  <header style="border-bottom: 1px solid var(--border-color); backdrop-filter: blur(12px); background: rgba(10, 15, 29, 0.7); position: sticky; top: 0; z-index: 50;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan)); display: flex; align-items: center; justify-content: center; font-weight: 800; color: white;">P</div>
+        <div>
+          <div style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.01em;">ScholarCamp <span style="color: var(--accent-purple);">PRIE</span></div>
+          <div style="font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase;">Phase 07 v1 · Production</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div id="auth-buttons" style="display: flex; gap: 12px;">
+          <a href="pages/login.html" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.875rem;">Sign In</a>
+          <a href="pages/register.html" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.875rem;">Get Started</a>
+        </div>
+        <div id="logged-in-buttons" style="display: none; align-items: center; gap: 12px;">
+          <a href="pages/dashboard.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.875rem;">Go to Dashboard →</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-badge">
+      <span>●</span> SPV_VERSION = "v1" · 22-DIMENSIONAL COGNITIVE TENSOR
+    </div>
+    <h1 class="hero-title">
+      Placement Readiness<br>
+      <span>Intelligence Engine</span>
+    </h1>
+    <p class="hero-sub">
+      A research-grade AI ecosystem bridging student potential and industry benchmarks. Powered by multi-layer student profile aggregation, XGBoost prediction, TreeSHAP & counterfactual prescriptions, and A* DAG learning pathways.
+    </p>
+
+    <div class="hero-actions">
+      <a href="pages/register.html" class="btn btn-primary" style="padding: 14px 28px; font-size: 1rem;">
+        Initialize Student Vector
+      </a>
+      <a href="pages/login.html" class="btn btn-secondary" style="padding: 14px 28px; font-size: 1rem;">
+        Demo Student Login
+      </a>
+    </div>
+
+    <div class="spec-banner">
+      <div style="text-align: left;">
+        <div style="font-weight: 600; color: var(--text-primary);">Scientific Provenance & Traceability</div>
+        <div style="color: var(--text-muted); font-size: 0.8125rem;">Derived from Phase 01–06 Literature & Research Specification (30/30 Quality Gates Certified)</div>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <span class="badge" style="background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3);">3NF SQLite WAL</span>
+        <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">FastAPI Layer</span>
+        <span class="badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3);">TreeSHAP XAI</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Architecture Modules -->
+  <section style="max-width: 1200px; margin: 0 auto; padding: 20px 24px 80px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 8px;">Core Research Architecture (M01–M12)</h2>
+      <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+        Modular intelligence engines operating harmoniously on the invariant 22-dimensional Student Profile Vector (SPV).
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      <!-- M01 -->
+      <div class="feature-card">
+        <div class="feature-icon">⬡</div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">M01: SPV Aggregator</h3>
+        <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+          Harmonizes multi-source academic, psychometric, resume, and telemetry data into canonical F01–F22 features with binary observation mask m ∈ {0,1}²².
+        </p>
+        <span class="badge badge-success">ESTABLISHED_BY_RESEARCH</span>
+      </div>
+
+      <!-- M06 -->
+      <div class="feature-card">
+        <div class="feature-icon">◎</div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">M06: Placement Predictor</h3>
+        <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+          Calibrated XGBoost classifier computing placement readiness probability, 95% bootstrap confidence intervals, and three-tier readiness classifications.
+        </p>
+        <span class="badge badge-success">ESTABLISHED_BY_RESEARCH</span>
+      </div>
+
+      <!-- M07 -->
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">M07: Prescriptive XAI</h3>
+        <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+          TreeSHAP attribution with locked immutable features (F17 branch lock) and actionable counterfactual recourse trajectories.
+        </p>
+        <span class="badge badge-success">ESTABLISHED_BY_RESEARCH</span>
+      </div>
+
+      <!-- M08 -->
+      <div class="feature-card">
+        <div class="feature-icon">◈</div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">M08: A* Roadmap Generator</h3>
+        <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+          Traverses the Computer Science Concept DAG via A* shortest path to produce sequenced, prerequisite-aware weekly milestones.
+        </p>
+        <span class="badge badge-success">ESTABLISHED_BY_RESEARCH</span>
+      </div>
+
+      <!-- M03 -->
+      <div class="feature-card">
+        <div class="feature-icon">◬</div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">M03: Adaptive Assessment</h3>
+        <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+          Psychometric Item Response Theory (IRT) engine routing dynamic questions based on real-time student mastery estimates.
+        </p>
+        <span class="badge badge-success">ESTABLISHED_BY_RESEARCH</span>
+      </div>
+
+      <!-- M11 -->
+      <div class="feature-card">
+        <div class="feature-icon">⏱</div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">M11: Behavioral Telemetry</h3>
+        <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+          Calculates Exponential Moving Average (EMA) consistency and engagement scores with proactive 14-day early-warning risk detection.
+        </p>
+        <span class="badge badge-success">ESTABLISHED_BY_RESEARCH</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="border-top: 1px solid var(--border-color); padding: 32px 24px; text-align: center; color: var(--text-muted); font-size: 0.8125rem;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; align-items: center;">
+      <div>ScholarCamp Research Ecosystem · Placement Readiness Intelligence Engine (PRIE) v1</div>
+      <div>Phase 07 Clean Implementation · Invariant SPV Feature Specification F01–F22</div>
+      <div style="margin-top: 8px;">
+        <a href="pages/dashboard.html" style="color: var(--accent-purple); text-decoration: none; margin: 0 8px;">Dashboard</a> ·
+        <a href="pages/profile.html" style="color: var(--accent-purple); text-decoration: none; margin: 0 8px;">Profile & SPV</a> ·
+        <a href="pages/assessment.html" style="color: var(--accent-purple); text-decoration: none; margin: 0 8px;">Quiz</a> ·
+        <a href="pages/roadmap.html" style="color: var(--accent-purple); text-decoration: none; margin: 0 8px;">Roadmap</a> ·
+        <a href="pages/xai.html" style="color: var(--accent-purple); text-decoration: none; margin: 0 8px;">Prescriptive XAI</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api_client.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Auth.isLoggedIn()) {
+        document.getElementById('auth-buttons').style.display = 'none';
+        document.getElementById('logged-in-buttons').style.display = 'flex';
+      }
+    });
+  </script>
+</body>
+</html>

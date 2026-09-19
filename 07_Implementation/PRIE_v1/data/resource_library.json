@@ -1,0 +1,32 @@
+[
+  {
+    "doc_id": "DOC-CURR-01",
+    "title": "Data Structures & Algorithms Placement Preparation Syllabus",
+    "source_type": "syllabus",
+    "content": "Data Structures and Algorithms is the foundational technical screening topic for software engineering campus recruitment. Core areas include arrays, strings, two-pointer techniques, sliding windows, and hashing. Intermediate competencies include binary search over monotonic spaces, recursion, binary tree traversals (inorder, preorder, postorder, BFS level order), and heap operations. Advanced interview topics include dynamic programming on 1D and 2D states, graph traversals via BFS and DFS, Dijkstra shortest paths, and topological sorting using Kahn's algorithm."
+  },
+  {
+    "doc_id": "DOC-CURR-02",
+    "title": "Database Management Systems (DBMS) Core Topics & Query Tuning",
+    "source_type": "syllabus",
+    "content": "DBMS interviews assess relational theory and real-world system architecture. Essential topics include relational normalization up to BCNF, ACID transactional guarantees, and isolation levels: Read Uncommitted, Read Committed, Repeatable Read, and Serializable. Technical interviews routinely test indexing mechanisms (B+ trees, hash indexes, clustered vs non-clustered indexes) and query optimization plans. Knowledge of CAP theorem and trade-offs between SQL and NoSQL key-value stores is expected for product-based roles."
+  },
+  {
+    "doc_id": "DOC-CURR-03",
+    "title": "Operating Systems & Concurrency Fundamentals",
+    "source_type": "syllabus",
+    "content": "Operating systems interviews focus on concurrency, synchronization, and memory management. Core concepts include process versus thread execution, CPU scheduling policies (Round Robin, Shortest Job First, Multi-Level Feedback Queue), and critical section problems solved via mutexes and semaphores. Candidates must understand the four Coffman conditions for deadlock: Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait. Virtual memory concepts include paging, page replacement algorithms (LRU, FIFO), and translation lookaside buffer (TLB) caching."
+  },
+  {
+    "doc_id": "DOC-CURR-04",
+    "title": "Computer Networks Protocol Stack & Architecture",
+    "source_type": "syllabus",
+    "content": "Computer networks testing evaluates understanding of the OSI 7-layer model and TCP/IP 4-layer architecture. Crucial protocols include DNS domain resolution, HTTP/1.1 vs HTTP/2 multiplexing, and HTTPS TLS handshakes. At the transport layer, candidates must explain the TCP 3-way handshake (SYN, SYN-ACK, ACK), flow control via sliding windows, and congestion control algorithms (Slow Start, Congestion Avoidance, Fast Retransmit), contrasted with lightweight connectionless UDP communication."
+  },
+  {
+    "doc_id": "DOC-GUIDE-01",
+    "title": "Technical Resume ATS Guidelines & Keyword Optimization",
+    "source_type": "interview_guide",
+    "content": "ATS resume scanners parse applicant resumes using spatial layout engines and keyword frequency models. Candidates should adopt clean single-column layouts with standard section headings: Education, Technical Skills, Experience, Projects, and Certifications. Bullet points must follow the Google XYZ formula: Accomplished [X] as measured by [Y] by doing [Z]. Resumes should quantify metrics with explicit percentages, latency reductions, or request volumes."
+  }
+]

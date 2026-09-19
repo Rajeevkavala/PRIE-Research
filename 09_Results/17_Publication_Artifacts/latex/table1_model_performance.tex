@@ -1,0 +1,15 @@
+\begin{table}[htbp]
+\centering
+\caption{Placement Readiness Multi-Baseline Benchmark & Predictive Calibration (N=500 Hold-out Test Partition, Seed=42)}
+\label{tab:model_performance}
+\begin{tabular}{lcccccccc}
+\hline
+\textbf{Model Architecture} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{Macro-F1} & \textbf{ROC-AUC} & \textbf{Brier Score} & \textbf{ECE} \\
+\hline
+Logistic Regression & 0.9920 & 0.9921 & 0.9973 & 0.9892 & 0.9996 & 0.0135 & 0.0331 \\
+Random Forest & 0.8960 & 0.8839 & 0.9920 & 0.8387 & 0.9716 & 0.0762 & 0.0980 \\
+XGBoost (Uncalibrated) & 0.9480 & 0.9442 & 0.9894 & 0.9266 & 0.9912 & 0.0382 & 0.0370 \\
+PRIE XGBoost (Platt-Calibrated) & \textbf{0.9460} & \textbf{0.9463} & \textbf{0.9840} & \textbf{0.9245} & \textbf{0.9912} & \textbf{0.0397} & \textbf{0.0212} \\
+\hline
+\end{tabular}
+\end{table}

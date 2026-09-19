@@ -1,0 +1,145 @@
+{
+  "system_name": "ScholarCamp — Placement Readiness Intelligence Engine (PRIE)",
+  "version": "1.0.0",
+  "spv_version": "v1",
+  "spv_dimension": 22,
+  "phase": "Phase 07 — Implementation",
+  "status": "PRODUCTION_READY_SPEC_ALIGNED",
+  "epistemological_framework": {
+    "zero_fabricated_metrics": true,
+    "synthetic_data_explicitly_labeled": true,
+    "immutable_features_locked": ["F17_branch_encoded"],
+    "observation_mask_supported": true,
+    "phase_06_quality_gates_passed": "30/30 (G01-G30)"
+  },
+  "canonical_spv_features": [
+    { "id": "F01", "name": "cgpa", "domain": "0.0–10.0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F02", "name": "dsa_score", "domain": "0.0–100.0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F03", "name": "dbms_score", "domain": "0.0–100.0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F04", "name": "os_score", "domain": "0.0–100.0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F05", "name": "cn_score", "domain": "0.0–100.0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F06", "name": "programming_score", "domain": "0.0–100.0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F07", "name": "aptitude_score", "domain": "0.0–100.0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F08", "name": "soft_skills_score", "domain": "0.0–100.0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F09", "name": "project_count", "domain": "0–30", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F10", "name": "project_quality_score", "domain": "0.0–100.0", "epistemological_status": "PROPOSED" },
+    { "id": "F11", "name": "has_internship", "domain": "{0, 1}", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F12", "name": "certifications_count", "domain": "0–20", "epistemological_status": "PARTIALLY_SUPPORTED" },
+    { "id": "F13", "name": "resume_ats_score", "domain": "0.0–100.0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F14", "name": "cosine_similarity", "domain": "0.0–1.0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F15", "name": "gap_score", "domain": "0.0–1.0", "epistemological_status": "IMPLEMENTATION_DERIVED" },
+    { "id": "F16", "name": "consistency_score", "domain": "0.0–1.0", "epistemological_status": "IMPLEMENTATION_DERIVED" },
+    { "id": "F17", "name": "branch_encoded", "domain": "Categorical [IMMUTABLE]", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F18", "name": "target_role_encoded", "domain": "Categorical", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F19", "name": "assessment_attempts", "domain": "Count >= 0", "epistemological_status": "DIRECTLY_SUPPORTED" },
+    { "id": "F20", "name": "behavior_score", "domain": "0.0–100.0", "epistemological_status": "PROPOSED" },
+    { "id": "F21", "name": "engagement_score", "domain": "0.0–1.0", "epistemological_status": "IMPLEMENTATION_DERIVED" },
+    { "id": "F22", "name": "roadmap_completion_rate", "domain": "0.0–1.0", "epistemological_status": "IMPLEMENTATION_DERIVED" }
+  ],
+  "modules": {
+    "M01": {
+      "name": "SPV Aggregator",
+      "file": "backend/modules/m01_spv_aggregator.py",
+      "status": "ESTABLISHED_BY_RESEARCH",
+      "tier": "FULL_IMPLEMENTATION",
+      "description": "Multi-source SPV harmonizer with binary observation confidence mask m ∈ {0,1}²²"
+    },
+    "M02": {
+      "name": "Resume ATS Intelligence",
+      "file": "backend/modules/m02_resume_ats.py",
+      "status": "ESTABLISHED_BY_RESEARCH",
+      "tier": "FULL_SBERT_HEURISTIC_LAYOUTLM_STUB",
+      "description": "SBERT cosine similarity + heuristic ATS scoring; LayoutLMv3 multimodal parsing stubbed"
+    },
+    "M03": {
+      "name": "Adaptive Assessment Engine",
+      "file": "backend/modules/m03_adaptive_assessment.py",
+      "status": "ESTABLISHED_BY_RESEARCH",
+      "tier": "FULL_IMPLEMENTATION",
+      "description": "1-PL Item Response Theory (IRT) dynamic question routing and subject mastery calibration"
+    },
+    "M04": {
+      "name": "Skill Gap Engine",
+      "file": "backend/modules/m04_skill_gap_engine.py",
+      "status": "ESTABLISHED_BY_RESEARCH",
+      "tier": "FULL_IMPLEMENTATION",
+      "description": "Weighted Euclidean distance D(x, r) and role-specific deficit ranking"
+    },
+    "M06": {
+      "name": "Placement Readiness Predictor",
+      "file": "backend/modules/m06_placement_predictor.py",
+      "status": "ESTABLISHED_BY_RESEARCH",
+      "tier": "FULL_IMPLEMENTATION",
+      "description": "Calibrated XGBoost classifier with 200-sample bootstrap confidence intervals and TreeSHAP attribution"
+    },
+    "M07": {
+      "name": "Prescriptive XAI Engine",
+      "file": "backend/modules/m07_prescriptive_xai.py",
+      "status": "ESTABLISHED_BY_RESEARCH",
+      "tier": "FULL_TREESHAP_DICE_STUB",
+      "description": "Signed TreeSHAP attributions with locked immutable features (F17) and directional counterfactual recourse"
+    },
+    "M08": {
+      "name": "Personalized Learning Roadmap",
+      "file": "backend/modules/m08_roadmap_generator.py",
+      "status": "ESTABLISHED_BY_RESEARCH",
+      "tier": "FULL_IMPLEMENTATION",
+      "description": "A* shortest-path topological traversal over CS Concept DAG with learning style personalization"
+    },
+    "M09": {
+      "name": "Curriculum RAG Assistant",
+      "file": "backend/modules/m09_rag_assistant.py",
+      "status": "ESTABLISHED_BY_RESEARCH",
+      "tier": "GROUNDED_STUB",
+      "description": "Curriculum retrieval stub querying grounded question bank and concept nodes"
+    },
+    "M10": {
+      "name": "Adaptive Question Generator",
+      "file": "backend/modules/m10_aqg.py",
+      "status": "PROPOSED_RESEARCH_DECISION",
+      "tier": "STUB_FILTERED_BANK",
+      "description": "Concept-directed question selection filtered by IRT parameters"
+    },
+    "M11": {
+      "name": "Behavioral Telemetry Engine",
+      "file": "backend/modules/m11_behavioral_telemetry.py",
+      "status": "ESTABLISHED_BY_RESEARCH",
+      "tier": "FULL_IMPLEMENTATION",
+      "description": "Exponential Moving Average (EMA) consistency/engagement scores and 14-day early-warning flags"
+    },
+    "M12": {
+      "name": "Student Digital Twin Synchronizer",
+      "file": "backend/modules/m12_digital_twin.py",
+      "status": "PROPOSED_RESEARCH_DECISION",
+      "tier": "STATE_SNAPSHOT_STUB",
+      "description": "Triangular synchronization snapshot for student digital twin"
+    }
+  },
+  "database": {
+    "engine": "SQLite3",
+    "mode": "WAL (Write-Ahead Logging)",
+    "schema_standard": "3NF Compliant",
+    "tables": [
+      "students",
+      "companies",
+      "resumes",
+      "question_bank",
+      "assessments",
+      "spv_snapshots",
+      "learning_events",
+      "roadmaps",
+      "skill_map",
+      "recommendations"
+    ]
+  },
+  "api": {
+    "framework": "FastAPI",
+    "auth": "JWT Bearer Tokens (HS256)",
+    "documentation_url": "http://127.0.0.1:8000/docs"
+  },
+  "frontend": {
+    "architecture": "Single-Page Application (HTML5 / Vanilla CSS3 / JavaScript ES6+)",
+    "design_system": "Glassmorphism Dark-Mode (#0a0f1d base, violet/cyan accents, Inter typography)",
+    "charting": "Chart.js v4.4 (Radar, Bar, Line)"
+  }
+}

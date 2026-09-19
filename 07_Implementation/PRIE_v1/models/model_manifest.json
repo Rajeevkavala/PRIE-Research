@@ -1,0 +1,98 @@
+{
+  "model_id": "prie-xgb-static-v1",
+  "model_version": "1.0.0",
+  "dataset_id": "DS-SYNTH-01",
+  "dataset_version": "1.0.0",
+  "feature_schema_version": "F01-F22-v1",
+  "spv_version": "v1",
+  "module": "M06 \u2014 Placement Readiness Prediction Engine (Track 1)",
+  "epistemological_status": "ESTABLISHED_BY_RESEARCH (XGBoost per DD-002)",
+  "training_data": "DS-SYNTH-01 only (N=2500, SYNTHETIC \u2014 Simulation)",
+  "split_strategy": "Stratified 80/10/10 (leakage-free, fit on train only)",
+  "random_seed": 42,
+  "calibration_method": "sigmoid",
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 7,
+    "learning_rate": 0.18043311207136256,
+    "subsample": 0.9233589392465844,
+    "colsample_bytree": 0.6523068845866853,
+    "reg_alpha": 0.0022976624140824994,
+    "reg_lambda": 0.33959199243313637,
+    "min_child_weight": 4,
+    "scale_pos_weight": 0.33155792276964047,
+    "eval_metric": "logloss",
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "test_set_metrics": {
+    "accuracy": 0.96,
+    "precision": 0.9635,
+    "recall": 0.984,
+    "macro_f1": 0.9452,
+    "roc_auc": 0.9899,
+    "pr_auc": 0.9967,
+    "brier_score": 0.0356,
+    "ece": 0.0236,
+    "confusion_matrix": [
+      [
+        55,
+        7
+      ],
+      [
+        3,
+        185
+      ]
+    ]
+  },
+  "baseline_models": {
+    "logistic_regression": {
+      "accuracy": 0.992,
+      "precision": 0.9895,
+      "recall": 1.0,
+      "macro_f1": 0.9892,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "brier_score": 0.014,
+      "ece": 0.0406,
+      "confusion_matrix": [
+        [
+          60,
+          2
+        ],
+        [
+          0,
+          188
+        ]
+      ]
+    },
+    "random_forest": {
+      "accuracy": 0.896,
+      "precision": 0.8932,
+      "recall": 0.9787,
+      "macro_f1": 0.8444,
+      "roc_auc": 0.968,
+      "pr_auc": 0.9898,
+      "brier_score": 0.0737,
+      "ece": 0.0745,
+      "confusion_matrix": [
+        [
+          40,
+          22
+        ],
+        [
+          4,
+          184
+        ]
+      ]
+    }
+  },
+  "top10_shap_features": [],
+  "checksums": {
+    "xgb_model_v1.pkl": "sha256:8c813ab7704b9b187d9e2585dd2c350d538a50c2a7854068d4d96e511a8a1755",
+    "scaler_v1.pkl": "sha256:4c5c097324657c8a47a8d490505566ec8ddddc054016c013925f49103aa8b4a8",
+    "feature_names_v1.json": "sha256:549ac2c4f8770c11216f20ecead874469d3e09a39eea6dc9bd162dff9ac7f570"
+  },
+  "trained_at": "2026-09-18T14:50:15.977209+00:00",
+  "scientific_integrity_note": "All reported metrics computed on unseen held-out test data. Pre-processing scalers fitted exclusively on the training partition. Zero synthetic numbers fabricated."
+}

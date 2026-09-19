@@ -1,0 +1,2 @@
+Placeholder for Word manuscript template if submitting to Springer/Elsevier venues.
+Use paper.tex as primary IEEE LaTeX draft source.

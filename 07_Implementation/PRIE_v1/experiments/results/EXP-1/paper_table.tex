@@ -1,0 +1,14 @@
+\begin{table}[htbp]
+\centering
+\caption{EXP-1: Placement Prediction Calibration and Baseline Comparison}
+\label{tab:exp1_results}
+\begin{tabular}{lccccc}
+\toprule
+Model & Accuracy & Macro\_F1 & Roc\_Auc & Brier\_Score & Ece \\
+\midrule
+Calibrated XGBoost (M06) & 0.964 & 0.9525 & 0.9931 & 0.032 & 0.0303 \\
+Random Forest (BL-02) & 0.964 & 0.9498 & 0.9933 & 0.0474 & 0.1017 \\
+Logistic Regression (BL-01) & 0.98 & 0.973 & 0.9987 & 0.015 & 0.0226 \\
+\bottomrule
+\end{tabular}
+\end{table}

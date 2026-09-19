@@ -1,0 +1,45 @@
+# ==============================================================================
+# ScholarCamp - Placement Readiness Intelligence Engine (PRIE)
+# Production Dependencies (requirements.txt)
+# Pinned to ensure reproducible builds across development and production
+# ==============================================================================
+
+# Core Framework & Web Application Layer
+streamlit>=1.32.2
+plotly>=5.20.0
+altair>=5.3.0
+
+# Machine Learning & Tabular Modeling Layer
+numpy>=1.26.4
+pandas>=2.2.1
+scipy>=1.12.0
+scikit-learn>=1.4.1.post1
+xgboost>=2.0.3
+lightgbm>=4.3.0
+catboost>=1.2.3
+imbalanced-learn>=0.12.0
+optuna>=3.6.0
+
+# Model Explainability & Interpretability (TreeSHAP)
+shap>=0.44.1
+
+# Natural Language Processing & Embedding Generation
+sentence-transformers>=2.5.1
+transformers>=4.38.2
+torch>=2.2.1
+spacy>=3.7.4
+
+# Document Parsing & Resume Intelligence
+PyMuPDF>=1.24.0
+python-docx>=1.1.0
+
+# Audio Processing & Mock Interview Voice Engine
+openai-whisper>=20231117
+librosa>=0.10.1
+soundfile>=0.12.1
+
+# Security, Validation & Runtime Utilities
+bcrypt>=4.1.2
+pydantic>=2.6.4
+python-dotenv>=1.0.1
+python-dateutil>=2.9.0.post0

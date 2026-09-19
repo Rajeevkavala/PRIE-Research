@@ -1,0 +1,77 @@
+[
+  {
+    "question_id": "QB-DSA-001",
+    "domain": "Computer Science",
+    "topic": "DSA",
+    "concept_node_id": "arrays",
+    "difficulty": "Easy",
+    "bloom_level": "Remember",
+    "question_text": "What is the worst-case time complexity of accessing an arbitrary element by index in a contiguous array?",
+    "options": ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+    "correct_option": "O(1)",
+    "explanation": "Arrays store elements in contiguous memory locations, allowing instant O(1) random access via base address arithmetic."
+  },
+  {
+    "question_id": "QB-DSA-002",
+    "domain": "Computer Science",
+    "topic": "DSA",
+    "concept_node_id": "sorting_algorithms",
+    "difficulty": "Medium",
+    "bloom_level": "Analyze",
+    "question_text": "Why does QuickSort exhibit O(n^2) time complexity in the worst case with naive first-element pivot selection?",
+    "options": [
+      "When the input array is already sorted or reverse sorted",
+      "When all elements are strictly distinct and randomized",
+      "When the recursion stack exceeds heap memory",
+      "When parallel threads cause lock contention"
+    ],
+    "correct_option": "When the input array is already sorted or reverse sorted",
+    "explanation": "Selecting the first element as pivot on an already sorted array yields extremely unbalanced partitions of sizes 0 and n-1, leading to quadratic recurrence T(n) = T(n-1) + O(n)."
+  },
+  {
+    "question_id": "QB-DBMS-001",
+    "domain": "Computer Science",
+    "topic": "DBMS",
+    "concept_node_id": "acid_transactions",
+    "difficulty": "Hard",
+    "bloom_level": "Evaluate",
+    "question_text": "Which SQL transaction isolation level prevents dirty reads and non-repeatable reads, but still permits phantom reads?",
+    "options": ["Repeatable Read", "Read Committed", "Read Uncommitted", "Serializable"],
+    "correct_option": "Repeatable Read",
+    "explanation": "Repeatable Read holds shared read locks until the transaction completes, preventing non-repeatable reads; however, range locks are not required, permitting phantom insertions unless next-key locking is implemented."
+  },
+  {
+    "question_id": "QB-OS-001",
+    "domain": "Computer Science",
+    "topic": "Operating Systems",
+    "concept_node_id": "deadlocks_and_starvation",
+    "difficulty": "Medium",
+    "bloom_level": "Apply",
+    "question_text": "Which of the following conditions is NOT one of the four necessary Coffman conditions for a deadlock to occur?",
+    "options": [
+      "Preemption of allocated resources by lower-priority processes",
+      "Mutual Exclusion",
+      "Hold and Wait",
+      "Circular Wait"
+    ],
+    "correct_option": "Preemption of allocated resources by lower-priority processes",
+    "explanation": "The condition is No Preemption (resources cannot be forcibly reclaimed from a holding process). Preemption prevents deadlocks."
+  },
+  {
+    "question_id": "QB-CN-001",
+    "domain": "Computer Science",
+    "topic": "Computer Networks",
+    "concept_node_id": "transport_layer_tcp_udp",
+    "difficulty": "Medium",
+    "bloom_level": "Understand",
+    "question_text": "What flags are exchanged during the standard TCP three-way connection handshake?",
+    "options": [
+      "SYN -> SYN-ACK -> ACK",
+      "ACK -> SYN -> ACK",
+      "SYN -> ACK -> FIN",
+      "RST -> SYN -> ACK"
+    ],
+    "correct_option": "SYN -> SYN-ACK -> ACK",
+    "explanation": "The client initiates with SYN, the server acknowledges and synchronizes with SYN-ACK, and the client finalizes with ACK."
+  }
+]

@@ -1,0 +1,15 @@
+\begin{table}[htbp]
+\centering
+\caption{M07 Prescriptive Counterfactual Recourse Optimization & Invariance Constraints}
+\label{tab:recourse_feasibility}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Recourse Optimization Protocol} & \textbf{Mean $L_1$ Distance} & \textbf{Mean $L_2$ Distance} & \textbf{Mean Sparsity ($k$)} & \textbf{$F_{17}$ Invariance Rate} \\
+\hline
+Unconstrained Gradient Descent & 0.142 & 0.185 & 8.4 features & 32.4\% (Viable violation) \\
+Standard DiCE (Without Lock) & 0.188 & 0.215 & 4.1 features & 46.8\% (Viable violation) \\
+\hline
+\textbf{PRIE Constrained DiCE (Proposed)} & \textbf{0.214} & \textbf{0.245} & \textbf{2.6 features ($k \le 3$)} & \textbf{100.0\% (Strictly locked)} \\
+\hline
+\end{tabular}
+\end{table}

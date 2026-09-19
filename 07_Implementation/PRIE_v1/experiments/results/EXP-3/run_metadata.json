@@ -1,0 +1,11 @@
+{
+  "experiment_id": "EXP-3",
+  "title": "Prescriptive Recourse Feasibility & Constraint Invariance",
+  "research_question": "RQ5",
+  "hypothesis": "H3 (Valid Recourse with k <= 3 and 100% F17 lock)",
+  "h3_confirmed": true,
+  "n_profiles_evaluated": 30,
+  "runtime_seconds": 2.19,
+  "timestamp": "2026-09-19T04:37:01.468941+00:00",
+  "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+}

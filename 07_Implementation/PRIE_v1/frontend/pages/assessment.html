@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adaptive Assessment — PRIE v1 | ScholarCamp</title>
+  <meta name="description" content="Psychometric Item Response Theory (IRT) adaptive assessment module targeting SPV features F02–F07." />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .topic-pill {
+      padding: 8px 16px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .topic-pill.active {
+      background: rgba(139, 92, 246, 0.2);
+      border-color: var(--accent-purple);
+      color: #fff;
+    }
+    .option-card {
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9375rem;
+    }
+    .option-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(139, 92, 246, 0.4);
+    }
+    .option-card.selected {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: var(--accent-purple);
+      color: #fff;
+      font-weight: 600;
+    }
+    .option-radio {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .option-card.selected .option-radio {
+      border-color: var(--accent-purple);
+      background: var(--accent-purple);
+    }
+    .option-card.selected .option-radio::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="app-layout">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">PRIE</div>
+      <div class="brand-sub">Placement Readiness Intelligence Engine · v1</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Student</div>
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⬡</span> Dashboard
+      </a>
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">◎</span> Profile & SPV
+      </a>
+      <a href="ats.html" class="nav-item">
+        <span class="nav-icon">📄</span> Resume ATS
+      </a>
+      <a href="interview.html" class="nav-item">
+        <span class="nav-icon">🎙️</span> Mock Interview
+      </a>
+      <a href="assessment.html" class="nav-item active">
+        <span class="nav-icon">◈</span> Adaptive Quiz
+      </a>
+      <a href="roadmap.html" class="nav-item">
+        <span class="nav-icon">◈</span> Roadmap
+      </a>
+      <a href="xai.html" class="nav-item">
+        <span class="nav-icon">◎</span> Explanations
+      </a>
+      <a href="twin_company.html" class="nav-item">
+        <span class="nav-icon">🏢</span> Twin & Company
+      </a>
+      <div class="nav-section-label" style="margin-top:20px;">Research</div>
+      <a href="experiments.html" class="nav-item">
+        <span class="nav-icon">📊</span> Experiments (EXP-1–6)
+      </a>
+      <button id="logout-btn" class="nav-item" style="margin-top:16px;">
+        <span class="nav-icon">⇥</span> Logout
+      </button>
+    </div>
+    <div class="sidebar-footer">
+      <div style="font-size:0.65rem;color:var(--text-muted);">
+        PRIE v1 · Module M03 (IRT)<br>
+        Dynamic Competency Calibration
+      </div>
+    </div>
+  </nav>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-title">Module M03: Adaptive Quiz Engine</div>
+    <div class="topbar-user">
+      <div class="avatar" id="avatar-initials">U</div>
+      <span id="user-name" style="font-size:0.875rem;font-weight:600;">Student</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-title">IRT-Guided Cognitive Assessment</div>
+    <div class="page-sub">
+      Item Response Theory dynamically adjusts question difficulty based on your ongoing trajectory. Every response refines your canonical subject scores (F02–F07).
+    </div>
+
+    <!-- Topic Selector & Current Mastery -->
+    <div class="card" style="margin-bottom:24px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;" id="topic-container">
+          <button class="topic-pill active" data-topic="dsa">DSA (F02)</button>
+          <button class="topic-pill" data-topic="dbms">DBMS (F03)</button>
+          <button class="topic-pill" data-topic="os">OS (F04)</button>
+          <button class="topic-pill" data-topic="cn">Networks (F05)</button>
+          <button class="topic-pill" data-topic="programming">Programming (F06)</button>
+          <button class="topic-pill" data-topic="aptitude">Aptitude (F07)</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="font-size:0.875rem;color:var(--text-secondary);">Estimated Mastery:</span>
+          <span class="badge badge-purple" id="mastery-display" style="font-size:0.9rem;">—%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question View -->
+    <div id="quiz-container" class="card" style="position:relative;">
+      <!-- Loading State -->
+      <div id="q-loading" style="display:none;text-align:center;padding:50px 0;">
+        <div class="spinner" style="margin:0 auto 16px;"></div>
+        <p style="color:var(--text-secondary);">Fetching IRT-calibrated item...</p>
+      </div>
+
+      <!-- Question Content -->
+      <div id="q-content">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span class="badge badge-cyan" id="diff-badge">Medium</span>
+            <span class="badge" style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-family:monospace;" id="irt-meta">
+              Difficulty b: 0.50
+            </span>
+          </div>
+          <div style="font-size:0.8125rem;color:var(--text-muted);">
+            Timer: <span id="timer-val" style="font-family:monospace;font-weight:700;color:var(--accent-purple);">0s</span>
+          </div>
+        </div>
+
+        <h3 id="question-text" style="font-size:1.15rem;font-weight:600;line-height:1.5;margin-bottom:24px;">
+          Question prompt will appear here...
+        </h3>
+
+        <div id="options-list" style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+          <!-- Options dynamically rendered -->
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border-color);padding-top:20px;">
+          <div style="font-size:0.8125rem;color:var(--text-muted);">
+            Session Items: <span id="session-count" style="font-weight:600;color:var(--text-primary);">0</span>
+          </div>
+          <button id="submit-btn" class="btn btn-primary" style="padding:10px 24px;" disabled>
+            Submit Answer
+          </button>
+        </div>
+      </div>
+
+      <!-- Feedback Banner (shown after submission) -->
+      <div id="feedback-card" style="display:none;margin-top:24px;padding:18px;border-radius:var(--radius-md);border:1px solid var(--border-color);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <span id="feedback-icon" style="font-size:1.25rem;"></span>
+          <span id="feedback-title" style="font-size:1rem;font-weight:700;"></span>
+        </div>
+        <p id="feedback-explanation" style="font-size:0.875rem;color:var(--text-secondary);line-height:1.5;margin-bottom:16px;">
+        </p>
+        <button id="next-q-btn" class="btn btn-secondary" style="padding:8px 20px;">
+          Next Calibrated Question →
+        </button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/api_client.js"></script>
+<script src="../js/auth.js"></script>
+<script>
+  let activeTopic = 'dsa';
+  let currentQuestion = null;
+  let selectedOption = null;
+  let sessionHistory = [];
+  let timerInterval = null;
+  let secondsElapsed = 0;
+
+  function startTimer() {
+    clearInterval(timerInterval);
+    secondsElapsed = 0;
+    document.getElementById('timer-val').textContent = '0s';
+    timerInterval = setInterval(() => {
+      secondsElapsed++;
+      document.getElementById('timer-val').textContent = `${secondsElapsed}s`;
+    }, 1000);
+  }
+
+  function stopTimer() {
+    clearInterval(timerInterval);
+  }
+
+  async function loadMastery() {
+    try {
+      const res = await ApiClient.getMastery(activeTopic);
+      document.getElementById('mastery-display').textContent = `${res.mastery_score.toFixed(1)}%`;
+    } catch (e) {
+      document.getElementById('mastery-display').textContent = '—';
+    }
+  }
+
+  async function fetchNextQuestion() {
+    document.getElementById('q-loading').style.display = 'block';
+    document.getElementById('q-content').style.display = 'none';
+    document.getElementById('feedback-card').style.display = 'none';
+    selectedOption = null;
+    document.getElementById('submit-btn').disabled = true;
+
+    try {
+      const q = await ApiClient.nextQuestion(activeTopic, sessionHistory);
+      currentQuestion = q;
+
+      document.getElementById('question-text').textContent = q.question_text;
+      document.getElementById('diff-badge').textContent = q.difficulty;
+      document.getElementById('diff-badge').className = `badge ${q.difficulty === 'Easy' ? 'badge-success' : q.difficulty === 'Medium' ? 'badge-cyan' : 'badge-pink'}`;
+      document.getElementById('irt-meta').textContent = `IRT b: ${(q.item_difficulty_p || 0.5).toFixed(2)} | a: ${(q.item_discrimination || 0.35).toFixed(2)}`;
+
+      const options = JSON.parse(q.options_json || '[]');
+      const container = document.getElementById('options-list');
+      container.innerHTML = options.map((opt, i) => `
+        <div class="option-card" data-idx="${i}" onclick="selectOption('${opt.replace(/'/g, "\\'")}', this)">
+          <div class="option-radio"></div>
+          <div>${opt}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('session-count').textContent = sessionHistory.length;
+      document.getElementById('q-loading').style.display = 'none';
+      document.getElementById('q-content').style.display = 'block';
+      startTimer();
+    } catch (err) {
+      document.getElementById('q-loading').style.display = 'none';
+      showToast(err.message, 'error');
+    }
+  }
+
+  window.selectOption = function(opt, el) {
+    selectedOption = opt;
+    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('submit-btn').disabled = false;
+  };
+
+  document.getElementById('submit-btn').addEventListener('click', async () => {
+    if (!currentQuestion || !selectedOption) return;
+    stopTimer();
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Evaluating...';
+
+    try {
+      const payload = {
+        question_id: currentQuestion.question_id,
+        topic: activeTopic,
+        difficulty: currentQuestion.difficulty,
+        selected_option: selectedOption,
+        time_taken_seconds: secondsElapsed,
+      };
+
+      const result = await ApiClient.submitAnswer(payload);
+      sessionHistory.push({
+        difficulty: currentQuestion.difficulty,
+        is_correct: result.is_correct ? 1 : 0,
+      });
+
+      // Show feedback
+      const fbCard = document.getElementById('feedback-card');
+      const isCor = result.is_correct;
+      fbCard.style.display = 'block';
+      fbCard.style.background = isCor ? 'rgba(34,197,94,0.08)' : 'rgba(244,63,94,0.08)';
+      fbCard.style.borderColor = isCor ? 'rgba(34,197,94,0.3)' : 'rgba(244,63,94,0.3)';
+
+      document.getElementById('feedback-icon').textContent = isCor ? '✓' : '✗';
+      document.getElementById('feedback-icon').style.color = isCor ? '#4ade80' : '#fb7185';
+      document.getElementById('feedback-title').textContent = isCor ? 'Correct!' : 'Incorrect';
+      document.getElementById('feedback-title').style.color = isCor ? '#4ade80' : '#fb7185';
+      document.getElementById('feedback-explanation').textContent = result.explanation || 'Answer logged to mastery pipeline.';
+
+      if (result.topic_mastery !== undefined) {
+        document.getElementById('mastery-display').textContent = `${result.topic_mastery.toFixed(1)}%`;
+      }
+    } catch (err) {
+      showToast(err.message, 'error');
+    } finally {
+      btn.textContent = 'Submit Answer';
+    }
+  });
+
+  document.getElementById('next-q-btn').addEventListener('click', fetchNextQuestion);
+
+  // Topic pill click handlers
+  document.querySelectorAll('.topic-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.topic-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeTopic = pill.getAttribute('data-topic');
+      sessionHistory = [];
+      loadMastery();
+      fetchNextQuestion();
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (AuthManager.checkSession()) {
+      loadMastery();
+      fetchNextQuestion();
+    }
+  });
+</script>
+</body>
+</html>

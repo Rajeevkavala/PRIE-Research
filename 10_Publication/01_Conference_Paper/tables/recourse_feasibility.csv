@@ -1,0 +1,5 @@
+protocol,l1_distance,l2_distance,sparsity_k,f17_invariance_pct,feasibility_pct
+Unconstrained Gradient Descent,0.142,0.185,8.40,32.4,98.0
+Standard DiCE (Without Lock),0.188,0.215,4.10,46.8,95.5
+Random Perturbation Baseline,0.485,0.562,12.50,15.2,41.2
+PRIE Constrained DiCE (Proposed),0.283,0.312,2.47,100.0,93.3

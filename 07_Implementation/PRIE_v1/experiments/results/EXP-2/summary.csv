@@ -1,0 +1,5 @@
+modality,mean_score,variance,weight
+Audio Alone (Librosa Prosody),75.65,61.06,0.35
+Video Alone (OpenCV Gaze & Stability),77.11,49.24,0.35
+Speech Alone (Whisper ASR & Lexical),76.97,102.99,0.3
+Late Multimodal Fusion (Proposed M05),76.56,21.09,1.0

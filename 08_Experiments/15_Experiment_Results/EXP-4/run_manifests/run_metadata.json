@@ -1,0 +1,9 @@
+{
+  "experiment_id": "EXP-4",
+  "title": "Resume ATS Spatial Extraction Ablation",
+  "research_question": "RQ2",
+  "layoutlmv3_status": "MODEL NOT TRAINED",
+  "runtime_seconds": 0.0,
+  "timestamp": "2026-09-19T04:37:01.476864+00:00",
+  "epistemological_status": "ESTABLISHED_BY_RESEARCH (Baseline) / PROPOSED_ARCHITECTURE (LayoutLMv3)"
+}

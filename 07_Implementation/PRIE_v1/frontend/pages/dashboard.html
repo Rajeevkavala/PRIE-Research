@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — PRIE v1 | ScholarCamp</title>
+  <meta name="description" content="Your PRIE Placement Readiness Dashboard — 22-dimensional SPV radar, readiness tier, SHAP attribution, and roadmap." />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app-layout">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">PRIE</div>
+      <div class="brand-sub">Placement Readiness Intelligence Engine · v1</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Student</div>
+      <a href="dashboard.html" class="nav-item active">
+        <span class="nav-icon">⬡</span> Dashboard
+      </a>
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">◎</span> Profile & SPV
+      </a>
+      <a href="ats.html" class="nav-item">
+        <span class="nav-icon">📄</span> Resume ATS
+      </a>
+      <a href="interview.html" class="nav-item">
+        <span class="nav-icon">🎙️</span> Mock Interview
+      </a>
+      <a href="assessment.html" class="nav-item">
+        <span class="nav-icon">◈</span> Adaptive Quiz
+      </a>
+      <a href="roadmap.html" class="nav-item">
+        <span class="nav-icon">◈</span> Roadmap
+      </a>
+      <a href="xai.html" class="nav-item">
+        <span class="nav-icon">◎</span> Explanations
+      </a>
+      <a href="twin_company.html" class="nav-item">
+        <span class="nav-icon">🏢</span> Twin & Company
+      </a>
+      <div class="nav-section-label" style="margin-top:20px;">Research</div>
+      <a href="experiments.html" class="nav-item">
+        <span class="nav-icon">📊</span> Experiments (EXP-1–6)
+      </a>
+      <button id="logout-btn" class="nav-item" style="margin-top:16px;">
+        <span class="nav-icon">⇥</span> Logout
+      </button>
+    </div>
+    <div class="sidebar-footer">
+      <div style="font-size:0.65rem;color:var(--text-muted);">
+        PRIE v1 · Phase 07 Implementation<br>
+        SPV_VERSION=v1 · 22D Feature Tensor
+      </div>
+    </div>
+  </nav>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-title">Dashboard</div>
+    <div class="topbar-user">
+      <div class="avatar" id="avatar-initials">U</div>
+      <span id="user-name" style="font-size:0.875rem;font-weight:600;"></span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-title">Placement Readiness Hub</div>
+    <div class="page-sub">Your 22-dimensional intelligence snapshot. Updated in real-time.</div>
+
+    <!-- Loading State -->
+    <div id="loading-state" style="text-align:center;padding:60px 0;">
+      <div class="spinner" style="width:36px;height:36px;border-width:3px;margin:0 auto;"></div>
+      <p style="margin-top:16px;color:var(--text-secondary);">Assembling SPV...</p>
+    </div>
+
+    <!-- Dashboard Grid (hidden until loaded) -->
+    <div id="dashboard-content" style="display:none;">
+
+      <!-- Row 1: Key Metrics -->
+      <div class="grid-4" style="margin-bottom:20px;">
+        <div class="metric-card animate-fade-in-up">
+          <div class="metric-label">Readiness Score</div>
+          <div class="metric-value" id="prs-score">—</div>
+          <div class="metric-sub" id="readiness-tier-text">Loading...</div>
+        </div>
+        <div class="metric-card animate-fade-in-up" style="animation-delay:0.05s;">
+          <div class="metric-label">Probability</div>
+          <div class="metric-value" id="prob-value">—</div>
+          <div class="metric-sub" id="ci-text">95% CI</div>
+        </div>
+        <div class="metric-card animate-fade-in-up" style="animation-delay:0.1s;">
+          <div class="metric-label">Profile Complete</div>
+          <div class="metric-value" id="completeness-value">—</div>
+          <div class="progress-bar" style="margin-top:8px;">
+            <div class="progress-fill" id="completeness-bar" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="metric-card animate-fade-in-up" style="animation-delay:0.15s;">
+          <div class="metric-label">SPV Observed</div>
+          <div class="metric-value" id="observed-count">—</div>
+          <div class="metric-sub">of 22 features</div>
+        </div>
+      </div>
+
+      <!-- Row 2: Readiness Tier + SPV Radar -->
+      <div class="grid-2" style="margin-bottom:20px;">
+        <!-- Tier Card -->
+        <div class="card">
+          <div class="card-title">Readiness Status</div>
+          <div id="tier-badge-container" style="margin-bottom:16px;"></div>
+          <div style="margin-bottom:16px;">
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;">Readiness Probability</div>
+            <div class="progress-bar" style="height:10px;">
+              <div class="progress-fill" id="prob-bar" style="width:0%"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);margin-top:4px;">
+              <span id="ci-lower-label">CI lower</span>
+              <span id="ci-upper-label">CI upper</span>
+            </div>
+          </div>
+          <div id="narrative-text" style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;"></div>
+          <div style="margin-top:20px;display:flex;gap:10px;">
+            <button id="refresh-btn" class="btn btn-primary btn-sm">↻ Refresh Prediction</button>
+            <a href="xai.html"><button class="btn btn-secondary btn-sm">View Explanation →</button></a>
+          </div>
+        </div>
+
+        <!-- SPV Radar -->
+        <div class="card">
+          <div class="card-title">SPV Radar — 22 Dimensions</div>
+          <div class="radar-container">
+            <canvas id="spv-radar" style="max-height:300px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: SHAP Attribution + Roadmap Snapshot -->
+      <div class="grid-2">
+        <!-- SHAP Bars -->
+        <div class="card">
+          <div class="card-title">Top SHAP Feature Attribution</div>
+          <div id="shap-bars" style="margin-top:8px;">
+            <div style="text-align:center;color:var(--text-muted);font-size:0.85rem;padding:20px;">
+              Run prediction to see attributions
+            </div>
+          </div>
+          <a href="xai.html" style="display:block;margin-top:16px;">
+            <button class="btn btn-ghost btn-sm btn-full">View Full XAI Analysis →</button>
+          </a>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="card">
+          <div class="card-title">Quick Actions</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <a href="assessment.html">
+              <div class="card" style="padding:14px 16px;cursor:pointer;margin:0;">
+                <div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">◈ Take Adaptive Quiz</div>
+                <div style="font-size:0.78rem;color:var(--text-secondary);">IRT-routed DSA, DBMS, OS, CN questions</div>
+              </div>
+            </a>
+            <a href="profile.html">
+              <div class="card" style="padding:14px 16px;cursor:pointer;margin:0;">
+                <div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">◎ Complete SPV Profile</div>
+                <div style="font-size:0.78rem;color:var(--text-secondary);">Fill F01–F22 to improve prediction accuracy</div>
+              </div>
+            </a>
+            <a href="roadmap.html">
+              <div class="card" style="padding:14px 16px;cursor:pointer;margin:0;">
+                <div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">◈ View Roadmap</div>
+                <div style="font-size:0.78rem;color:var(--text-secondary);">Prerequisite-aware 8-week milestone plan</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /dashboard-content -->
+  </main>
+</div>
+
+<script src="../js/api_client.js"></script>
+<script>
+if (!Auth.requireAuth()) {}
+
+// Init avatar
+document.getElementById('avatar-initials').textContent = Auth.getInitials();
+document.getElementById('user-name').textContent = Auth.getName();
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  Auth.clear();
+  window.location.href = 'login.html';
+});
+
+// ── Radar Chart ────────────────────────────────────────────────────────────
+const SPV_LABELS = [
+  'CGPA','DSA','DBMS','OS','CN','Programming','Aptitude',
+  'Soft Skills','Projects','Proj Quality','Internship','Certs',
+  'ATS Score','JD Match','Gap Score','Consistency','Branch','Role',
+  'Attempts','Behavior','Engagement','Roadmap'
+];
+
+let radarChart = null;
+function drawRadar(values) {
+  const ctx = document.getElementById('spv-radar').getContext('2d');
+  if (radarChart) radarChart.destroy();
+  radarChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: SPV_LABELS,
+      datasets: [{
+        label: 'SPV Profile',
+        data: values,
+        backgroundColor: 'rgba(139,92,246,0.15)',
+        borderColor: 'rgba(139,92,246,0.8)',
+        borderWidth: 2,
+        pointBackgroundColor: 'rgba(20,184,166,0.9)',
+        pointRadius: 3,
+      }],
+    },
+    options: {
+      scales: {
+        r: {
+          min: 0, max: 1,
+          ticks: { color: 'rgba(255,255,255,0.3)', stepSize: 0.2, font: { size: 9 } },
+          grid:  { color: 'rgba(255,255,255,0.07)' },
+          angleLines: { color: 'rgba(255,255,255,0.05)' },
+          pointLabels: { color: 'rgba(255,255,255,0.5)', font: { size: 9 } },
+        },
+      },
+      plugins: { legend: { display: false } },
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  });
+}
+
+// ── SHAP Bars ──────────────────────────────────────────────────────────────
+function drawSHAPBars(shapValues) {
+  const container = document.getElementById('shap-bars');
+  const sorted = Object.entries(shapValues)
+    .sort((a,b) => Math.abs(b[1]) - Math.abs(a[1]))
+    .slice(0, 8);
+  const maxAbs = Math.max(...sorted.map(([,v]) => Math.abs(v)), 0.01);
+
+  container.innerHTML = sorted.map(([feat, val]) => {
+    const pct = Math.abs(val) / maxAbs * 40;
+    const pos = val >= 0;
+    const label = feat.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    return `
+      <div class="shap-bar-row">
+        <div class="shap-label">${label}</div>
+        <div class="shap-bar-track">
+          <div class="shap-bar-fill ${pos ? 'shap-positive' : 'shap-negative'}" style="width:${pct}%;"></div>
+        </div>
+        <div class="shap-value" style="color:${pos?'#2dd4bf':'#f87171'};">${val>=0?'+':''}${val.toFixed(3)}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ── Tier Badge ─────────────────────────────────────────────────────────────
+function renderTierBadge(tier) {
+  const map = {
+    'Ready':             { cls: 'tier-ready',       icon: '✓', label: 'Ready' },
+    'Needs Remediation': { cls: 'tier-remediation',  icon: '⚡', label: 'Needs Remediation' },
+    'At-Risk':           { cls: 'tier-atrisk',        icon: '⚠', label: 'At-Risk' },
+  };
+  const t = map[tier] || map['At-Risk'];
+  return `<span class="tier-badge ${t.cls}">${t.icon} ${t.label}</span>`;
+}
+
+// ── Load Dashboard ─────────────────────────────────────────────────────────
+async function loadDashboard() {
+  document.getElementById('loading-state').style.display = 'block';
+  document.getElementById('dashboard-content').style.display = 'none';
+
+  try {
+    // Get SPV
+    const spv = await ApiClient.getSPV();
+    const spvNames = [
+      'cgpa','dsa_score','dbms_score','os_score','cn_score','programming_score',
+      'aptitude_score','soft_skills_score','project_count','project_quality_score',
+      'has_internship','certifications_count','resume_ats_score','cosine_similarity',
+      'gap_score','consistency_score','branch_encoded','target_role_encoded',
+      'assessment_attempts','behavior_score','engagement_score','roadmap_completion_rate'
+    ];
+    const radarValues = spvNames.map(n => parseFloat(spv[n] || 0));
+    const mask = spv.confidence_mask || [];
+    const observedCount = mask.filter(x => x === 1).length;
+
+    // Completeness
+    const comp = (spv.profile_completeness || 0) * 100;
+    document.getElementById('completeness-value').textContent = comp.toFixed(0) + '%';
+    document.getElementById('completeness-bar').style.width = comp + '%';
+    document.getElementById('observed-count').textContent = observedCount;
+
+    // Draw radar
+    drawRadar(radarValues);
+
+    // Run prediction
+    const pred = await ApiClient.predictReadiness();
+    const prob  = pred.readiness_probability || 0;
+    const tier  = pred.readiness_tier || 'At-Risk';
+    const prs   = pred.prs_score || 0;
+    const ciLo  = pred.ci_lower || 0;
+    const ciHi  = pred.ci_upper || 1;
+
+    document.getElementById('prs-score').textContent = prs.toFixed(1);
+    document.getElementById('readiness-tier-text').textContent = tier;
+    document.getElementById('prob-value').textContent = (prob * 100).toFixed(1) + '%';
+    document.getElementById('ci-text').textContent = `95% CI: ${(ciLo*100).toFixed(0)}–${(ciHi*100).toFixed(0)}%`;
+    document.getElementById('prob-bar').style.width = (prob * 100) + '%';
+    document.getElementById('ci-lower-label').textContent = (ciLo*100).toFixed(0) + '%';
+    document.getElementById('ci-upper-label').textContent = (ciHi*100).toFixed(0) + '%';
+    document.getElementById('tier-badge-container').innerHTML = renderTierBadge(tier);
+
+    // SHAP bars
+    if (pred.shap_values && Object.keys(pred.shap_values).length > 0) {
+      drawSHAPBars(pred.shap_values);
+    }
+
+    // Narrative from XAI
+    try {
+      const prescribe = await ApiClient.prescribe();
+      if (prescribe.narrative) {
+        document.getElementById('narrative-text').innerHTML =
+          prescribe.narrative.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      }
+    } catch {}
+
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('dashboard-content').style.display = 'block';
+
+  } catch (err) {
+    document.getElementById('loading-state').innerHTML =
+      `<div class="alert alert-danger">${err.message}</div>`;
+  }
+}
+
+document.getElementById('refresh-btn').addEventListener('click', loadDashboard);
+loadDashboard();
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+Paper01 | Paper01_olipas2024predicting.pdf | 15 pages
+   RESEARCH PAPER || IJDDT, Volume 16 Issue 26s, 2026 || Page 201 || Predicting Student Career Readiness Using Machine Learning And || Deep Learning With Explainable Artificial Intelligence || Shikha Pachouly1*, D.S. Bormane2 || 1,2 Aissms College Of Engineering Pune, Department Of Computer Engineering, Savitribai Phule Pune University Pune, || Maharashtra, India. || Corresponding Author: Shikha Pachouly, Email: shikhaphd2022@gmail.com || Received: 20th Feb, 2026; Revised: 4th Mar, 2026; Accepted: 25th Mar, 2026; Available Online: 10th Apr, 2026
+
+Paper02 | Paper02_vanwyk2025engagement.pdf | 19 pages
+   Academic Editor: Carlos || Hervás-Gómez || Received: 14 November 2025 || Revised: 23 December 2025 || Accepted: 24 December 2025 || Published: 5 February 2026 || Copyright: © 2026 by the authors. || Licensee MDPI, Basel, Switzerland. || This article is an open access article || distributed under the terms and
+
+Paper03 | Paper03_sharma2025preplyte.pdf | 8 pages
+   INTERNATIONAL JOURNAL OF LATEST TECHNOLOGY IN ENGINEERING, || MANAGEMENT & APPLIED SCIENCE (IJLTEMAS) || ISSN 2278-2540 | DOI: 10.51583/IJLTEMAS | Volume XV, Issue I, January 2026 || www.ijltemas.in                                                                                                                                                     Page  489 || Preplyte: An Integrated AI-Powered Placement Preparation and || Simulation Platform for Student and Institutions || 1 Prof. Jayshree Pawar, 2 Swaranjith Satyanarayana Gudelli, 3 Shravan Vijay Chavan, 4 Sarvesh Balasaheb || Bhoite || 1,2 Dept. of Information Technology, Vasantdada Patil Pratishthan’s College of Engineering and Visual || Arts, Sion, Mumbai
+
+Paper04 | Paper04_patel2024ai.pdf | 6 pages
+   AI-Driven Predictive Analysis of Student Placement || Success: Identifying Skill Gaps, Psychological Factors, || Trainer Effectiveness, and Industry Readiness Using || Machine Learning and Deep Learning || Ganesh Vasant Padole || Master in Business Administration || G.H. Raisoni College of Engineering || Nagpur, India || Prof. Abhay Yeole || Assistant Professor, Dept. of MBA
+
+Paper05 | Paper05_chen2024artificial.pdf | 11 pages
+   International Journal of Evaluation and Research in Education (IJERE) || Vol. 15, No. 1, February 2026, pp. 649~659 || ISSN: 2252-8822, DOI: 10.11591/ijere.v15i1.34428 ||      649 || Journal homepage: http://ijere.iaescore.com || Artificial intelligence in education: a bibliometric analysis of || emerging trends || Lim Seong Pek1, Nahdatul Akma Ahmad2, Faiz Zulkifli3, Fatin Syamilah Che Yob1, Usman Ependi4, || Geoffrey Rhoel C. Cruz5 || 1Faculty of Education and Liberal Arts, INTI International University Malaysia, Nilai, Malaysia
+
+Paper06 | Paper06_senthil2021employability.pdf | 17 pages
+   Vol.:(0123456789) || 1 3 || Journal of Ambient Intelligence and Humanized Computing || https://doi.org/10.1007/s12652-021-03276-9 || ORIGINAL RESEARCH || Employability prediction: a survey of current approaches, research || challenges and applications || Nesrine Mezhoudi1   · Rawan Alghamdi1 · Rim Aljunaid2 · Gomathi Krichna1 · Dilek Düştegör2 || Received: 19 October 2020 / Accepted: 15 April 2021 || © The Author(s), under exclusive licence to Springer-Verlag GmbH Germany, part of Springer Nature 2021
+
+Paper07 | Paper07_ismail2021role.pdf | 8 pages
+   3228 || Turkish Journal of Computer and Mathematics Education || Vol.12  No.14 (2021), 3228-3235 || The Role of Perceived Social Support, Vocational Self-Efficacy and Vocational Outcome || Expectation on Students’ Interest in the TVET Program || Nazia Azeema, Muhd Khaizer Omar || a*, Abdullah Mat Rashid || a, Arnida Abdullah || a, Zeinab || Zaremohzzabieh a
+
+Paper08 | Paper08_alam2023factors.pdf | 11 pages
+   Published/ publié in Res Militaris (resmilitaris.net), vol.12, n°6, Winter 2022 || Factors Affecting Students’ Academic Performance: A review || By || Yousuf Nasser Said Al Husaini || Faculty of Communication Visual Art and Computing, Universiti Selangor, Shah Alam, || Malaysia || Email: yousufnaser@aou.edu.om || Nur Syufiza Ahmad Shukor || Faculty of Communication Visual Art and Computing, Universiti Selangor, Shah Alam, || Malaysia
+
+Paper09 | Paper09_casuat2021predicting.pdf | 5 pages
+   2019 6th IEEE International Conference on Engineering Technologies and Applied Sciences (ICETAS) || 978-1-7281-4082-7 /19/$31.00 ©2019 IEEE || Predicting Students’ Employability using Machine || Learning Approach || Cherry D. Casuat || Graduate School || Technological Institute of the Philippines || Quezon City , Philippines || ccasuat.cpe@tip.edu.ph || Enrique D. Festijo
+
+Paper10 | Paper10_rao2022student.pdf | 53 pages
+   A || Mini Project || On || A MACHINE LEARNING APPROACH FOR TRACKING || AND PREDICTING STUDENT PERFORMANCE || IN DEGREE PROGRAMS || (Submitted in partial fulfillment of the requirements for the award of Degree) || BACHELOR OF TECHNOLOGY || in
+
+Paper11 | Paper11_consortium2025resume.pdf | 8 pages
+   Scientific Journal of Artificial Intelligence and Blockchain Technologies || ISSN: 3049-4389 || Vol. 2, Issue 3, July – Sept 2025 || PP. 63-70                       https://doi.org/10.63345/sjaibt.v2.i3.308 || 63 || Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) || Web Scraping for Job Listings Using Python and || BeautifulSoup || Dr Reeta Mishra || IILM University || Knowledge Park II, Greater Noida, Uttar Pradesh 201306
+
+Paper12 | Paper12_roy2024resume.pdf | 5 pages
+   ISSN (O) 2278-1021, ISSN (P) 2319-5940 || IJARCCE || International Journal of Advanced Research in Computer and Communication Engineering || Impact Factor 8.102Peer-reviewed & Refereed journalVol. 13, Issue 9, September 2024 || DOI:  10.17148/IJARCCE.2024.13905 || © IJARCCE                This work is licensed under a Creative Commons Attribution 4.0 International License                 33 || Resume Parser Using NLP || Mohammed Kashif1, Parimal Kumar K R2 || Student, Department Of Masters Of Computer Application, Vidya Vikas Institute Of Engineering & Technology || Mysore, Mysuru, Karnataka, India.1
+
+Paper13 | Paper13_zhang2023careergai.pdf | 20 pages
+   VOLUME XX, 2017 || 1 || Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000. || Digital Object Identifier 10.1109/ACCESS.2017.Doi Number || Efficient resume based re-education for career || recommendation in rapidly evolving job || markets || SAEED ASHRAFI1, BABAK MAJIDI1, EHSAN AKHTARKAVAN1, AND SEYED HOSSEIN || RAZAVI HAJIAGHA2 || 1 Department of Computer Engineering, Khatam University, Tehran, Iran, 1991633357.
+
+Paper14 | Paper14_deshmukh2025review.pdf | 5 pages
+   © 2025 JAAFR | Volume 3, Issue 12 December 2025 | ISSN: 2984-889X | JAAFR.ORG || JAAFR2512043 || Journal of Advance and Future Research (www.jaafr.org) || 378 || REVIEW PAPER ON AI-DRIVEN MOCK || INTERVIEW SYSTEM USING NLP AND || MULTINOMIAL PERFORMANCE ANALYSIS || Ms. Prajakta Prakash Koli, AIML, AITRC, Vita, India || Ms. Srushti Satish Sagare, AIML, AITRC, Vita, India || Mr. Shivam Sunil Ingale, AIML, AITRC, Vita, India
+
+Paper15 | Paper15_consortium2025multimodal.pdf | 3 pages
+   International Journal of Scientific Research and Engineering Development-– Volume 8 Issue 6, Nov- Dec 2025 || Available at www.ijsred.com || ISSN: 2581-7175                                       ©IJSRED: All Rights are Reserved                                   Page 681 || Multimodal AI-Based Mock Interview System: Integrating Facial || Expression Analysis, Speech Emotion Recognition, and NLP for || Holistic Candidate Evaluation || Shoaib Inamdar *, Abhijeet Panchal**, Priyanka Kumbhar***, Yogita Sontakke****, || Asma Hannure*****. || *(Computer Science, A G Patil Institute of Technology , Solapur || Email: shoaibinamdar14@gmail.com)
+
+Paper16 | Paper16_tan2024unified.pdf | 38 pages
+   Education and Information Technologies || https://doi.org/10.1007/s10639-024-13045-8 || A uniﬁed framework for personalized learning pathway || recommendation in e-learning contexts || Yaqian Zheng 1,2 || · Deliang Wang 3 || · Junjie Zhang4 || · Yanyan Li1,2 || · || Yaping Xu 1,2 · Yaqi Zhao1,2 · Yafeng Zheng 5
+
+Paper17 | Paper17_verma2026resumatch.pdf | 8 pages
+   www.ijcrt.org                                                    © 2026 IJCRT | Volume 14, Issue 1 January 2026 | ISSN: 2320-2882 || IJCRT2601457 || International Journal of Creative Research Thoughts (IJCRT) www.ijcrt.org || d736 || ResuMatch: Resume Screening System Using AI || 1Kumkum Solanki, 2Aditya Dorwal, 3Piyush Rai, 4Arpit Awasthi, 5Mohammad Haris || 1,2,3,4,Student, 5Assistant Professor || 1,2,3,4,5Department of Computer Science and Engineering, || KCC Institute of Technology and Management, Greater Noida, India || Abstract: The rapid adoption of Applicant Tracking Systems (ATS) has transformed the recruitment process
+
+Paper18 | Paper18_hidayatulloh2026explainable.pdf | 10 pages
+   Journal of Information System Exploration and Research Vol. 4, No. 1, January 2026, pp. 31-40 || Journal of Information System || Exploration and Research || https://shmpublisher.com/index.php/joiser || p-ISSN 2964-1160 | e-ISSN 2963-6361 || 31 || Explainable Artificial Intelligence-Based Model for Student || Academic Performance Prediction || Wildan Hidayatulloh1*, Fathoni Mahardika2, Dani Indra Junaedi3 || 1,2,3 Study Program of Informatics, Universitas Sebelas April, Indonesia
+
+Paper19 | Paper19_joshi2025explainai.pdf | 11 pages
+   International Research Journal of Innovations in Engineering and Technology (IRJIET) || ISSN (online): 2581-3048 || Volume 10, Issue 5, pp 334-344, May-2026 || https://doi.org/10.47001/IRJIET/2026.105044 || © 2026 IRJIET All Rights Reserved                            www.irjiet.com || 334 || ExplainAI: A Transparent Decision Support System for || MHT-CET Engineering Admissions and Scholarship || Guidance Using LightGBM and SHAP || 1Ashphak Khan, 2*Roshani Satish Jain, 3Jayashri Ravindra Gaikwad, 4Gayatri Dilip Patil
+
+Paper20 | Paper20_sutherland2025retrieval.pdf | 21 pages
+   Academic Editors: Jenny Pange || and Zoi Nikiforidou || Received: 11 March 2025 || Revised: 5 April 2025 || Accepted: 9 April 2025 || Published: 11 April 2025 || Citation: || Swacha, J.; Gracel, M. || Retrieval-Augmented Generation || (RAG) Chatbots for Education: A
+
+Paper21 | Paper21_chawla2025rag.pdf | 8 pages
+   13 || IX || September 2025 || https://doi.org/10.22214/ijraset.2025.73970
+
+Paper22 | Paper22_olipas2025predictive.pdf | 19 pages
+   Volume 21, 2026 || Accepting Editor Geoffrey Z. Liu │ Received: October 9, 2025 │ Revised: January 1, January 5, 2026 │ || Accepted: January 5, 2026. || Cite as: Olipas, C. N. P., (2026). Predictive modeling and explainability of student employability in the Philip- || pines using Random Forest and Shapley Additive Explanations. Interdisciplinary Journal of Information, Knowledge, || and Management, 21, Article 2. https://doi.org/10.28945/5690 || (CC BY-NC 4.0) This article is licensed to you under a Creative Commons Attribution-NonCommercial 4.0 International || License. When you copy and redistribute this paper in full or in part, you need to provide proper attribution to it to ensure || that others can later locate this work (and to ensure that others do not accuse you of plagiarism). You may (and we encour- || age you to) adapt, remix, transform, and build upon the material for any non-commercial purposes. This license does not
+
+Paper23 | Paper23_mathew2025ai.pdf | 10 pages
+   Journal of IoT in Social, Mobile, Analytics, and Cloud (ISSN: 2582-1369) || www.irojournals.com/iroismac/ || Journal of IoT in Social, Mobile, Analytics, and Cloud, December 2024, Volume 6, Issue 4, Pages 364-373 || 364 || DOI: https://doi.org/10.36548/jismac.2024.4.005 || Received: 11.12.2024, received in revised form: 02.01.2025, accepted: 25.01.2025, published: 06.02.2025 || © 2024 Inventive Research Organization. This is an open access article under the Creative Commons Attribution-NonCommercial International (CC BY-NC 4.0) License || AI-Driven RAG Chatbot: Combining || Information Retrieval with Generative AI || Venkatesh S.1, Dhanya K R.2, Kaniska P.3
+
+Paper24 | Paper24_rmutl2023data.pdf | 14 pages
+   E-ISSN 2586-9027 || Homepage : https://tci-thaijo.org/index.php/SciTechAsia || Science & Technology Asia || Vol.31 No.1 January - March 2026 || Page: [145-158] || Original research article || Data Mining Model Approach for || Employment Prediction for University || Graduates || Tewa Promnuchanont, Sureenat Manola*, Worakarn Jaidee
+
+Paper25 | Paper25_cognitive2026automatic.pdf | 5 pages
+   Appeared in IEEE MIPR 2025, August 2025 || Automatic Question Generation for Intuitive || Learning Utilizing Causal Graph Guided Chain of || Thought Reasoning || Nichoas X. Wang || Stellar Learning Technologies || San Jose, USA || nicholas@stellarlearning.app || Neel V. Parpia || Stellar Learning Technologies
+
+Paper26 | Paper26_fernandez2025automated.pdf | 13 pages
+   Received 16 June 2025, accepted 10 July 2025, date of publication 18 July 2025, date of current version 24 July 2025. || Digital Object Identifier 10.1109/ACCESS.2025.3590423 || Transformer and Large Language Models for || Automatic Multiple-Choice Question Generation: || A Systematic Literature Review || HALIM WILDAN AWALURAHMAN || , (Member, IEEE), || RIZAL FATHONI AJI || , (Member, IEEE), AND INDRA BUDI || , (Member, IEEE)
+
+Paper27 | Paper27_amarnath2025intelligent.pdf | 19 pages
+   Harnessing the Power of AI in Qualitative Research: Role || Assignment, Engagement, and User Perceptions of AI-Generated || Follow-Up Questions in Semi-Structured Interviews || He Zhang || College of Information Sciences and || Technology, The Pennsylvania State || University || University Park, Pennsylvania, USA || hpz5211@psu.edu || Yueyan Liu∗
+
+Paper28 | Paper28_gupta2025indusai.pdf | 4 pages
+   Smart AI Interviewer and Resume Analyzer || Pooja Vachkal || Dept. of Computer Engg. || JSCOE, Hadapsar Pune, || India || Vishal Chole || Dept. of Computer Engg. || JSCOE, Hadapsar Pune, || India || Gaurav Padol
+
+Paper29 | Paper29_srinivasan2025aimock.pdf | 4 pages
+   AI Mock Interview: An Intelligent Voice-Driven || Interview Simulation System using Gemini AI and || Whisper || Abdul Wahid, Aditya Jha, Meerhan Munshi, Sumit Sonwane, Prof. Amit Chakrawarti || Department of Artificial Intelligence & Machine Learning || Dilkap Research Institute of Engineering and Management Studies, University of Mumbai || Village Mamdapur, Post-Neral, Tal: Karjat, Maharashtra, India - 410101 || Abstract - This paper presents the design and implementation of an || AI Mock Interview system, an advanced voice-interactive web || application developed using Streamlit. The system integrates
+
+Paper30 | Paper30_kulkarni2024aipowered.pdf | 7 pages
+   13 || XI || November 2025 || https://doi.org/10.22214/ijraset.2025.75636
+
+Paper31 | Paper31_banerjee2024swarm.pdf | 31 pages
+   Complex & Intelligent Systems (2022) 8:2663–2693 || https://doi.org/10.1007/s40747-021-00637-x || SURVEY AND STATE OF THE ART || Feature dimensionality reduction: a review || Weikuan Jia1 · Meili Sun1 · Jian Lian2 · Sujuan Hou1 || Received: 5 August 2021 / Accepted: 23 December 2021 / Published online: 21 January 2022 || © The Author(s) 2022 || Abstract || As basic research, it has also received increasing attention from people that the “curse of dimensionality” will lead to increase || the cost of data storage and computing; it also inﬂuences the efﬁciency and accuracy of dealing with problems. Feature
+
+Paper32 | Paper32_viberg2025predictive.pdf | 25 pages
+   QUBAHAN ACADEMIC JOURNAL || VOL. 6, NO. 2, May 2026 || https://doi.org/10.48161/qaj.v6n2a2559 || 437 || VOLUME 6, No 2, 2026 || From Predictive Analytics to Explainable AI in Higher Education: || A Bibliometric Mapping || Ramzi Talmoudi 1* || and Jamel Choukir 1 || 1 Department of Business Administration, College of Business, Imam Mohammad Ibn Saud Islamic University (IMSIU),
+
+Paper33 | Paper33_alshabandar2025explainable.pdf | 15 pages
+   Received September 8, 2019, accepted September 17, 2019, date of publication September 24, 2019, || date of current version October 25, 2019. || Digital Object Identifier 10.1109/ACCESS.2019.2943351 || Detecting At-Risk Students With Early || Interventions Using Machine || Learning Techniques || RAGHAD AL-SHABANDAR1, ABIR JAAFAR HUSSAIN || 1, (Member, IEEE), || PANOS LIATSIS || 2, (Senior Member, IEEE), AND ROBERT KEIGHT1
+
+Paper34 | Paper34_dwivedi2025explainable.pdf | 15 pages
+   Explainable AI Framework for Student Performance || Prediction-A Comparative Study for Student || Performance Prediction to Enhance Accuracy, || Transparency, and Educational Decision-Making || Neethu S Babu, || Lecturer, Department of Computer Engineering, Rajadhani Institute of Engineering and Technology, Thiruvannathapuram, Kerala || Abstract  - Student performance prediction has become an important research area in educational data mining. Traditional machine || learning models can predict academic outcomes with high accuracy; however, they often operate as black-box systems, making it difficult || for educators and students to understand the reasons behind predictions. This paper proposes an Explainable Artificial Intelligence (XAI) || framework for student performance prediction that combines machine learning algorithms with explainability techniques. The
+
+Paper35 | Paper35_qin2020implicit.pdf | 8 pages
+   The Thirty-Second Innovative Applications of Artiﬁcial Intelligence Conference (IAAI-20) || Implicit Skills Extraction Using Document || Embedding and Its Use in Job Recommendation || Akshay Gugnani,1 Hemant Misra2∗ || 1IBM Research - AI, 2Applied Research, Swiggy, India || aksgug22@in.ibm.com, hemant.misra@swiggy.in || Abstract || This paper presents a job recommender system to match || resumes to job descriptions (JD), both of which are non- || standard and unstructured/semi-structured in form. First, the
+
+Paper36 | Paper36_mishra2025resume.pdf | 2 pages
+   © 2025 IJRTI | Volume 10, Issue 11 November 2025 | ISSN: 2456-3315 || IJRTI2511041 || International Journal for Research Trends and Innovation (www.ijrti.org) || a313 || Resume parsing and job recommendation || using NLP and Machine learning || Snehal Suryawanshi, Prajwal Mali, Sarthak Rasal || Under the Guidance of: Prof. Santosh Bhosale || Department of Computer Engineering, Prerana Pratishthan’s Universal College of Engineering and || Research, Sasewadi, Pune
+
+Paper37 | Paper37_kaushik2025smart.pdf | 5 pages
+   Copyright © 2025 The Author(s): This is an open access article under the CC BY license || (http://creativecommons.org/licenses/by/4.0/) || International Journal of Scientific Research in Science, Engineering and Technology || Print ISSN - 2395-1990 || Online ISSN : 2394-4099 || Available Online at :www.ijsrset.com || doi : https://doi.org/10.32628/IJSRSET2512147 || 879 || Smart AI Resume Analyzer || Dr. J. JayaPriya1, Mouleeswaran R2, Kishore T2, Praveen G2, Arjun N2
+
+Paper38 | Paper38_pillai2026prepwise.pdf | 6 pages
+   International Journal of Electrical Engineering and Ethics- Volume 9 Issue 2, March - April || - 2026 || ISSN: 2455-9771 || http://www.ijeeejournal.org || Page 1347 || PrepWise: A Generative AI-Powered Personalized Interview || Preparation and Multi-Dimensional Assessment Platform || Siddhi Kulkarni1, Mahesh Madane2, Dinesh Garule3, Amruta Kore 4 || 1(Computer Science and Engineering, MIT College of Railway Engineering and Research, Barshi, Maharashtra, India || Email: siddhi.kulkarni1007@gmail.com)
+
+Paper39 | Paper39_kurdi2020systematic.pdf | 84 pages
+   International Journal of Artiﬁcial Intelligence in Education || https://doi.org/10.1007/s40593-019-00186-y || ARTICLE || A Systematic Review of Automatic Question || Generation for Educational Purposes || Ghader Kurdi1 || ·Jared Leo1 ·Bijan Parsia1 ·Uli Sattler1 ·Salam Al-Emari2 || © The Author(s) 2019 || Abstract || While exam-style questions are a fundamental educational tool serving a variety
+
+Paper40 | Paper40_schmidt2025utilizing.pdf | 18 pages
+   Indonesian Journal of Elearning and Multimedia || https://ejournal.1001tutorial.com/index.php/ijoem || JENTIK IJOEM || How to Cite || : Murti, Y., Ramadhani, D. P., & Irawan, H. (2025). Utilizing Retrieval Augmented Generation (RAG)-Based || Chatbots as an Innovative Learning Tool in Higher Education: A Case Study on the Use of Digital Learning || Resources. IJOEM Indonesian Journal of E-Learning and Multimedia, 4(3), 281–298. || https://doi.org/10.58723/ijoem.v4i3.510 || ISSN || : 2830-2885
+
+Paper41 | Paper41_consortium2026triangular.pdf | 26 pages
+   Journal of Intelligent Decision Making and Information Science, Volume 3(1s), (2026) 977-1002 || 977 || Journal of Intelligent Decision Making || and Information Science || www.jidmis.org || eISSN: 3079-0875 || A Triangular Employability Digital Twin Framework for Explainable || Graduate Career Readiness Prediction through Student–Faculty–Industry || Intelligence. || Babureddy N S1,*, Binoy Mathew2
+
+Paper42 | Paper42_davenport2025intelligent.pdf | 12 pages
+    Corresponding author: Karthik Kapula || Copyright © 2025 Author(s) retain the copyright of this article. This article is published under the terms of the Creative Commons Attribution License 4.0. || Intelligent document processing: The new frontier of automation || Karthik Kapula * || UiPath Solution Architect, ICS GLOBAL SOFT INC, Texas, USA. || World Journal of Advanced Engineering Technology and Sciences, 2025, 17(01), 376-387 || Publication history: Received on 04 September 2025; revised on 12 October 2025; accepted on 14 October 2025 || Article DOI: https://doi.org/10.30574/wjaets.2025.17.1.1360 || Abstract || Intelligent Document Processing (IDP) represents a transformative evolution in automation, combining Optical
+
+Paper43 | Paper43_knowledge2026transforming.pdf | 17 pages
+   Transforming OPACs into Intelligent Discovery Systems: An AI- || Powered, Knowledge Graph-Driven Smart OPAC for Digital Libraries || M. S. Rajeevan#, * and B. Mini Devi # || #Department of Library and Information Science, University of Kerala, Trivandrum, || India. || Email: rajeevanms_2025@keralauniversity.ac.in || Abstract || Traditional Online Public Access Catalogues (OPACs) are becoming less effective due to the || rapid growth of scholarly literature. Conventional search methods, such as keyword indexing || and Boolean queries, often fail to support efficient knowledge discovery. This paper proposes
+
+Paper44 | Paper44_consortium2024artificial.pdf | 9 pages
+   International Journal of Scientific Research & Engineering Trends || Volume 12, Issue 3, May-Jun-2026, ISSN (Online): 2395-566X || © 2026 IJSRET || 1 || Artificial Intelligence-Driven Learning Analytics For || Enhancing Student Engagement, Academic Performance, || And Decision-Making In Business Management || Education || Dr Ansari Pulickal Abdul Azeez¹, Farooq Sajjad2 || ¹Deputy Programme Lead,
+

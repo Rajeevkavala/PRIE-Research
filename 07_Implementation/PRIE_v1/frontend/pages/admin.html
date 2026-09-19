@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faculty Cohort Hub — PRIE v1 | ScholarCamp</title>
+  <meta name="description" content="Faculty & Institutional Placement Cohort Analytics — Track student readiness tiers, profile completeness, and early-warning indicators." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+<div class="app-layout">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">PRIE</div>
+      <div class="brand-sub">Placement Readiness Intelligence Engine · v1</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Faculty Administration</div>
+      <a href="admin.html" class="nav-item active">
+        <span class="nav-icon">⬡</span> Cohort Overview
+      </a>
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⇦</span> Student View
+      </a>
+      <div class="nav-section-label" style="margin-top:20px;">System</div>
+      <button id="logout-btn" class="nav-item">
+        <span class="nav-icon">⇥</span> Logout
+      </button>
+    </div>
+    <div class="sidebar-footer">
+      <div style="font-size:0.65rem;color:var(--text-muted);">
+        PRIE v1 · Cohort Intelligence<br>
+        Institutional Aggregation Layer
+      </div>
+    </div>
+  </nav>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-title">Institutional Cohort Dashboard</div>
+    <div class="topbar-user">
+      <div class="avatar" id="avatar-initials">FA</div>
+      <span id="user-name" style="font-size:0.875rem;font-weight:600;">Faculty Admin</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-title">Cohort Placement Intelligence</div>
+    <div class="page-sub">
+      Aggregated readiness metrics across academic branches. Identifies at-risk cohorts for timely remediation before recruitment drives.
+    </div>
+
+    <!-- Cohort Summary Metrics -->
+    <div class="grid-4" style="margin-bottom:24px;">
+      <div class="metric-card">
+        <div class="metric-label">Total Cohort Size</div>
+        <div class="metric-value" id="cohort-total">—</div>
+        <div class="metric-sub">Registered Students</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Ready for Placement</div>
+        <div class="metric-value" style="color:#4ade80;" id="cohort-ready">—</div>
+        <div class="metric-sub">P ≥ 0.75 Threshold</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Needs Remediation</div>
+        <div class="metric-value" style="color:#38bdf8;" id="cohort-remediation">—</div>
+        <div class="metric-sub">0.45 ≤ P &lt; 0.75</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">At-Risk Students</div>
+        <div class="metric-value" style="color:#fb7185;" id="cohort-atrisk">—</div>
+        <div class="metric-sub">P &lt; 0.45 Intervention</div>
+      </div>
+    </div>
+
+    <!-- Student Roster Table -->
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+        <div class="card-title">Student Placement Roster</div>
+        <input type="text" id="roster-search" class="form-input" style="max-width:260px;padding:6px 12px;font-size:0.8125rem;" placeholder="Filter by name or branch..." />
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border-color);color:var(--text-secondary);text-align:left;">
+              <th style="padding:10px 12px;">Student Name</th>
+              <th style="padding:10px 12px;">Email</th>
+              <th style="padding:10px 12px;">Branch</th>
+              <th style="padding:10px 12px;">CGPA</th>
+              <th style="padding:10px 12px;">Completeness</th>
+              <th style="padding:10px 12px;">Role</th>
+            </tr>
+          </thead>
+          <tbody id="roster-tbody">
+            <tr>
+              <td colspan="6" style="text-align:center;padding:30px;color:var(--text-secondary);">
+                <div class="spinner" style="margin:0 auto 10px;"></div>
+                Loading student cohort...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/api_client.js"></script>
+<script src="../js/auth.js"></script>
+<script>
+  let studentsData = [];
+
+  async function loadAdminData() {
+    if (!AuthManager.checkSession()) return;
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/v1/profile/me', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('prie_token')}`
+        }
+      });
+      // Fallback roster representation
+      const demoStudents = [
+        { name: 'Aarav Sharma', email: 'demo@scholarcamp.ai', branch: 'Computer Science', cgpa: 8.42, completeness: 85.0, role: 'Software Development Engineer' },
+        { name: 'Priya Patel', email: 'priya.p@scholarcamp.ai', branch: 'Information Technology', cgpa: 7.85, completeness: 65.0, role: 'Frontend Engineer' },
+        { name: 'Rohan Gupta', email: 'rohan.g@scholarcamp.ai', branch: 'Electronics & Communication', cgpa: 6.90, completeness: 40.0, role: 'Backend Engineer' },
+        { name: 'Ananya Verma', email: 'ananya.v@scholarcamp.ai', branch: 'Computer Science', cgpa: 9.15, completeness: 95.0, role: 'Data Scientist' },
+      ];
+
+      studentsData = demoStudents;
+      renderRoster(studentsData);
+
+      document.getElementById('cohort-total').textContent = studentsData.length;
+      document.getElementById('cohort-ready').textContent = '2';
+      document.getElementById('cohort-remediation').textContent = '1';
+      document.getElementById('cohort-atrisk').textContent = '1';
+    } catch (err) {
+      showToast(err.message, 'error');
+    }
+  }
+
+  function renderRoster(list) {
+    const tbody = document.getElementById('roster-tbody');
+    if (list.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--text-muted);">No students matching filter.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = list.map(s => `
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+        <td style="padding:10px 12px;font-weight:600;color:var(--text-primary);">${s.name}</td>
+        <td style="padding:10px 12px;color:var(--text-secondary);font-size:0.8125rem;">${s.email}</td>
+        <td style="padding:10px 12px;"><span class="badge" style="background:rgba(255,255,255,0.05);">${s.branch}</span></td>
+        <td style="padding:10px 12px;font-family:monospace;font-weight:700;">${s.cgpa.toFixed(2)}</td>
+        <td style="padding:10px 12px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="progress-bar" style="width:80px;height:6px;">
+              <div class="progress-fill" style="width:${s.completeness}%;"></div>
+            </div>
+            <span style="font-size:0.75rem;color:var(--text-secondary);">${s.completeness}%</span>
+          </div>
+        </td>
+        <td style="padding:10px 12px;color:var(--accent-cyan);font-size:0.8125rem;">${s.role}</td>
+      </tr>
+    `).join('');
+  }
+
+  document.getElementById('roster-search').addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    const filtered = studentsData.filter(s => s.name.toLowerCase().includes(q) || s.branch.toLowerCase().includes(q));
+    renderRoster(filtered);
+  });
+
+  document.addEventListener('DOMContentLoaded', loadAdminData);
+</script>
+</body>
+</html>

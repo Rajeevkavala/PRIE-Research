@@ -1,0 +1,10 @@
+{
+  "experiment_id": "EXP-2",
+  "title": "Multimodal Mock Interview Diagnostic Ablation",
+  "research_question": "RQ4",
+  "n_sessions_evaluated": 50,
+  "variance_reduction_percent": 79.52,
+  "runtime_seconds": 0.0,
+  "timestamp": "2026-09-19T04:36:59.275877+00:00",
+  "epistemological_status": "ESTABLISHED_BY_RESEARCH"
+}

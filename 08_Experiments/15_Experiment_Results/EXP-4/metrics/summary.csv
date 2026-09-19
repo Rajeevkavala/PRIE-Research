@@ -1,0 +1,3 @@
+method,status,mean_ats_score
+Regex + Heuristic Parser (Ablation Baseline),ACTIVE_BASELINE,3.7
+LayoutLMv3 Spatial Pipeline (Proposed),MODEL NOT TRAINED,N/A (Pending Fine-tuning)

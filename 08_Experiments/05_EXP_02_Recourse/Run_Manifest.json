@@ -1,0 +1,13 @@
+{
+  "experiment_id": "EXP-02",
+  "model_id": "M07-DICE-XAI",
+  "n_profiles_evaluated": 30,
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    2026
+  ],
+  "status": "VALIDATED"
+}

@@ -1,0 +1,5 @@
+model,accuracy,precision,recall,macro_f1,roc_auc,brier_score,ece
+Logistic Regression,0.9880,0.9880,0.9960,0.9840,0.9995,0.0125,0.0210
+Random Forest,0.9160,0.9020,0.9940,0.8935,0.9785,0.0682,0.0482
+XGBoost (Uncalibrated),0.9520,0.9480,0.9900,0.9390,0.9922,0.0354,0.0392
+PRIE XGBoost (Platt-Calibrated),0.9520,0.9480,0.9900,0.9390,0.9922,0.0339,0.0350

@@ -1,0 +1,178 @@
+[
+  {
+    "index": 0,
+    "company_id": 1,
+    "company_name": "Google",
+    "tier": "Tier-1 Product",
+    "min_cgpa": 8.5,
+    "prs_threshold": 0.85,
+    "required_skills": [
+      "Data Structures",
+      "Algorithms",
+      "System Design",
+      "C++",
+      "Python"
+    ],
+    "tech_stack": [
+      "C++",
+      "Python",
+      "Go",
+      "Java",
+      "Kubernetes",
+      "gRPC",
+      "Spanner"
+    ]
+  },
+  {
+    "index": 1,
+    "company_id": 2,
+    "company_name": "Microsoft",
+    "tier": "Tier-1 Product",
+    "min_cgpa": 8.0,
+    "prs_threshold": 0.82,
+    "required_skills": [
+      "Data Structures",
+      "Algorithms",
+      "Object-Oriented Programming",
+      "C#",
+      "Cloud Computing"
+    ],
+    "tech_stack": [
+      "C#",
+      ".NET",
+      "Azure",
+      "TypeScript",
+      "Python",
+      "SQL Server"
+    ]
+  },
+  {
+    "index": 2,
+    "company_id": 3,
+    "company_name": "Amazon",
+    "tier": "Tier-1 Product",
+    "min_cgpa": 7.5,
+    "prs_threshold": 0.8,
+    "required_skills": [
+      "Data Structures",
+      "Algorithms",
+      "Java",
+      "AWS"
+    ],
+    "tech_stack": [
+      "Java",
+      "AWS",
+      "DynamoDB",
+      "Python",
+      "Docker",
+      "Microservices"
+    ]
+  },
+  {
+    "index": 3,
+    "company_id": 4,
+    "company_name": "Tata Consultancy Services",
+    "tier": "Service-Based",
+    "min_cgpa": 6.0,
+    "prs_threshold": 0.55,
+    "required_skills": [
+      "Aptitude",
+      "Java",
+      "SQL",
+      "Communication"
+    ],
+    "tech_stack": [
+      "Java",
+      "SQL",
+      "Spring Boot",
+      "HTML/CSS",
+      "JavaScript"
+    ]
+  },
+  {
+    "index": 4,
+    "company_id": 5,
+    "company_name": "Infosys",
+    "tier": "Service-Based",
+    "min_cgpa": 6.0,
+    "prs_threshold": 0.55,
+    "required_skills": [
+      "Aptitude",
+      "Python",
+      "Database Management",
+      "Communication"
+    ],
+    "tech_stack": [
+      "Python",
+      "Java",
+      "Oracle SQL",
+      "Angular",
+      "Linux"
+    ]
+  },
+  {
+    "index": 5,
+    "company_id": 6,
+    "company_name": "Razorpay",
+    "tier": "Tier-2 Product",
+    "min_cgpa": 7.0,
+    "prs_threshold": 0.72,
+    "required_skills": [
+      "Data Structures",
+      "Go",
+      "System Design",
+      "PostgreSQL"
+    ],
+    "tech_stack": [
+      "Go",
+      "PHP",
+      "PostgreSQL",
+      "Kafka",
+      "AWS",
+      "Docker"
+    ]
+  },
+  {
+    "index": 6,
+    "company_id": 7,
+    "company_name": "Swiggy",
+    "tier": "Tier-2 Product",
+    "min_cgpa": 7.0,
+    "prs_threshold": 0.7,
+    "required_skills": [
+      "Data Structures",
+      "Java",
+      "Microservices",
+      "Redis"
+    ],
+    "tech_stack": [
+      "Java",
+      "Spring Boot",
+      "Kafka",
+      "Redis",
+      "MySQL",
+      "AWS"
+    ]
+  },
+  {
+    "index": 7,
+    "company_id": 8,
+    "company_name": "Zepto",
+    "tier": "Startup",
+    "min_cgpa": 6.5,
+    "prs_threshold": 0.68,
+    "required_skills": [
+      "Node.js",
+      "PostgreSQL",
+      "Data Structures",
+      "System Architecture"
+    ],
+    "tech_stack": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Kubernetes",
+      "GCP"
+    ]
+  }
+]

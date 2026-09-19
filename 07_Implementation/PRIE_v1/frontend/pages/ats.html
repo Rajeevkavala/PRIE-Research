@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Intelligence & ATS — PRIE v1 | ScholarCamp</title>
+  <meta name="description" content="Spatial PDF tokenization and multi-dimensional ATS resume intelligence with JD alignment." />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .upload-zone {
+      border: 2px dashed var(--color-border-glow);
+      border-radius: var(--radius-lg);
+      padding: 40px 20px;
+      text-align: center;
+      background: var(--color-surface);
+      cursor: pointer;
+      transition: var(--transition);
+      margin-bottom: 24px;
+    }
+    .upload-zone:hover, .upload-zone.dragover {
+      background: var(--color-surface-2);
+      border-color: var(--color-teal);
+    }
+    .metric-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--color-border);
+      font-size: 0.8rem;
+    }
+    .token-box {
+      font-family: monospace;
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      margin: 2px;
+      display: inline-block;
+      border-radius: 4px;
+      background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: var(--color-violet-light);
+    }
+    .status-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.3);
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+<body>
+<div class="app-layout">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">PRIE</div>
+      <div class="brand-sub">Placement Readiness Intelligence Engine · v1</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Student</div>
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⬡</span> Dashboard
+      </a>
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">◎</span> Profile & SPV
+      </a>
+      <a href="ats.html" class="nav-item active">
+        <span class="nav-icon">📄</span> Resume ATS
+      </a>
+      <a href="interview.html" class="nav-item">
+        <span class="nav-icon">🎙️</span> Mock Interview
+      </a>
+      <a href="assessment.html" class="nav-item">
+        <span class="nav-icon">◈</span> Adaptive Quiz
+      </a>
+      <a href="roadmap.html" class="nav-item">
+        <span class="nav-icon">◈</span> Roadmap
+      </a>
+      <a href="xai.html" class="nav-item">
+        <span class="nav-icon">◎</span> Explanations
+      </a>
+      <a href="twin_company.html" class="nav-item">
+        <span class="nav-icon">🏢</span> Twin & Company
+      </a>
+      <div class="nav-section-label" style="margin-top:20px;">Research</div>
+      <a href="experiments.html" class="nav-item">
+        <span class="nav-icon">📊</span> Experiments (EXP-1–6)
+      </a>
+      <button id="logout-btn" class="nav-item" style="margin-top:16px;">
+        <span class="nav-icon">⇥</span> Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-title">M02: Spatial Resume Intelligence & ATS Scoring</div>
+    <div class="topbar-user">
+      <div class="avatar" id="avatar-initials">U</div>
+      <span id="user-name" style="font-size:0.875rem;font-weight:600;">Student</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-title">Resume Parsing & ATS Diagnostics</div>
+    <div class="page-subtitle">
+      Module M02 · Evaluates technical keyword coverage, section completeness, impact metrics, and semantic alignment to target job descriptions.
+    </div>
+
+    <!-- Epistemological Status Banner -->
+    <div class="status-banner">
+      <div>
+        <strong>Epistemological Research Status:</strong> ESTABLISHED_BY_RESEARCH (Rule-based & SBERT Cosine Embeddings).
+        LayoutLMv3 spatial pipeline status: <code>MODEL NOT TRAINED</code> (Baseline regex/heuristic ablation active).
+      </div>
+      <span class="badge" style="background:rgba(245,158,11,0.2);color:#fbbf24;border:1px solid rgba(245,158,11,0.4);">
+        RESEARCH HONESTY ENFORCED
+      </span>
+    </div>
+
+    <!-- Upload & Role Selection Grid -->
+    <div class="grid grid-2" style="margin-bottom:24px;">
+      <!-- Card: Upload / Input -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Upload Resume</div>
+            <div class="card-subtitle">PDF file upload (PyMuPDF token extraction) or paste raw text</div>
+          </div>
+        </div>
+
+        <div class="upload-zone" id="drop-zone">
+          <div style="font-size:2rem;margin-bottom:8px;">📄</div>
+          <div style="font-weight:600;margin-bottom:4px;">Drag & Drop Resume PDF here</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:12px;">or click to browse files (Max 5MB)</div>
+          <input type="file" id="pdf-input" accept=".pdf" style="display:none;" />
+          <button class="btn btn-secondary" onclick="document.getElementById('pdf-input').click();">Select PDF</button>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:0.8rem;color:var(--text-secondary);margin-bottom:6px;">Or Paste Resume Text:</label>
+          <textarea id="resume-text" rows="5" class="form-control" style="width:100%;background:rgba(0,0,0,0.2);border:1px solid var(--color-border);border-radius:var(--radius-sm);color:#fff;padding:10px;font-family:inherit;font-size:0.85rem;" placeholder="Paste resume contents here..."></textarea>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:0.8rem;color:var(--text-secondary);margin-bottom:6px;">Target Job Role:</label>
+          <select id="target-role-select" class="form-control" style="width:100%;background:rgba(0,0,0,0.4);border:1px solid var(--color-border);border-radius:var(--radius-sm);color:#fff;padding:10px;">
+            <option value="Software Development Engineer">Software Development Engineer (SDE)</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Data Scientist">Data Scientist</option>
+            <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+            <option value="DevOps Engineer">DevOps Engineer</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" id="btn-analyze" style="width:100%;">
+          Analyze Resume & Compute ATS Score
+        </button>
+      </div>
+
+      <!-- Card: Real-time ATS Scorecard -->
+      <div class="card" id="card-results" style="display:none;">
+        <div class="card-header">
+          <div>
+            <div class="card-title">ATS Diagnostic Scorecard</div>
+            <div class="card-subtitle">Canonical SPV Feature Inputs: F13 (resume_ats_score) & F14 (cosine_similarity)</div>
+          </div>
+          <span class="badge badge-success" id="overall-tier-badge">COMPUTED</span>
+        </div>
+
+        <div style="display:flex;align-items:baseline;gap:12px;margin:16px 0;">
+          <div style="font-size:3rem;font-weight:900;color:var(--color-teal);" id="ats-score-display">0.0</div>
+          <div style="font-size:1rem;color:var(--text-secondary);">/ 100 Overall ATS Score</div>
+        </div>
+
+        <!-- Progress Bars for Dimensions -->
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px;">
+              <span>Keyword Coverage (40%)</span>
+              <span id="kw-score-text">0/40</span>
+            </div>
+            <div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;">
+              <div id="kw-bar" style="width:0%;height:100%;background:var(--color-violet);transition:var(--transition);"></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px;">
+              <span>Section Completeness (25%)</span>
+              <span id="sec-score-text">0/25</span>
+            </div>
+            <div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;">
+              <div id="sec-bar" style="width:0%;height:100%;background:var(--color-teal);transition:var(--transition);"></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px;">
+              <span>Measurable Impact Metrics (20%)</span>
+              <span id="imp-score-text">0/20</span>
+            </div>
+            <div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;">
+              <div id="imp-bar" style="width:0%;height:100%;background:var(--color-amber);transition:var(--transition);"></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px;">
+              <span>Length & Formatting Heuristic (15%)</span>
+              <span id="len-score-text">0/15</span>
+            </div>
+            <div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;">
+              <div id="len-bar" style="width:0%;height:100%;background:var(--color-green);transition:var(--transition);"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SBERT Cosine Similarity -->
+        <div class="metric-chip" style="margin-bottom:16px;">
+          <span>🎯 Semantic JD Match (Cosine Similarity):</span>
+          <strong id="cosine-sim-val" style="color:var(--color-teal-light);">0.00</strong>
+        </div>
+
+        <div style="margin-top:16px;">
+          <div style="font-size:0.85rem;font-weight:600;margin-bottom:8px;">Matched Technical Skills:</div>
+          <div id="matched-skills-container" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;"></div>
+
+          <div style="font-size:0.85rem;font-weight:600;margin-bottom:8px;color:var(--color-rose);">Missing Target Role Skills:</div>
+          <div id="missing-skills-container" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spatial Tokenization Extraction View -->
+    <div class="card" id="card-spatial-tokens" style="display:none;margin-bottom:24px;">
+      <div class="card-header">
+        <div>
+          <div class="card-title">PyMuPDF Spatial Token Coordinates (BBoxes)</div>
+          <div class="card-subtitle">Normalized [0, 1000] token bounding boxes for LayoutLMv3 spatial pipeline input</div>
+        </div>
+        <span class="badge badge-info" id="token-count-badge">0 tokens</span>
+      </div>
+      <div id="spatial-tokens-display" style="max-height:220px;overflow-y:auto;padding:12px;background:rgba(0,0,0,0.3);border-radius:var(--radius-sm);border:1px solid var(--color-border);">
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/api_client.js"></script>
+<script>
+  Auth.requireAuth();
+  document.getElementById('user-name').textContent = Auth.getName();
+  document.getElementById('avatar-initials').textContent = Auth.getInitials();
+
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    Auth.clear();
+    window.location.href = 'login.html';
+  });
+
+  const pdfInput = document.getElementById('pdf-input');
+  const dropZone = document.getElementById('drop-zone');
+  const btnAnalyze = document.getElementById('btn-analyze');
+
+  dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    if (e.dataTransfer.files.length) {
+      pdfInput.files = e.dataTransfer.files;
+      handleFileUpload(e.dataTransfer.files[0]);
+    }
+  });
+
+  pdfInput.addEventListener('change', (e) => {
+    if (e.target.files.length) handleFileUpload(e.target.files[0]);
+  });
+
+  async function handleFileUpload(file) {
+    showToast(`Uploading and extracting spatial PDF: ${file.name}...`, 'info');
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('target_role', document.getElementById('target-role-select').value);
+
+    try {
+      const res = await ApiClient.uploadResumePdf(formData);
+      renderResults(res);
+      showToast('PDF parsed and analyzed successfully!', 'success');
+    } catch (e) {
+      showToast(e.message, 'error');
+    }
+  }
+
+  btnAnalyze.addEventListener('click', async () => {
+    const text = document.getElementById('resume-text').value.trim();
+    if (!text) {
+      showToast('Please upload a PDF or enter resume text to analyze.', 'warning');
+      return;
+    }
+    btnAnalyze.disabled = true;
+    btnAnalyze.textContent = 'Analyzing...';
+    try {
+      const role = document.getElementById('target-role-select').value;
+      const res = await ApiClient.analyzeResumeText(text, role);
+      renderResults(res);
+      showToast('Resume analyzed successfully!', 'success');
+    } catch (e) {
+      showToast(e.message, 'error');
+    } finally {
+      btnAnalyze.disabled = false;
+      btnAnalyze.textContent = 'Analyze Resume & Compute ATS Score';
+    }
+  });
+
+  function renderResults(data) {
+    document.getElementById('card-results').style.display = 'block';
+    const ats = data.ats_breakdown || {};
+    const score = ats.total_ats_score || data.resume_ats_score || 0;
+
+    document.getElementById('ats-score-display').textContent = score.toFixed(1);
+    document.getElementById('cosine-sim-val').textContent = (data.cosine_similarity || 0).toFixed(3);
+
+    // Dimension bars
+    const kw = ats.keyword_coverage_score || 0;
+    const sec = ats.section_completeness_score || 0;
+    const imp = ats.impact_metrics_score || 0;
+    const len = ats.length_formatting_score || 0;
+
+    document.getElementById('kw-score-text').textContent = `${kw.toFixed(1)}/40`;
+    document.getElementById('kw-bar').style.width = `${(kw / 40) * 100}%`;
+
+    document.getElementById('sec-score-text').textContent = `${sec.toFixed(1)}/25`;
+    document.getElementById('sec-bar').style.width = `${(sec / 25) * 100}%`;
+
+    document.getElementById('imp-score-text').textContent = `${imp.toFixed(1)}/20`;
+    document.getElementById('imp-bar').style.width = `${(imp / 20) * 100}%`;
+
+    document.getElementById('len-score-text').textContent = `${len.toFixed(1)}/15`;
+    document.getElementById('len-bar').style.width = `${(len / 15) * 100}%`;
+
+    // Skills
+    const matched = data.extracted_skills || [];
+    const missing = data.missing_skills || [];
+
+    const mContainer = document.getElementById('matched-skills-container');
+    mContainer.innerHTML = matched.length
+      ? matched.map(s => `<span class="badge badge-teal">${s}</span>`).join('')
+      : '<span style="color:var(--text-muted);font-size:0.8rem;">No explicit skills identified.</span>';
+
+    const missContainer = document.getElementById('missing-skills-container');
+    missContainer.innerHTML = missing.length
+      ? missing.map(s => `<span class="badge badge-rose">${s}</span>`).join('')
+      : '<span style="color:var(--color-green);font-size:0.8rem;">None! Full skill coverage.</span>';
+
+    // Spatial Tokens if available
+    const tokens = data.tokens || [];
+    if (tokens.length > 0) {
+      document.getElementById('card-spatial-tokens').style.display = 'block';
+      document.getElementById('token-count-badge').textContent = `${tokens.length} tokens`;
+      const tDisp = document.getElementById('spatial-tokens-display');
+      tDisp.innerHTML = tokens.slice(0, 100).map(t =>
+        `<span class="token-box" title="BBox: [${t.bbox.join(', ')}]">${t.text}</span>`
+      ).join(' ');
+    }
+  }
+</script>
+</body>
+</html>

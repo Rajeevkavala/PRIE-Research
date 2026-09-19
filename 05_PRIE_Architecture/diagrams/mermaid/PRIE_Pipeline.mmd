@@ -1,0 +1,110 @@
+flowchart TD
+    %% Styling and Classes
+    classDef stageIn fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1;
+    classDef stagePre fill:#fff8e1,stroke:#fbc02d,stroke-width:2px,color:#f57f17;
+    classDef stageSPV fill:#ede7f6,stroke:#7b1fa2,stroke-width:3px,color:#4a148c;
+    classDef stageIntel fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20;
+    classDef stageAct fill:#fbe9e7,stroke:#d84315,stroke-width:2px,color:#bf360c;
+    classDef stageLoop fill:#f3e5f5,stroke:#8e24aa,stroke-dasharray: 5 5,stroke-width:2px,color:#4a148c;
+
+    %% STAGE 01: Raw Multimodal Ingestion
+    subgraph STAGE_01 ["Stage 01: Raw Multimodal Ingestion (M01, M05, M06)"]
+        IN_ACAD["Academic Transcript API<br/>(CGPA, Backlogs, Dept)"]:::stageIn
+        IN_CODE["Coding Platform Sync<br/>(Problems Solved, Contests)"]:::stageIn
+        IN_RES["Resume PDF File Upload<br/>(Multi-page Document)"]:::stageIn
+        IN_MOCK["Interactive Mock Interview<br/>(VAD Audio + Wasm Vision)"]:::stageIn
+        IN_LOGS["LMS Interaction Telemetry<br/>(Clickstreams & Video Drops)"]:::stageIn
+    end
+
+    %% STAGE 02 & 03: Validation & Preprocessing
+    subgraph STAGE_02_03 ["Stage 02 & 03: Validation & Multimodal Preprocessing"]
+        VAL_SCHEMA["M01 Schema Sanitizer<br/>(Range checks, Null traps)"]:::stagePre
+        NLP_RESUME["M06 LayoutLMv3 + OCR<br/>(Spatial Bounding Boxes)"]:::stagePre
+        AUD_WHISPER["M05 Streaming Whisper STT<br/>(Verbatim Transcription)"]:::stagePre
+        VIS_WASM["M05 Client MediaPipe Wasm<br/>(Gaze & Blink Rates)"]:::stagePre
+        TEL_ROLLUP["M10 Event Rollup Engine<br/>(Weekly Aggregate Counts)"]:::stagePre
+    end
+
+    %% STAGE 04: SPV Tensor Compilation
+    subgraph STAGE_04 ["Stage 04: Invariant 22-Dimensional SPV Compilation (M01)"]
+        SPV_TENSOR["Student Profile Vector Tensor<br/><b>SPV = [F01, F02, ..., F22]</b><br/>Normalized & Robust Scaled<br/>Imputed (MICE / Median)"]:::stageSPV
+    end
+
+    %% STAGE 05: Placement Prediction
+    subgraph STAGE_05 ["Stage 05: Placement Prediction Engine (M03)"]
+        MOD_XGB["Static Classifier: XGBoost<br/>(Placement Tier & Calibrated Prob)"]:::stageIntel
+        MOD_TFT["Longitudinal Temporal Fusion Transformer<br/>(Multi-horizon Trajectory & Risk)"]:::stageIntel
+    end
+
+    %% STAGE 06: Explainability & Diagnosis
+    subgraph STAGE_06 ["Stage 06: XAI & Diagnostics (M04)"]
+        XAI_SHAP["TreeSHAP Engine<br/>(Exact Local Feature Attribution)"]:::stageIntel
+        XAI_DICE["DiCE Recourse Engine<br/>(Diverse Counterfactual Paths)"]:::stageIntel
+    end
+
+    %% STAGE 07 & 08: Skill Gap & Target Match
+    subgraph STAGE_07_08 ["Stage 07 & 08: Skill Gap Quantification (M02)"]
+        GAP_EVAL["Euclidean & Topological Distance<br/>(SPV Subspace vs Target Job Vector)"]:::stageIntel
+        DEFICIT_RANK["Deficit Matrix Prioritizer<br/>(Weight = SHAP Impact x Gap Magnitude)"]:::stageIntel
+    end
+
+    %% STAGE 09 & 10: Prescriptive Planning
+    subgraph STAGE_09_10 ["Stage 09 & 10: Prescriptive Recommendation & Roadmapping (M07, M08)"]
+        REC_ASTAR["M07 A* DAG Concept Traversal<br/>(Prerequisite Constraints)"]:::stageAct
+        ROAD_GEN["M08 Adaptive Roadmap Compiler<br/>(Sprint Goals & Weekly Modules)"]:::stageAct
+        RAG_GROUND["M09 RAG Grounded Materials<br/>(Curated Docs & Code References)"]:::stageAct
+    end
+
+    %% STAGE 11: Active Learning & Practice
+    subgraph STAGE_11 ["Stage 11: Active Student Practice & Interaction (M05, M12)"]
+        ACT_ASSESS["M12 Adaptive AQG Testing<br/>(Calibrated MCQ Diagnostic)"]:::stageAct
+        ACT_INTERVIEW["M05 AI Mock Interview Practice<br/>(Conversational Dialogue)"]:::stageAct
+        ACT_SANDBOX["M05 gVisor Sandbox Coding<br/>(Algorithmic Challenge Run)"]:::stageAct
+    end
+
+    %% STAGE 12 & 13: Feedback, Telemetry & Synchronization
+    subgraph STAGE_12_13 ["Stage 12 & 13: Telemetry, Twin Sync & SPV Update (M10, M11)"]
+        FEED_TEL["M10 Real-time Behavioral Telemetry<br/>(Struggle & Hesitation Signals)"]:::stageLoop
+        SYNC_TWIN["M11 Digital Twin Synchronization<br/>(Multi-stakeholder State Sync)"]:::stageLoop
+    end
+
+    %% Connections
+    IN_ACAD --> VAL_SCHEMA
+    IN_CODE --> VAL_SCHEMA
+    IN_RES --> NLP_RESUME
+    IN_MOCK --> AUD_WHISPER
+    IN_MOCK --> VIS_WASM
+    IN_LOGS --> TEL_ROLLUP
+
+    VAL_SCHEMA --> SPV_TENSOR
+    NLP_RESUME --> SPV_TENSOR
+    AUD_WHISPER --> SPV_TENSOR
+    VIS_WASM --> SPV_TENSOR
+    TEL_ROLLUP --> SPV_TENSOR
+
+    SPV_TENSOR --> MOD_XGB
+    SPV_TENSOR --> MOD_TFT
+
+    MOD_XGB --> XAI_SHAP
+    MOD_XGB --> XAI_DICE
+    MOD_TFT --> XAI_SHAP
+
+    XAI_SHAP --> GAP_EVAL
+    XAI_DICE --> GAP_EVAL
+    SPV_TENSOR --> GAP_EVAL
+
+    GAP_EVAL --> DEFICIT_RANK
+    DEFICIT_RANK --> REC_ASTAR
+    REC_ASTAR --> ROAD_GEN
+    RAG_GROUND --> ROAD_GEN
+
+    ROAD_GEN --> ACT_ASSESS
+    ROAD_GEN --> ACT_INTERVIEW
+    ROAD_GEN --> ACT_SANDBOX
+
+    ACT_ASSESS --> FEED_TEL
+    ACT_INTERVIEW --> FEED_TEL
+    ACT_SANDBOX --> FEED_TEL
+
+    FEED_TEL --> SYNC_TWIN
+    SYNC_TWIN -.->|"State Mutation Loop (Closed Loop)"| SPV_TENSOR

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prescriptive XAI — PRIE v1 | ScholarCamp</title>
+  <meta name="description" content="Prescriptive Explainability & Counterfactual Recourse Module (M07) — TreeSHAP feature attributions and actionable intervention directives." />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app-layout">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">PRIE</div>
+      <div class="brand-sub">Placement Readiness Intelligence Engine · v1</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Student</div>
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⬡</span> Dashboard
+      </a>
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">◎</span> Profile & SPV
+      </a>
+      <a href="ats.html" class="nav-item">
+        <span class="nav-icon">📄</span> Resume ATS
+      </a>
+      <a href="interview.html" class="nav-item">
+        <span class="nav-icon">🎙️</span> Mock Interview
+      </a>
+      <a href="assessment.html" class="nav-item">
+        <span class="nav-icon">◈</span> Adaptive Quiz
+      </a>
+      <a href="roadmap.html" class="nav-item">
+        <span class="nav-icon">◈</span> Roadmap
+      </a>
+      <a href="xai.html" class="nav-item active">
+        <span class="nav-icon">◎</span> Explanations
+      </a>
+      <a href="twin_company.html" class="nav-item">
+        <span class="nav-icon">🏢</span> Twin & Company
+      </a>
+      <div class="nav-section-label" style="margin-top:20px;">Research</div>
+      <a href="experiments.html" class="nav-item">
+        <span class="nav-icon">📊</span> Experiments (EXP-1–6)
+      </a>
+      <button id="logout-btn" class="nav-item" style="margin-top:16px;">
+        <span class="nav-icon">⇥</span> Logout
+      </button>
+    </div>
+    <div class="sidebar-footer">
+      <div style="font-size:0.65rem;color:var(--text-muted);">
+        PRIE v1 · Module M07 (XAI)<br>
+        TreeSHAP + Recourse Directives
+      </div>
+    </div>
+  </nav>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-title">Module M07: Prescriptive Explainability</div>
+    <div class="topbar-user">
+      <div class="avatar" id="avatar-initials">U</div>
+      <span id="user-name" style="font-size:0.875rem;font-weight:600;">Student</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-title">Prescriptive Recourse & Attributions</div>
+    <div class="page-sub">
+      Deconstruct your placement probability through exact TreeSHAP game-theoretic Shapley attributions and actionable counterfactual prescriptions.
+    </div>
+
+    <!-- Loading State -->
+    <div id="xai-loading" style="text-align:center;padding:60px 0;">
+      <div class="spinner" style="margin:0 auto 16px;"></div>
+      <p style="color:var(--text-secondary);">Computing TreeSHAP Shapley values & recourse trajectory...</p>
+    </div>
+
+    <!-- Content (hidden until loaded) -->
+    <div id="xai-content" style="display:none;">
+
+      <!-- Narrative & Tier Banner -->
+      <div class="card" style="margin-bottom:24px;border-left:4px solid var(--accent-cyan);background:rgba(56,189,248,0.04);">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-weight:700;font-size:1.1rem;" id="xai-tier-title">Readiness Status</span>
+            <span class="badge" id="xai-tier-badge">Calculating</span>
+          </div>
+          <div style="font-size:0.875rem;color:var(--text-secondary);" id="xai-prob-text">
+            Probability: — (95% CI: —)
+          </div>
+        </div>
+        <p id="xai-narrative-text" style="font-size:0.9375rem;line-height:1.6;color:var(--text-primary);margin:0;">
+          Generating contextual AI narrative...
+        </p>
+      </div>
+
+      <!-- Row 1: TreeSHAP Attribution Bar Chart -->
+      <div class="card" style="margin-bottom:24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+          <div>
+            <div class="card-title">TreeSHAP Feature Attributions (Signed Impact)</div>
+            <div style="font-size:0.8125rem;color:var(--text-secondary);">
+              Positive values (Green) boost readiness probability; Negative values (Rose) penalize readiness.
+            </div>
+          </div>
+          <span class="badge badge-success">ESTABLISHED_BY_RESEARCH (DD-004)</span>
+        </div>
+        <div style="position:relative;height:360px;width:100%;">
+          <canvas id="shap-chart"></canvas>
+        </div>
+      </div>
+
+      <!-- Row 2: Actionable Counterfactual Prescriptions -->
+      <div class="card" style="margin-bottom:24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+          <div>
+            <div class="card-title">Prescriptive Counterfactual Directives</div>
+            <div style="font-size:0.8125rem;color:var(--text-secondary);">
+              Mathematically optimized minimum-effort adjustments to elevate your profile into the next tier.
+            </div>
+          </div>
+          <span class="badge badge-purple">PROPOSED_RESEARCH_DECISION (DiCE)</span>
+        </div>
+
+        <div class="card" style="background:rgba(244,63,94,0.06);border:1px solid rgba(244,63,94,0.2);margin-bottom:16px;padding:12px 16px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.8125rem;color:#fda4af;">
+            <span>🔒</span>
+            <span><strong>Constraint Enforcement:</strong> Academic Branch (F17: branch_encoded) is mathematically locked as an immutable feature and cannot be altered by counterfactual recourse.</span>
+          </div>
+        </div>
+
+        <div id="directives-container" style="display:flex;flex-direction:column;gap:12px;">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Row 3: Deficit Ranking Table -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom:14px;">Role-Specific Competency Deficit Matrix</div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);color:var(--text-secondary);text-align:left;">
+                <th style="padding:10px 12px;">Feature</th>
+                <th style="padding:10px 12px;">Current Raw Value</th>
+                <th style="padding:10px 12px;">Normalized Deficit</th>
+                <th style="padding:10px 12px;">Role Weight</th>
+                <th style="padding:10px 12px;">Action Priority</th>
+              </tr>
+            </thead>
+            <tbody id="deficit-table-body">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../js/api_client.js"></script>
+<script src="../js/auth.js"></script>
+<script>
+  let shapChartInstance = null;
+
+  async function loadXAI() {
+    if (!AuthManager.checkSession()) return;
+    document.getElementById('xai-loading').style.display = 'block';
+    document.getElementById('xai-content').style.display = 'none';
+
+    try {
+      const data = await ApiClient.prescribe();
+
+      // 1. Prediction & Narrative
+      const pred = data.prediction || {};
+      const prob = pred.probability || 0.0;
+      const ci = pred.confidence_interval || [0.0, 0.0];
+      const tier = pred.readiness_tier || 'At-Risk';
+
+      document.getElementById('xai-tier-title').textContent = `${tier} Readiness`;
+      const badge = document.getElementById('xai-tier-badge');
+      badge.textContent = tier;
+      badge.className = `badge ${tier === 'Ready' ? 'badge-success' : tier === 'Needs Remediation' ? 'badge-cyan' : 'badge-pink'}`;
+
+      document.getElementById('xai-prob-text').textContent = `Probability: ${(prob * 100).toFixed(1)}% (95% CI: ${(ci[0] * 100).toFixed(1)}% – ${(ci[1] * 100).toFixed(1)}%)`;
+      document.getElementById('xai-narrative-text').textContent = data.narrative || 'All evaluation metrics computed successfully.';
+
+      // 2. Render TreeSHAP Chart
+      renderSHAPChart(pred.shap_values || {});
+
+      // 3. Render Counterfactual Directives
+      renderDirectives(data.counterfactual || {});
+
+      // 4. Render Deficits
+      renderDeficits(data.deficit_ranking || []);
+
+      document.getElementById('xai-loading').style.display = 'none';
+      document.getElementById('xai-content').style.display = 'block';
+    } catch (err) {
+      showToast(err.message, 'error');
+      document.getElementById('xai-loading').innerHTML = `
+        <div style="color:var(--accent-pink);font-weight:600;">Failed to load XAI pipeline: ${err.message}</div>
+        <button class="btn btn-secondary" style="margin-top:16px;" onclick="loadXAI()">Retry</button>
+      `;
+    }
+  }
+
+  function renderSHAPChart(shap) {
+    const keys = Object.keys(shap);
+    if (keys.length === 0) return;
+
+    // Sort by absolute attribution value
+    keys.sort((a, b) => Math.abs(shap[b]) - Math.abs(shap[a]));
+    const topKeys = keys.slice(0, 10);
+    const labels = topKeys.map(k => k.replace(/_/g, ' '));
+    const values = topKeys.map(k => shap[k]);
+    const backgroundColors = values.map(v => v >= 0 ? 'rgba(34, 197, 94, 0.75)' : 'rgba(244, 63, 94, 0.75)');
+    const borderColors = values.map(v => v >= 0 ? '#22c55e' : '#f43f5e');
+
+    const ctx = document.getElementById('shap-chart').getContext('2d');
+    if (shapChartInstance) shapChartInstance.destroy();
+
+    shapChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'TreeSHAP Attribution Value',
+          data: values,
+          backgroundColor: backgroundColors,
+          borderColor: borderColors,
+          borderWidth: 1,
+          borderRadius: 6,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => ` Impact: ${ctx.raw >= 0 ? '+' : ''}${ctx.raw.toFixed(4)}`
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(255, 255, 255, 0.06)' },
+            ticks: { color: '#94a3b8' }
+          },
+          y: {
+            grid: { display: false },
+            ticks: { color: '#cbd5e1', font: { weight: '600' } }
+          }
+        }
+      }
+    });
+  }
+
+  function renderDirectives(cf) {
+    const container = document.getElementById('directives-container');
+    const directives = cf.directives || [];
+
+    if (directives.length === 0) {
+      container.innerHTML = `
+        <div style="text-align:center;padding:24px;color:#4ade80;font-weight:600;">
+          ✓ Profile is already optimized above target threshold! Keep maintaining consistency.
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = directives.map((d, i) => `
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px 18px;background:rgba(255,255,255,0.03);border:1px solid var(--border-color);border-radius:var(--radius-md);">
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-weight:700;color:var(--text-primary);font-size:0.95rem;">${d.feature ? d.feature.replace(/_/g, ' ') : `Recourse #${i+1}`}</span>
+            <span class="badge badge-purple">+${typeof d.delta === 'number' ? d.delta.toFixed(2) : d.delta} Target</span>
+          </div>
+          <div style="font-size:0.8125rem;color:var(--text-secondary);margin-top:4px;">
+            Current: <strong>${typeof d.current === 'number' ? d.current.toFixed(2) : d.current}</strong> → Recommended: <strong style="color:#4ade80;">${typeof d.target === 'number' ? d.target.toFixed(2) : d.target}</strong>
+          </div>
+        </div>
+        <div style="font-size:0.8125rem;color:var(--accent-cyan);max-width:320px;text-align:right;">
+          ${d.rationale || 'High-gradient direction to elevate tier.'}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderDeficits(deficits) {
+    const tbody = document.getElementById('deficit-table-body');
+    if (deficits.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:16px;color:var(--text-muted);">No significant competency deficits detected.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = deficits.map((d, idx) => `
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+        <td style="padding:10px 12px;font-weight:600;color:var(--text-primary);">${d.feature}</td>
+        <td style="padding:10px 12px;font-family:monospace;color:var(--text-secondary);">${typeof d.current === 'number' ? d.current.toFixed(2) : d.current}</td>
+        <td style="padding:10px 12px;font-family:monospace;color:#fb7185;">${typeof d.deficit === 'number' ? d.deficit.toFixed(3) : d.deficit}</td>
+        <td style="padding:10px 12px;color:var(--accent-cyan);">${typeof d.weight === 'number' ? d.weight.toFixed(2) : '0.50'}</td>
+        <td style="padding:10px 12px;">
+          <span class="badge ${idx === 0 ? 'badge-pink' : idx < 3 ? 'badge-cyan' : 'badge-purple'}">
+            Priority ${idx + 1}
+          </span>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', loadXAI);
+</script>
+</body>
+</html>

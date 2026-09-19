@@ -1,0 +1,122 @@
+# PRIE System Context Diagram
+
+**Project**: ScholarCamp — AI-Powered Placement Readiness Ecosystem  
+**Core Research System**: PRIE — Placement Readiness Intelligence Engine  
+**Document**: `05_PRIE_Architecture/diagrams/System_Context_Diagram.md`  
+**Phase**: 05 — PRIE Architecture  
+**Status**: Authoritative Context Diagram  
+
+---
+
+## 1. Description & Context Boundary
+
+The System Context Diagram establishes the operational perimeter of PRIE within the broader ScholarCamp ecosystem. It visualizes:
+- **Primary Human Actors**: Students, Faculty Mentors, and Corporate Placement Officers / Recruiters.
+- **ScholarCamp Presentation Shell**: Role-specific portals and real-time interaction clients.
+- **PRIE Intelligence Perimeter**: The 12 internal functional subsystems (`M01`–`M12`).
+- **External Integration Points**: University Student Information System (SIS) and Ephemeral Execution Sandboxes.
+
+---
+
+## 2. Mermaid System Context Architecture
+
+```mermaid
+flowchart TD
+    %% Human Actors
+    subgraph ACTORS["Primary Stakeholders"]
+        STU["Student Candidate<br/>(Engineering Undergraduate)"]
+        FAC["Faculty Advisor / Mentor<br/>(Academic Department)"]
+        TPO["Placement Officer / Recruiter<br/>(Corporate Hiring Cell)"]
+    end
+
+    %% ScholarCamp Client Perimeter
+    subgraph SCHOLARCAMP["ScholarCamp Interaction Boundary (Layer 1)"]
+        UI_STU["Student Preparation Hub<br/>• Readiness Radar (22-dim)<br/>• DiCE Remediation Roadmap<br/>• Adaptive Quizzing UI"]
+        UI_INT["Interactive Mock Interview Client<br/>• Microphone Audio Worklet<br/>• Browser Wasm MediaPipe (30 FPS)<br/>• In-Browser Code Editor"]
+        UI_FAC["Faculty Mentorship Workspace<br/>• Cohort Trajectory Distribution<br/>• Week 3-4 Early Warning Alerts<br/>• Intervention Logging"]
+        UI_TPO["Placement Cell & Recruiter Portal<br/>• Job Description Matching<br/>• DP Cohort Analytics (eps <= 1.0)<br/>• Eligible Candidate Shortlisting"]
+    end
+
+    %% PRIE Core Intelligence System Boundary
+    subgraph PRIE["PRIE: Placement Readiness Intelligence Engine Boundary (Layers 2-5)"]
+        direction TB
+        
+        GW["API Gateway & Security Layer (Layer 2)<br/>• JWT Auth & RBAC Verification<br/>• Differential Privacy Proxy (CMP-GW-PRIV)<br/>• Request Dispatcher & Rate Limiter"]
+        
+        subgraph PRIE_INT["PRIE Intelligence Layer (Layer 3)"]
+            M01["M01: SPV Aggregator"]
+            M02["M02: ATS Matcher"]
+            M03["M03: Adaptive Quiz"]
+            M04["M04: Skill Gap Engine"]
+            M05["M05: Interview Coach"]
+            M06["M06: Predictor (XGB + TFT)"]
+            M07["M07: Prescriptive XAI"]
+            M08["M08: Roadmap Generator"]
+            M09["M09: Curriculum RAG"]
+            M10["M10: Causal AQG"]
+            M11["M11: Telemetry Engine"]
+            M12["M12: Digital Twin Sync"]
+        end
+        
+        subgraph PRIE_MODELS["AI & ML Execution Layer (Layer 4)"]
+            MDL_XGB["XGBoost (ONNX Runtime)"]
+            MDL_TFT["Temporal Fusion Transformer"]
+            MDL_DOC["LayoutLMv3 Spatial OCR"]
+            MDL_SEM["Sentence-BERT Bi-Encoder"]
+            MDL_ASR["Whisper Streaming ASR"]
+            MDL_LLM["Local vLLM Llama-3-8B"]
+            MDL_SHP["TreeSHAP Attribution"]
+            MDL_CF["DiCE Counterfactual Solver"]
+        end
+        
+        subgraph PRIE_DATA["Data & Knowledge Stores (Layer 5)"]
+            DB_SPV["PostgreSQL / TimescaleDB<br/>(SPV Snapshots & Telemetry)"]
+            DB_VEC["ChromaDB Vector Store<br/>(Syllabi & JDs)"]
+            DB_DAG["CS Concept Prerequisite DAG"]
+        end
+    end
+
+    %% External Systems Boundary
+    subgraph EXTERNAL["External Infrastructure & Systems (Layer 6)"]
+        SIS["University Student Information System (SIS)<br/>• Official Transcripts & CGPA<br/>• Course Enrollment Data"]
+        BOX["Docker Code Execution Daemon<br/>• Ephemeral Containers (--net=none)<br/>• 128MB RAM, 5s Timeout (DD-006)"]
+    end
+
+    %% Interactions & Data Flows
+    STU <-->|"HTTPS / WSS"| UI_STU
+    STU <-->|"Streaming Audio / Code"| UI_INT
+    FAC <-->|"HTTPS"| UI_FAC
+    TPO <-->|"HTTPS (DP Protected)"| UI_TPO
+
+    UI_STU <-->|"REST API"| GW
+    UI_INT <-->|"WSS Stream"| GW
+    UI_FAC <-->|"REST API"| GW
+    UI_TPO <-->|"REST API"| GW
+
+    GW <--> PRIE_INT
+    PRIE_INT <--> PRIE_MODELS
+    PRIE_INT <--> PRIE_DATA
+    
+    PRIE_INT <-->|"Secure API Sync"| SIS
+    M05 <-->|"Container Driver"| BOX
+
+    %% Legend
+    classDef actorStyle fill:#2b3a42,stroke:#4f6d7a,stroke-width:2px,color:#fff;
+    classDef clientStyle fill:#1e3d59,stroke:#17b978,stroke-width:2px,color:#fff;
+    classDef prieStyle fill:#0f172a,stroke:#38bdf8,stroke-width:3px,color:#fff;
+    classDef extStyle fill:#33272a,stroke:#e07a5f,stroke-width:2px,color:#fff;
+
+    class STU,FAC,TPO actorStyle;
+    class UI_STU,UI_INT,UI_FAC,UI_TPO clientStyle;
+    class GW,M01,M02,M03,M04,M05,M06,M07,M08,M09,M10,M11,M12,MDL_XGB,MDL_TFT,MDL_DOC,MDL_SEM,MDL_ASR,MDL_LLM,MDL_SHP,MDL_CF,DB_SPV,DB_VEC,DB_DAG prieStyle;
+    class SIS,BOX extStyle;
+```
+
+---
+
+## 3. Boundary & Component Consistency Check
+
+- **Actors Represented**: Student, Faculty Mentor, Corporate Placement Officer / Recruiter.
+- **Client Components**: All 4 client subsystems accounted for.
+- **PRIE Subsystems**: All 12 modules (`M01`–`M12`), 8 model workers, and 3 data stores present.
+- **External Interfaces**: University SIS and Ephemeral Docker Sandbox explicitly isolated.

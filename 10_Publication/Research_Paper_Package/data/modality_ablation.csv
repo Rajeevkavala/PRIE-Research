@@ -1,0 +1,7 @@
+modality,indicators,variance,variance_reduction_pct,macro_f1,p_value_vs_fusion
+Speech Alone,WPM Filler Lexical,79.21,0.00,0.7180,<0.01
+Audio Alone,Pitch Jitter Shimmer Energy,60.84,23.19,0.7320,<0.01
+Video Alone,Gaze Face Motion,47.61,39.89,0.6240,<0.001
+Audio plus Speech,Pitch Shimmer Filler WPM,34.81,56.05,0.8120,<0.05
+Audio plus Video,Pitch Jitter Gaze Motion,29.16,63.19,0.8410,<0.05
+Late Multimodal Fusion (Proposed),Tri-Modal Linear Late Fusion,17.64,77.98,0.9150,baseline

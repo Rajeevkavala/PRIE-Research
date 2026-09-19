@@ -1,0 +1,28 @@
+{
+  "ablation_summary": [
+    {
+      "modality": "Audio Alone (Librosa Prosody)",
+      "mean_score": 75.65,
+      "variance": 61.06,
+      "weight": 0.35
+    },
+    {
+      "modality": "Video Alone (OpenCV Gaze & Stability)",
+      "mean_score": 77.11,
+      "variance": 49.24,
+      "weight": 0.35
+    },
+    {
+      "modality": "Speech Alone (Whisper ASR & Lexical)",
+      "mean_score": 76.97,
+      "variance": 102.99,
+      "weight": 0.3
+    },
+    {
+      "modality": "Late Multimodal Fusion (Proposed M05)",
+      "mean_score": 76.56,
+      "variance": 21.09,
+      "weight": 1.0
+    }
+  ]
+}

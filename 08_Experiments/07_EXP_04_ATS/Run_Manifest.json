@@ -1,0 +1,7 @@
+{
+  "experiment_id": "EXP-04",
+  "module_id": "M02-RESUME-ATS",
+  "spatial_tokenizer": "PyMuPDF-fitz",
+  "layoutlmv3_status": "MODEL NOT TRAINED",
+  "status": "PARTIALLY_VALIDATED"
+}
